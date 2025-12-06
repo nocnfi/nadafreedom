@@ -5,6 +5,12 @@ import Navbar from '@/components/navbar';
 import HeroSection from '@/components/HeroSection'; 
 import SolutionsSection from '@/components/SolutionsSection';
 import IntersectionSolutionsSection from '@/components/InternetSolutionsSection';
+import CoverageSection from '@/components/CoverageSection';
+import NewsSection from '@/components/NewsSection';
+import PartnersSection from '@/components/PartnersSection';
+import Footer from '@/components/Footer';
+
+
 
 export default function Home() {
     return (
@@ -21,11 +27,15 @@ export default function Home() {
                     <HeroSection />
                     <SolutionsSection /> 
                     <IntersectionSolutionsSection />
+                    <CoverageSection />
+                    <NewsSection />
+                    <PartnersSection />
                     
                     {/* Di sini nanti Anda akan menambahkan Section 2, Section 3, dst. */}
                 </main>
+                
+                <Footer />
 
-                {/* 3. Komponen Footer (Jika sudah ada) */}
             </div>
         </>
     );

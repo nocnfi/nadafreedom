@@ -17,3 +17,48 @@
         -webkit-text-fill-color: transparent;
     }
 }
+
+
+/* ========================================= */
+/* === TAMBAHAN UNTUK PARTNER MARQUEE    === */
+/* ========================================= */
+
+/* 1. Definisi Keyframes Animasi */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Bergerak ke kiri sejauh 50% (karena list diduplikasi) */
+        transform: translateX(-50%);
+    }
+}
+
+/* 2. Class untuk Track Animasi */
+.marquee-track {
+    display: flex;
+    width: max-content; /* Lebar mengikuti konten, bukan layar */
+    animation: scrollLeft 60s linear infinite; /* Durasi 40 detik */
+}
+
+/* Pause animasi saat mouse diarahkan ke area marquee */
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* 3. Style Logo Default (Abu-abu/Grayscale) */
+.partner-logo {
+    filter: grayscale(100%) opacity(0.6) contrast(0.8);
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    /* Pastikan gambar responsif di dalam containernya */
+    max-height: 100%; 
+    width: auto;
+}
+
+/* 4. Style Logo saat Hover (Warna Asli & Zoom) */
+/* Efek ini aktif ketika kursor berada di atas .partner-item */
+.partner-item:hover .partner-logo {
+    filter: grayscale(0%) opacity(1) contrast(1);
+    transform: scale(1.1); /* Sedikit membesar */
+}

@@ -52,7 +52,7 @@ const InternetSolutionsSection = () => {
                         name: 'NFI POWER', 
                         description: 'Maximum performance for Gamers and Content Creators.', 
                         price: 'IDR 300.000', 
-                        features: ['Symmetrical 10 Mbps Speed', 'Lowest Latency', 'Ideal for Smart Homes', 'Premium 24/7 Support'], 
+                        features: ['Symmetrical 100 Mbps Speed', 'Lowest Latency', 'Ideal for Smart Homes', 'Premium 24/7 Support'], 
                         is_popular: false 
                     },
                 ]);
@@ -80,25 +80,20 @@ const InternetSolutionsSection = () => {
             className="relative w-full font-['Poppins'] bg-white overflow-hidden"
             style={{ 
                 backgroundImage: "url('/images/gradient-world.svg')", 
-                backgroundPosition: 'center',
-                backgroundSize: '100% auto',
+                backgroundSize: '100% auto', 
+                backgroundPosition: 'top center',
                 backgroundRepeat: 'no-repeat'
             }}
         >
-            {/* ============================================================ */}
-            {/* === MASKING GRADIENT (FADE EFFECT)                       === */}
-            {/* ============================================================ */}
+            {/* === MASKING GRADIENT (FADE EFFECT) === */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white via-white/80 to-transparent z-0 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-white via-white/80 to-transparent z-0 pointer-events-none"></div>
 
             <div className="container mx-auto px-4 py-20 relative z-10">
 
-                {/* ============================================================ */}
-                {/* 1. BUFFERING SECTION (Gambar & Teks)                         */}
-                {/* ============================================================ */}
+                {/* === 1. BUFFERING SECTION (Gambar & Teks) === */}
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-0">
-                    
-                    {/* KOLOM KIRI: Ilustrasi Wanita */}
+                    {/* KOLOM KIRI: Ilustrasi */}
                     <div className="w-full lg:w-1/2 flex justify-center lg:justify-end pr-0 lg:pr-8">
                         <div className="w-80 md:w-[26rem] lg:w-[30rem] relative z-10">
                             <img 
@@ -122,11 +117,9 @@ const InternetSolutionsSection = () => {
                         <div className="space-y-8">
                             {bufferingFeatures.map((feature, index) => (
                                 <div key={index} className="flex items-start gap-4">
-                                    {/* Icon Checklist Besar */}
                                     <div className="mt-1 flex-shrink-0 w-8 h-8">
                                         <img src="/icons/checklist.svg" alt="Check" className="w-full h-full object-contain"/>
                                     </div>
-                                    
                                     <div>
                                         <h3 className="text-gray-900 font-extrabold italic text-lg mb-2 uppercase">{feature.title}</h3>
                                         <ul className="space-y-2">
@@ -144,9 +137,7 @@ const InternetSolutionsSection = () => {
                     </div>
                 </div>
 
-                {/* ============================================================ */}
-                {/* 2. BAGIAN TENGAH: GAMBAR FAMILY (BRIDGE)                     */}
-                {/* ============================================================ */}
+                {/* === 2. BAGIAN TENGAH: GAMBAR FAMILY (BRIDGE) === */}
                 <div className="w-full flex justify-end relative z-0 mt-8 mb-16 lg:-mr-64 xl:-mr-96 pointer-events-none">
                      <div className="w-48 md:w-64 lg:w-80">
                         <img 
@@ -157,9 +148,7 @@ const InternetSolutionsSection = () => {
                     </div>
                 </div>
 
-                {/* ============================================================ */}
-                {/* 3. PRICING SECTION                                           */}
-                {/* ============================================================ */}
+                {/* === 3. PRICING SECTION === */}
                 <div className="relative z-10">
                     <div className="mb-12 max-w-4xl">
                         <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2 tracking-tight uppercase">
@@ -178,48 +167,77 @@ const InternetSolutionsSection = () => {
                                 <div 
                                     key={plan.id}
                                     className={`
-                                        relative flex flex-col p-6 rounded-3xl transition-all duration-300 h-full bg-white group
+                                        relative flex flex-col p-6 rounded-[2rem] h-full bg-white transition-all duration-300
                                         ${plan.is_popular 
-                                            ? 'border-2 border-blue-600 shadow-xl shadow-blue-100 z-10 transform md:-translate-y-4 scale-105 md:scale-100' 
-                                            : 'border border-gray-200 shadow-lg hover:shadow-xl hover:-translate-y-1'
+                                            ? 'border-2 border-blue-600 shadow-xl z-10' // Border Biru tapi SEJAJAR
+                                            : 'border border-gray-300 shadow-sm hover:shadow-lg hover:-translate-y-1'
                                         }
                                     `}
                                 >
+                                    {/* Header */}
                                     <div className="mb-4">
-                                        <h3 className="text-lg font-extrabold text-gray-900 italic uppercase">{plan.name}</h3>
-                                        <p className="text-xs text-gray-500 mt-2 min-h-[40px] leading-relaxed">{plan.description}</p>
+                                        <h3 className="text-xl font-extrabold text-gray-900 italic uppercase">{plan.name}</h3>
+                                        <p className="text-xs text-gray-500 mt-2 h-10 leading-snug">{plan.description}</p>
                                     </div>
+
+                                    {/* Price */}
                                     <div className="mb-6">
-                                        <p className="text-lg font-bold text-gray-900 italic">
-                                            {plan.price} <span className="text-xs font-normal text-gray-500">/ month</span>
+                                        <p className="text-lg font-extrabold text-gray-900 italic">
+                                            {plan.price} <span className="text-xs font-normal text-gray-500 not-italic">/ month</span>
                                         </p>
                                     </div>
+
+                                    {/* Features */}
                                     <ul className="space-y-3 mb-8 flex-grow">
-                                        {plan.features && plan.features.map((featureObj, idx) => (
+                                        {plan.features.map((featureObj, idx) => (
                                             <li key={idx} className="flex items-start text-xs text-gray-600">
-                                                <span className="mr-2 mt.5 flex-shrink-0 w-4 h-4 text-gray-800">
-                                                    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                                        <rect x="1" y="1" width="22" height="22" rx="4" strokeWidth="1.5" />
+                                                <span className="mr-2 mt-0.5 flex-shrink-0 text-gray-900">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="0.5" y="0.5" width="13" height="13" rx="3" stroke="currentColor" strokeWidth="1"/>
+                                                        <path d="M4 7L6 9L10 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                                                     </svg>
                                                 </span>
                                                 <span className="leading-tight">{typeof featureObj === 'string' ? featureObj : featureObj.item}</span>
                                             </li>
                                         ))}
                                     </ul>
-                                    <div className="mt-auto">
-                                        <button className={`
-                                            w-full py-3 rounded-full text-sm font-bold tracking-wide transition-all duration-500 ease-in-out
-                                                ${plan.is_popular 
-                                                    // STYLE UNTUK POPULAR PLAN (Gradient Biru-Ungu)
-                                            ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-md hover:shadow-xl hover:scale-[1.02] hover:from-blue-700 hover:to-purple-700' 
-            
-                                                     // STYLE UNTUK REGULAR PLAN (Outline)
-                                            : 'bg-white text-gray-900 border-2 border-gray-300 hover:border-purple-600 hover:text-purple-600 hover:shadow-md'
-                                                    }
-                                         `}>
+
+                                    {/* Button Action */}
+                                    <div className="mt-auto w-full">
+                                        {plan.is_popular ? (
+                                            // === TOMBOL POPULAR (Fill Gradient) ===
+                                            <button className="
+                                                w-full py-3 
+                                                rounded-tl-xl rounded-br-xl rounded-tr-[3em] rounded-bl-[3em]
+                                                bg-gradient-to-r from-blue-600 to-purple-600 
+                                                text-white text-sm font-bold tracking-wide
+                                                shadow-lg shadow-blue-500/30 
+                                                hover:from-purple-600 hover:to-blue-600
+                                                hover:shadow-blue-500/50 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-0.5
+                                                transition-all duration-500 ease-in-out
+                                            ">
                                                 Get started
-                                        </button>
+                                            </button>
+                                        ) : (
+                                            // === TOMBOL BIASA (Border Gradient) ===
+                                            <div className="
+                                                p-[2px] 
+                                                rounded-tl-xl rounded-br-xl rounded-tr-[3em] rounded-bl-[3em]
+                                                bg-gradient-to-r from-blue-600 to-purple-600
+                                                hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300
+                                            ">
+                                                <button className="
+                                                    w-full py-[10px]
+                                                    rounded-tl-xl rounded-br-xl rounded-tr-[3em] rounded-bl-[3em]
+                                                    bg-white 
+                                                    text-gray-900 text-sm font-bold tracking-wide
+                                                    hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white
+                                                    transition-all duration-300
+                                                ">
+                                                    Get started
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             ))}
