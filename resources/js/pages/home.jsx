@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/react';
 import Navbar from '@/components/navbar';
 import HeroSection from '@/components/HeroSection'; 
 import SolutionsSection from '@/components/SolutionsSection';
-import BufferingSection from '@/components/BufferingSection';
+import IntersectionSolutionsSection from '@/components/InternetSolutionsSection';
 
 export default function Home() {
     return (
@@ -20,7 +20,7 @@ export default function Home() {
                 <main className="pt-0"> 
                     <HeroSection />
                     <SolutionsSection /> 
-                    <BufferingSection />
+                    <IntersectionSolutionsSection />
                     
                     {/* Di sini nanti Anda akan menambahkan Section 2, Section 3, dst. */}
                 </main>
