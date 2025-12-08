@@ -1,41 +1,44 @@
 import React, { useState } from 'react';
-import { Link, usePage } from '@inertiajs/react';
+// 1. Ganti import dari @inertiajs/react ke react-router-dom
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const { url } = usePage();
+    
+    // 2. Gunakan hook useLocation untuk mendeteksi URL aktif
+    const location = useLocation();
+    const currentPath = location.pathname;
 
     const navLinks = [
         { name: 'HOME', href: '/' },
-        { name: 'NEWS', href: '/news' },
+        { name: 'NEWS', href: '/news' }, // Ini sudah benar mengarah ke route /news
         { name: 'BUSINESS', href: '/business' },
         { name: 'PLANS', href: '/plans' },
         { name: 'ABOUT US', href: '/about-us' },
         { name: 'CONTACT', href: '/contact' },
     ];
 
-    // Style untuk gradient text (SUDAH BENAR SESUAI DESAIN)
+    // Style untuk gradient text (Tetap sama sesuai desain Anda)
     const gradientTextClass = 'text-transparent bg-clip-text bg-gradient-to-r from-[#6717cd] to-[#2871fa]';
 
     return (
-        // PENAMBAHAN KECIL: Saya tambahkan 'font-sans' di sini untuk menjamin penggunaan Poppins
         <nav className="w-full bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm border-b border-gray-100 font-sans">
             <div className="container mx-auto px-6 md:px-12 h-24 flex justify-between items-center">
                 
                 {/* --- 1. LOGO SECTION --- */}
-                <Link href="/" className="flex items-center gap-1 group">
-                    {/* Pastikan file gambar logo Anda ada di public/images/logo.png */}
+                {/* Ganti properti 'href' menjadi 'to' */}
+                <Link to="/" className="flex items-center gap-1 group">
                     <img 
                         src="/images/logo.png" 
                         alt="NFI Logo"
-                        className="h-10 w-auto" // Ukuran logo
+                        className="h-10 w-auto"
                         onError={(e) => {
-                            // Fallback jika gambar tidak ditemukan
+                            // Fallback jika gambar error
                             e.currentTarget.style.display = 'none';
                             document.getElementById('logo-fallback').style.display = 'flex';
                         }}
                     />
-                    {/* Fallback Teks (Akan tampil jika gambar error) */}
+                    {/* Fallback Teks */}
                     <div id="logo-fallback" className="hidden text-3xl font-extrabold tracking-tighter items-center select-none">
                         <span className="bg-gradient-to-r from-[#6717cd] to-[#2871fa] bg-clip-text text-transparent">
                             NFI
@@ -44,19 +47,21 @@ export default function Navbar() {
                 </Link>
 
                 {/* --- 2. DESKTOP MENU LINKS --- */}
-                {/* Ukuran text-xl sudah pas untuk tampilan yang jelas */}
                 <div className="hidden lg:flex items-center space-x-8">
                     {navLinks.map((link) => {
-                        const isActive = url === link.href;
+                        // Cek apakah link ini sedang aktif
+                        const isActive = currentPath === link.href;
+                        
                         return (
                             <Link 
                                 key={link.name} 
-                                href={link.href} 
+                                to={link.href} // Ubah href={link.href} menjadi to={link.href}
                                 className={`text-xl font-bold tracking-wide transition-all duration-300 uppercase 
                                     ${isActive 
                                         ? gradientTextClass // Jika Aktif: Pakai Gradient
-                                        : 'text-indigo-900/70 hover:' + gradientTextClass // Tidak Aktif: Hover jadi Gradient
+                                        : 'text-indigo-900/70 hover:text-indigo-600' // Tidak Aktif
                                     }
+                                    hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa]
                                 `}
                             >
                                 {link.name}
@@ -94,9 +99,9 @@ export default function Navbar() {
                     {navLinks.map((link) => (
                         <Link 
                             key={link.name} 
-                            href={link.href}
-                            className={`text-xl font-bold block ${url === link.href ? gradientTextClass : 'text-gray-600'}`}
-                            onClick={() => setIsOpen(false)}
+                            to={link.href} // Ubah href menjadi to
+                            className={`text-xl font-bold block ${currentPath === link.href ? gradientTextClass : 'text-gray-600'}`}
+                            onClick={() => setIsOpen(false)} // Tutup menu saat diklik
                         >
                             {link.name}
                         </Link>
