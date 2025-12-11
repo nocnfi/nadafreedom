@@ -62,3 +62,28 @@
     filter: grayscale(0%) opacity(1) contrast(1);
     transform: scale(1.1); /* Sedikit membesar */
 }
+
+
+/* --- ANIMASI TERTIUP ANGIN --- */
+/* --- Animasi Ayunan (Swing) --- */
+@keyframes swing-gentle {
+  0% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
+}
+
+.animate-swinging {
+  transform-origin: top center;
+  animation-name: swing-gentle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}

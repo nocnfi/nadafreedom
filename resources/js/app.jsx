@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // --- Import Halaman (Pages) ---
 import Home from './pages/home';
 import NewsPage from './pages/news';
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
     return (
@@ -22,7 +23,7 @@ const App = () => {
                 <Route path="/business" element={<div className="p-20 text-center">Halaman Business Belum Dibuat</div>} />
                 <Route path="/plans" element={<div className="p-20 text-center">Halaman Plans Belum Dibuat</div>} />
                 <Route path="/contact" element={<div className="p-20 text-center">Halaman Contact Belum Dibuat</div>} />
-                <Route path="/about-us" element={<div className="p-20 text-center">Halaman About Us Belum Dibuat</div>} />
+                <Route path="/about-us" element={<AboutUs />} />
 
                 {/* Route 404 */}
                 <Route path="*" element={<div className="p-20 text-center text-red-500 font-bold">404 - Page Not Found</div>} />
