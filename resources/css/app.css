@@ -4,86 +4,130 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @theme {
-    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
 }
 
-@layer utilities {
-    .custom-text-color {
-        color: transparent;
-        background-image: linear-gradient(to right, #6717cd, #2871fa);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+:root {
+    /* --- CONFIGURATION FOLDER --- */
+    --folder-bg: #ffffff;   /* Warna Dasar Folder (Putih) */
+    --radius: 30px;         /* Radius Sudut */
+    --curve-size: 40px;     /* Ukuran Lekukan Inverted */
+    --tab-height: 80px;     /* Tinggi Tab Judul */
 }
 
+/* --- WRAPPER UTAMA --- */
+/* Memberikan bayangan pada seluruh bentuk folder */
+.folder-container {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.08));
+}
+
+/* 1. BAGIAN TAB (JUDUL) */
+.folder-tab-header {
+    height: var(--tab-height);
+    background: var(--folder-bg);
+    
+    display: inline-flex; 
+    align-items: center;
+    padding: 0 4rem; 
+    
+    /* Bentuk Tab: Atas bulat */
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    
+    position: relative;
+    z-index: 20; 
+    
+    /* Margin kanan selebar lekukan agar tidak tertutup */
+    margin-right: var(--curve-size); 
+}
+
+/* 2. LEKUKAN CEKUNG (CONNECTOR) */
+/* Elemen ini menempel di kanan Tab untuk membuat efek melengkung ke dalam */
+.folder-tab-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: calc(var(--curve-size) * -1); /* Tempel di kanan Tab */
+    
+    width: var(--curve-size);
+    height: var(--curve-size);
+    z-index: 20;
+
+    /* RUMUS PASTI LEKUKAN CEKUNG (INVERTED): */
+    /* Membuat lingkaran transparan di POJOK KANAN ATAS. */
+    /* Sisanya diisi warna putih. */
+    /* Hasil: Bentuk landai cekung yang menyambung Tab ke Body. */
+    background: radial-gradient(circle at 100% 0, transparent 70%, var(--folder-bg) 70.5%);
+}
+
+/* 3. BAGIAN BODY (KONTEN) */
+.folder-content-body {
+    background: var(--folder-bg);
+    width: 100%;
+    min-height: 400px; /* Tinggi minimal */
+    padding: 4rem;
+    
+    /* Bentuk Body: Semua bulat KECUALI Kiri Atas */
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    
+    /* Kiri Atas SIKU (0px) karena menyatu dengan Tab & Lekukan */
+    border-top-left-radius: 0; 
+    
+    position: relative;
+    z-index: 10;
+    
+    /* Tarik sedikit ke atas agar rapat */
+    margin-top: -1px; 
+}
 
 /* ========================================= */
-/* === TAMBAHAN UNTUK PARTNER MARQUEE    === */
+/* === STYLE LAINNYA (JANGAN DIHAPUS)    === */
 /* ========================================= */
 
-/* 1. Definisi Keyframes Animasi */
-@keyframes scrollLeft {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Bergerak ke kiri sejauh 50% (karena list diduplikasi) */
-        transform: translateX(-50%);
-    }
+.custom-text-color {
+    color: transparent;
+    background-image: linear-gradient(to right, #6717cd, #2871fa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* 2. Class untuk Track Animasi */
-.marquee-track {
-    display: flex;
-    width: max-content; /* Lebar mengikuti konten, bukan layar */
-    animation: scrollLeft 60s linear infinite; /* Durasi 40 detik */
-}
-
-/* Pause animasi saat mouse diarahkan ke area marquee */
-.marquee-track:hover {
-    animation-play-state: paused;
-}
-
-/* 3. Style Logo Default (Abu-abu/Grayscale) */
 .partner-logo {
     filter: grayscale(100%) opacity(0.6) contrast(0.8);
     transition: all 0.4s ease-in-out;
     cursor: pointer;
-    /* Pastikan gambar responsif di dalam containernya */
-    max-height: 100%; 
-    width: auto;
+    max-height: 100%; width: auto;
 }
-
-/* 4. Style Logo saat Hover (Warna Asli & Zoom) */
-/* Efek ini aktif ketika kursor berada di atas .partner-item */
 .partner-item:hover .partner-logo {
     filter: grayscale(0%) opacity(1) contrast(1);
-    transform: scale(1.1); /* Sedikit membesar */
+    transform: scale(1.1);
 }
 
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.marquee-track {
+    display: flex; width: max-content; animation: scrollLeft 60s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
 
-/* --- ANIMASI TERTIUP ANGIN --- */
-/* --- Animasi Ayunan (Swing) --- */
 @keyframes swing-gentle {
   0% { transform: rotate(2deg); }
   50% { transform: rotate(-2deg); }
   100% { transform: rotate(2deg); }
 }
-
 .animate-swinging {
-  transform-origin: top center;
-  animation-name: swing-gentle;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  transform-origin: top center; animation-name: swing-gentle; animation-iteration-count: infinite; animation-timing-function: ease-in-out;
 }
 
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.5s ease-out forwards;
-}
+.animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }

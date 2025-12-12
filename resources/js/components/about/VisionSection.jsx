@@ -2,32 +2,31 @@ import React from 'react';
 
 const VisionSection = () => {
     return (
-        <div className="animate-fade-in-up flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+        <div className="animate-fade-in-up flex flex-col md:flex-row items-center justify-between h-full relative">
             
-            {/* Ilustrasi Orang & Teropong */}
-            <div className="w-full md:w-1/3 flex justify-center z-10">
-                <img src="/images/illustration-vision.svg" alt="Vision" className="w-48 md:w-64" onError={(e) => e.target.src='https://cdn-icons-png.flaticon.com/512/3176/3176366.png'} />
+            {/* ORANG TEROPONG */}
+            <div className="w-full md:w-1/3 flex justify-center md:justify-start z-10 mb-8 md:mb-0">
+                <img src="/images/illustration-vision-man.png" alt="Vision" className="h-64 object-contain" onError={(e) => e.target.src = "https://cdn-icons-png.flaticon.com/512/3079/3079165.png"} />
             </div>
 
-            {/* Teks Vision */}
-            <div className="w-full md:w-2/3 text-center md:text-right z-10">
-                <h3 className="text-xl md:text-3xl font-bold text-blue-900 leading-snug">
-                    Realizing Indonesia's Digital Future by Providing <br/>
-                    <span className="text-blue-500">Fast and Efficient Network Solutions</span> <br/>
-                    Created Through <br/>
-                    Creative Ideas and Technological Excellence.
+            {/* TEKS TENGAH */}
+            <div className="w-full md:w-1/3 text-center z-20 px-4">
+                <h3 className="text-2xl font-bold text-blue-900 leading-snug">
+                    Realizing Indonesia's Digital<br/>Future by Providing<br/>
+                    <span className="text-blue-600">Fast and Efficient Network</span><br/>
+                    Solutions.
                 </h3>
-                <div className="mt-4 flex justify-end">
-                    <div className="h-1 w-20 bg-yellow-400 rounded-full"></div>
-                </div>
             </div>
-            
-            {/* Dekorasi Gunung */}
-            <div className="absolute bottom-0 right-0 opacity-10 pointer-events-none z-0">
-                <svg width="300" height="150" viewBox="0 0 300 150" fill="#1e3a8a"><path d="M0 150 L100 50 L200 100 L300 0 V150 H0 Z" /></svg>
+
+            {/* GUNUNG BACKGROUND */}
+            <div className="w-full md:w-1/3 h-full flex items-end justify-end absolute right-0 bottom-0 md:relative pointer-events-none opacity-90">
+                 <svg viewBox="0 0 300 200" className="w-full h-auto max-h-64">
+                    <path d="M50 200 L150 100 L200 150 L300 50 V200 Z" fill="#0f172a" />
+                    <path d="M290 50 V100" stroke="#fbbf24" strokeWidth="3"/>
+                    <path d="M290 50 L320 65 L290 80 Z" fill="#fbbf24"/>
+                 </svg>
             </div>
         </div>
     );
 };
-
 export default VisionSection;
