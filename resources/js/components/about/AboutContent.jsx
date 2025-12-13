@@ -1,5 +1,5 @@
 import React from 'react';
-import FolderContainer from './FolderContainer'; 
+import FolderContainer from './FolderContainer';
 import HistorySection from './HistorySection';
 import VisionSection from './VisionSection';
 import MissionSection from './MissionSection';
@@ -17,10 +17,10 @@ const AboutContent = ({ activeTab }) => {
     return (
         <div className="mt-16 w-full max-w-7xl mx-auto px-4 md:px-8">
             
-            {/* Panggil Container Folder */}
+            {/* Container Folder dengan Box-Shadow Hack */}
             <FolderContainer title={titles[activeTab]}>
                 
-                {/* Render Konten di dalamnya */}
+                {/* Konten 4 Section */}
                 {activeTab === 'we' && <HistorySection />}
                 {activeTab === 'vision' && <VisionSection />}
                 {activeTab === 'mission' && <MissionSection />}

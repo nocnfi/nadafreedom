@@ -92,7 +92,7 @@ const AboutUs = () => {
                                                 <div className="w-5 h-4 bg-gray-800 rounded-sm -mt-1 shadow-sm z-20"></div>
                                                 <div className="w-8 h-6 border-l-2 border-r-2 border-b-2 border-gray-400 rounded-b-lg -mt-2 mb-[-8px] z-10"></div>
                                                 
-                                                <div className={`relative p-3 pb-6 shadow-xl border border-gray-100 w-36 md:w-52 z-10 mt-1 rounded-sm transition-all duration-300 ${isActive ? 'bg-blue-50 ring-4 ring-blue-300 scale-105' : 'bg-white hover:bg-gray-50'}`}>
+                                                <div className={`relative p-3 pb-6 shadow-xl border border-gray-100 w-36 md:w-52 z-10 mt-1 rounded-sm transition-all duration-300  'bg-white hover:bg-gray-50'}`}>
                                                     <div className="w-full aspect-square bg-[#1E1E1E] rounded-sm flex items-center justify-center mb-4 overflow-hidden p-6">
                                                         <img src={item.icon} alt={item.title} className="w-full h-full object-contain filter drop-shadow-lg"/>
                                                     </div>
@@ -102,11 +102,7 @@ const AboutUs = () => {
                                                 </div>
                                             </div>
                                             
-                                            {isActive && (
-                                                <div className="absolute -bottom-12 animate-bounce text-blue-600 z-0">
-                                                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
-                                                </div>
-                                            )}
+                                        
                                         </div>
                                     );
                                 })}

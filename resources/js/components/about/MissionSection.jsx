@@ -1,42 +1,99 @@
 import React from 'react';
 
 const MissionSection = () => {
+    
+    const missions = [
+        {
+            id: 1,
+            title: "Connectivity",
+            desc: "Delivering superior connectivity solutions for everyone.",
+            icon: "📡" 
+        },
+        {
+            id: 2,
+            title: "Infrastructure",
+            desc: "Developing and maintaining a resilient network infrastructure.",
+            icon: "🏗️"
+        },
+        {
+            id: 3,
+            title: "Acceleration",
+            desc: "Driving digital acceleration across Indonesia.",
+            icon: "🚀"
+        },
+        {
+            id: 4,
+            title: "Partnership",
+            desc: "Building synergies and strategic partnerships.",
+            icon: "🤝"
+        }
+    ];
+
     return (
-        <div className="animate-fade-in-up w-full">
-            <div className="text-center mb-10">
-                <h3 className="text-lg font-bold text-gray-700">Our mission serves as a blueprint explaining how we achieve excellence.</h3>
-                <p className="text-gray-500 italic">We dedicate our efforts to the following four strategic areas:</p>
+        <div className="animate-fade-in-up w-full flex flex-col justify-center h-full">
+            
+            {/* 1. TEXT INTRO */}
+            <div className="text-center mb-5 px-5">
+                
+                <p className="text-gray-600 italic text-lg max-w-2xl mx-auto">
+                    "We dedicate our efforts to excellence in four strategic areas to achieve our goals."
+                </p>
             </div>
 
-            {/* TIMELINE VISUAL */}
-            <div className="relative mb-8 hidden lg:flex items-center px-4">
-                 <div className="flex -space-x-6 mr-[-2px] z-10 shrink-0">
-                    <div className="w-16 h-20 bg-[#3d8da3]" style={{clipPath: 'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)'}}></div>
-                    <div className="w-16 h-20 bg-[#2c6e80]" style={{clipPath: 'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)'}}></div>
-                </div>
-                <div className="flex-grow h-3 bg-[#2c6e80] relative flex items-center justify-between px-16">
-                    {[1,2,3,4].map(i => <div key={i} className="w-4 h-6 bg-cyan-400 rounded-sm top-[-8px] relative"></div>)}
-                </div>
-                <div className="relative z-10 ml-[-5px] shrink-0">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1605/1605350.png" className="w-20 h-20 drop-shadow-lg" alt="Target"/>
-                </div>
+            {/* 2. VISUAL TIMELINE (GAMBAR ARROW ANDA) */}
+            {/* Bagian ini hanya muncul di layar besar (Laptop/Desktop) */}
+            <div className="hidden lg:flex items-center justify-center mb-10 px-4">
+                
+                {/* GANTI src di bawah ini dengan nama file gambar arrow Anda */}
+                <img 
+                    src="/images/arrow-mission.svg" 
+                    alt="Mission Timeline Flow" 
+                    className="w-full max-w-4xl object-contain drop-shadow-sm"
+                    onError={(e) => e.target.style.display = 'none'} // Sembunyikan jika gambar gagal load
+                />
+
             </div>
 
-            {/* CARDS */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
-                {[
-                    {id:1, t:"Delivering superior connectivity solutions"},
-                    {id:2, t:"Developing and maintaining a resilient network infrastructure"},
-                    {id:3, t:"Driving digital acceleration"},
-                    {id:4, t:"Building synergies and strategic partnerships"}
-                ].map(item => (
-                    <div key={item.id} className="bg-white shadow rounded-xl p-6 relative text-center border-t-4 border-blue-600 hover:-translate-y-1 transition-transform">
-                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 bg-white shadow rounded-full flex items-center justify-center font-bold text-blue-600">{item.id}</div>
-                        <p className="text-sm text-gray-700 mt-2">{item.t}</p>
+            {/* 3. GRID KARTU MISI */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
+                {missions.map((item) => (
+                    <div key={item.id} className="bg-white p-6 rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.05)] border border-gray-100 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
+                        
+                        {/* Dekorasi Garis Atas */}
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-300 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+
+                        {/* Icon & Nomor */}
+                        <div className="flex justify-between items-start mb-4">
+                            <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                {item.icon}
+                            </div>
+                            
+                            {/* --- BAGIAN INI YANG DIUPDATE --- */}
+                            {/* Logika: Default abu-abu, Hover jadi Gradient sesuai request */}
+                            <span className="text-5xl font-extrabold absolute top-2 right-4 select-none transition-all duration-300
+                                text-gray-100 
+                                group-hover:text-transparent 
+                                group-hover:bg-clip-text 
+                                group-hover:bg-gradient-to-r 
+                                group-hover:from-[#6717cd] 
+                                group-hover:to-[#2871fa]">
+                                {item.id}
+                            </span>
+                            {/* ------------------------------- */}
+                            
+                        </div>
+
+                        <h4 className="font-bold text-gray-800 text-lg mb-2 relative z-10 group-hover:text-blue-600 transition-colors">
+                            {item.title}
+                        </h4>
+                        <p className="text-gray-500 text-sm leading-relaxed relative z-10">
+                            {item.desc}
+                        </p>
                     </div>
                 ))}
             </div>
         </div>
     );
 };
+
 export default MissionSection;
