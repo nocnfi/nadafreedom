@@ -9,6 +9,7 @@ import Home from './pages/home';
 import NewsPage from './pages/news';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
+import Plans from './pages/Plans';
 
 const App = () => {
     return (
@@ -22,7 +23,7 @@ const App = () => {
                 
                 {/* Route Placeholder */}
                 <Route path="/business" element={<div className="p-20 text-center">Halaman Business Belum Dibuat</div>} />
-                <Route path="/plans" element={<div className="p-20 text-center">Halaman Plans Belum Dibuat</div>} />
+                <Route path="/plans" element={<Plans />} />
                 <Route path="/contact" element={<ContactUs />} />
                 <Route path="/about-us" element={<AboutUs />} />
 

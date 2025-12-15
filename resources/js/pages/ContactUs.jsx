@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 // --- IMPORT COMPONENTS ---
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar';
 import Footer from '../components/Footer';
 import ReviewCard, { reviewsData } from '../components/ReviewCard';
 import FAQSection from '../components/FAQSection';   // <--- FAQ Baru
