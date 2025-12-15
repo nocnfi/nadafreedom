@@ -11,7 +11,7 @@ export default function Navbar() {
 
     const navLinks = [
         { name: 'HOME', href: '/' },
-        { name: 'NEWS', href: '/news' }, // Ini sudah benar mengarah ke route /news
+        { name: 'NEWS', href: '/news' }, 
         { name: 'BUSINESS', href: '/business' },
         { name: 'PLANS', href: '/plans' },
         { name: 'ABOUT US', href: '/about-us' },

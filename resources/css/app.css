@@ -163,3 +163,51 @@
     /* Filter shadow tetap ada */
     filter: drop-shadow(0 10px 15px rgba(234, 142, 23, 0.4));
 }
+
+
+/* --- ANIMASI SCROLL KE BAWAH (Jatuh) --- */
+@keyframes scrollDown {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0%); }
+}
+
+/* --- ANIMASI SCROLL KE ATAS (Naik) --- */
+@keyframes scrollUp {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-50%); }
+}
+
+/* Class untuk Marquee Turun */
+.marquee-down {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    animation: scrollDown 40s linear infinite; /* 40s agar tidak terlalu cepat */
+}
+
+/* Class untuk Marquee Naik */
+.marquee-up {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    animation: scrollUp 40s linear infinite;
+}
+
+/* Pause saat di-hover */
+.marquee-down:hover, .marquee-up:hover {
+    animation-play-state: paused;
+}
+
+
+/* Styling Override untuk react-phone-number-input agar sesuai desain */
+.PhoneInputInput {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+.PhoneInputInput:focus {
+    box-shadow: none !important;
+}
+.PhoneInputCountry {
+    margin-right: 0.5rem; /* Jarak antara bendera dan angka */
+}
