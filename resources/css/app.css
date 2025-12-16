@@ -211,3 +211,17 @@
 .PhoneInputCountry {
     margin-right: 0.5rem; /* Jarak antara bendera dan angka */
 }
+
+
+/* === ANIMASI AWAN MARQUEE === */
+/* Bergerak dari 0% ke -25% (karena lebar container 400%, geser 25% = 1 layar penuh) */
+@keyframes marqueeCloud {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-25%); }
+}
+
+.animate-marquee-cloud {
+    display: flex;
+    width: 400%; /* Lebar 4x lipat untuk menampung 4 gambar */
+    animation: marqueeCloud 60s linear infinite; /* Durasi 60s agar gerakan santai */
+}

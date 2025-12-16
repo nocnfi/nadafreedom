@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('home');
-})->name('home');
+// Catch-All Route:
+// Menangkap semua URL (/, /plans, /contact, dll) dan mengarahkannya ke view 'app'
+Route::get('/{any?}', function () {
+    return view('app'); // Pastikan nama file ini 'resources/views/app.blade.php'
+})->where('any', '.*');
