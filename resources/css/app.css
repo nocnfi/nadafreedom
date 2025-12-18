@@ -225,3 +225,30 @@
     width: 400%; /* Lebar 4x lipat untuk menampung 4 gambar */
     animation: marqueeCloud 60s linear infinite; /* Durasi 60s agar gerakan santai */
 }
+
+
+/* Definisi Keyframes */
+@keyframes aurora-wave {
+  0% { transform: translateX(0) scaleY(1); opacity: 0.5; }
+  50% { transform: translateX(20px) scaleY(1.1); opacity: 0.8; }
+  100% { transform: translateX(0) scaleY(1); opacity: 0.5; }
+}
+
+@keyframes aurora-shimmer {
+  0% { transform: skewX(0deg) translateX(0); }
+  50% { transform: skewX(-5deg) translateX(-30px); }
+  100% { transform: skewX(0deg) translateX(0); }
+}
+
+/* Class Animasi */
+.animate-aurora-green {
+  animation: aurora-wave 8s infinite ease-in-out;
+}
+
+.animate-aurora-purple {
+  animation: aurora-shimmer 12s infinite ease-in-out;
+}
+
+.animate-aurora-blue {
+  animation: aurora-wave 10s infinite ease-in-out reverse;
+}

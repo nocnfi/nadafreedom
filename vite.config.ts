@@ -17,6 +17,13 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
+    // TAMBAHKAN BLOK SERVER DI BAWAH INI
+    server: {
+        host: '0.0.0.0', // Mengizinkan akses dari semua IP di jaringan yang sama
+        hmr: {
+            host: '192.168.1.14', // GANTI dengan alamat IPv4 Laptop kamu (cek via ipconfig)
+        },
+    },
     esbuild: {
         jsx: 'automatic',
     },
