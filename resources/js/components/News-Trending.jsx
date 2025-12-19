@@ -1,5 +1,4 @@
-import React from 'react';
-// Pindahkan Import Swiper ke sini
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -7,21 +6,30 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 const NewsTrending = () => {
-    // Data Dummy Carousel
-    const popularNews = [
-        {
-            id: 1,
-            title: "Lorem ipsum dolor sit amet",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-            image: "https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?q=80&w=2000&auto=format&fit=crop", 
-        },
-        {
-            id: 2,
-            title: "Network Expansion 2025",
-            desc: "Expanding our reach to remote areas with fiber optic technology.",
-            image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2000&auto=format&fit=crop",
-        },
-    ];
+    const [slides, setSlides] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Ambil data berita untuk slider
+        fetch('http://127.0.0.1:8000/api/news')
+            .then(res => res.json())
+            .then(result => {
+                // Ambil 5 berita pertama saja untuk slider
+                if (result.data) {
+                    setSlides(result.data.slice(0, 5));
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Error slider:", err);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) return <div className="container mx-auto h-[400px] mt-4 bg-gray-200 animate-pulse rounded-[3rem]"></div>;
+
+    // Jika tidak ada berita, sembunyikan slider
+    if (slides.length === 0) return null;
 
     return (
         <div className="container mx-auto px-4 py-8 mt-4">
@@ -35,10 +43,14 @@ const NewsTrending = () => {
                     loop={true}
                     className="w-full h-full"
                 >
-                    {popularNews.map((news) => (
+                    {slides.map((news) => (
                         <SwiperSlide key={news.id}>
                             <div className="relative w-full h-full">
-                                <img src={news.image} alt={news.title} className="w-full h-full object-cover"/>
+                                <img 
+                                    src={news.image || 'https://via.placeholder.com/1200x800?text=No+Image'} 
+                                    alt={news.title} 
+                                    className="w-full h-full object-cover"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                                 <div className="absolute bottom-12 left-8 md:left-16 max-w-2xl text-white p-4">
                                     <div className="mb-6 hidden md:flex items-center justify-center w-32 h-24 bg-white/10 backdrop-blur-md rounded-lg border border-white/20">
@@ -47,7 +59,12 @@ const NewsTrending = () => {
                                         </svg>
                                     </div>
                                     <h2 className="text-3xl md:text-5xl font-bold mb-3 leading-tight">{news.title}</h2>
-                                    <p className="text-sm md:text-base text-gray-200 line-clamp-2">{news.desc}</p>
+                                    <p className="text-sm md:text-base text-gray-200 line-clamp-2">
+                                        {news.excerpt || news.title}
+                                    </p>
+                                    <a href={`/news/${news.slug}`} className="mt-4 inline-block text-yellow-400 font-bold hover:underline">
+                                        READ MORE &rarr;
+                                    </a>
                                 </div>
                             </div>
                         </SwiperSlide>
