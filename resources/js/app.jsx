@@ -12,6 +12,10 @@ import ContactUs from './pages/ContactUs';
 import Plans from './pages/Plans';
 import Business from './pages/Business';
 
+// --- IMPORT BARU: DETAIL BERITA ---
+// Pastikan file NewsDetail.jsx sudah Anda buat di folder components
+import NewsDetail from './components/NewsDetail'; 
+
 const App = () => {
     return (
         <BrowserRouter>
@@ -19,8 +23,12 @@ const App = () => {
                 {/* Route Utama (Home) */}
                 <Route path="/" element={<Home />} />
                 
-                {/* Route Halaman Berita */}
+                {/* Route Halaman List Berita */}
                 <Route path="/news" element={<NewsPage />} />
+
+                {/* --- ROUTE BARU: DETAIL BERITA (DYNAMIC SLUG) --- */}
+                {/* Tanda titik dua (:slug) artinya bagian ini bisa berubah-ubah */}
+                <Route path="/news/:slug" element={<NewsDetail />} />
                 
                 {/* Route Placeholder */}
                 <Route path="/business" element={<Business />} />

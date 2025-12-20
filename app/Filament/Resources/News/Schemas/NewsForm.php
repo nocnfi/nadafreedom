@@ -3,13 +3,13 @@
 namespace App\Filament\Resources\News\Schemas;
 
 use App\Models\News;
-use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
-// --- [BAGIAN 1] LAYOUTS (SCHEMAS) ---
+// ✅ Group & Section menggunakan Schemas (Struktur)
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 
-// --- [BAGIAN 2] INPUTS (FORMS) ---
+// ✅ Input Field tetap menggunakan Forms (Komponen)
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
@@ -18,76 +18,71 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 
-use Illuminate\Support\Str;
-
 class NewsForm
 {
-    public static function configure(Schema $schema): Schema
+    public static function schema(): array
     {
-        return $schema
-            ->components([
-                Group::make()
-                    ->schema([
-                        Section::make('Konten Utama')
-                            ->schema([
-                                TextInput::make('title')
-                                    ->label('Judul Berita')
-                                    ->required()
-                                    ->live(onBlur: true)
-                                    // ✅ PERBAIKAN DI SINI:
-                                    // Hapus "Set" di depan variabel $set. 
-                                    // Ubah dari "fn (Set $set...)" menjadi "fn ($set...)"
-                                    ->afterStateUpdated(fn ($set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
-                                
-                                TextInput::make('slug')
-                                    ->required()
-                                    ->unique(News::class, 'slug', ignoreRecord: true),
+        return [
+            Group::make()
+                ->schema([
+                    Section::make('Konten Utama')
+                        ->schema([
+                            TextInput::make('title')
+                                ->label('Judul Berita')
+                                ->required()
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(fn ($set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
 
-                                RichEditor::make('content')
-                                    ->label('Isi Berita')
-                                    ->required()
-                                    ->columnSpanFull(),
-                            ])
-                    ])
-                    ->columnSpan(['lg' => 2]),
+                            TextInput::make('slug')
+                                ->required()
+                                ->unique(News::class, 'slug', ignoreRecord: true),
 
-                Group::make()
-                    ->schema([
-                        Section::make('Pengaturan')
-                            ->schema([
-                                FileUpload::make('image')
-                                    ->image()
-                                    ->directory('news-images')
-                                    ->label('Gambar Utama'),
+                            RichEditor::make('content')
+                                ->label('Isi Berita')
+                                ->required()
+                                ->columnSpanFull(),
+                        ]),
+                ])
+                ->columnSpan(['lg' => 2]),
 
-                                Select::make('category')
-                                    ->label('Kategori')
-                                    ->options([
-                                        'Teknologi' => 'Teknologi',
-                                        'Bisnis' => 'Bisnis',
-                                        'Layanan' => 'Layanan',
-                                        'Regulasi & Kebijakan' => 'Regulasi & Kebijakan',
-                                    ])
-                                    ->required()
-                                    ->searchable(),
+            Group::make()
+                ->schema([
+                    Section::make('Pengaturan & Media')
+                        ->schema([
+                            FileUpload::make('image')
+                                ->label('Gambar Utama')
+                                ->image()
+                                ->directory('news-images')
+                                ->required(),
 
-                                DatePicker::make('published_at')
-                                    ->label('Tanggal Terbit')
-                                    ->default(now())
-                                    ->required(),
+                            Select::make('category')
+                                ->label('Kategori')
+                                ->options([
+                                    'Teknologi' => 'Teknologi',
+                                    'Bisnis' => 'Bisnis',
+                                    'Layanan' => 'Layanan',
+                                    'Regulasi & Kebijakan' => 'Regulasi & Kebijakan',
+                                    'Event' => 'Event',
+                                ])
+                                ->required()
+                                ->searchable(),
 
-                                Textarea::make('excerpt')
-                                    ->label('Ringkasan Singkat')
-                                    ->rows(3)
-                                    ->maxLength(255),
+                            DatePicker::make('published_at')
+                                ->label('Tanggal Terbit')
+                                ->default(now())
+                                ->required(),
 
-                                Toggle::make('is_active')
-                                    ->label('Tampilkan Berita')
-                                    ->default(true),
-                            ])
-                    ])
-                    ->columnSpan(['lg' => 1]),
-            ])
-            ->columns(3);
+                            Textarea::make('excerpt')
+                                ->label('Ringkasan Singkat')
+                                ->rows(3)
+                                ->maxLength(255),
+
+                            Toggle::make('is_active')
+                                ->label('Tampilkan Berita')
+                                ->default(true),
+                        ]),
+                ])
+                ->columnSpan(['lg' => 1]),
+        ];
     }
 }

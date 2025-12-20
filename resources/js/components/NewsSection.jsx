@@ -1,26 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // ✅ Import Link untuk navigasi
 
 const NewsSection = () => {
-    const newsUpdates = [
-        {
-            id: 1,
-            category: "CATEGORY",
-            date: "JUNE 2025",
-            excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
-        },
-        {
-            id: 2,
-            category: "CATEGORY",
-            date: "JUNE 2025",
-            excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
-        },
-        {
-            id: 3,
-            category: "CATEGORY",
-            date: "JUNE 2025",
-            excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
-        },
-    ];
+    const [newsUpdates, setNewsUpdates] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Fetch data dari API
+        fetch('http://127.0.0.1:8000/api/news', {
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(res => res.json())
+        .then(result => {
+            if (result.data) {
+                // ✅ Ambil 3 berita teratas saja untuk ditampilkan di Home
+                setNewsUpdates(result.data.slice(0, 3));
+            }
+            setLoading(false);
+        })
+        .catch(err => {
+            console.error("Error fetching news section:", err);
+            setLoading(false);
+        });
+    }, []);
+
+    // Helper untuk format tanggal (Contoh: "JUNE 2025")
+    const formatDate = (dateString) => {
+        const options = { month: 'long', year: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options).toUpperCase();
+    };
+
+    if (loading) return null; // Atau bisa return skeleton loader kecil jika mau
 
     return (
         <section className="w-full py-24 bg-white font-['Poppins']">
@@ -43,30 +53,27 @@ const NewsSection = () => {
                         {/* Button "View All News" */}
                         <div className="relative w-fit group cursor-pointer mt-4 lg:mt-0 flex items-center justify-center p-8 isolate">
                             
-                            {/* 1. GAMBAR BLOB (Background) */}
+                            {/* 1. GAMBAR BLOB */}
                             <img 
                                 src="/images/blob.svg" 
                                 alt="" 
-                                // PERUBAHAN DI SINI:
-                                // Saya mengganti '-translate-x-1/2' menjadi '-translate-x-[65%]'
-                                // Semakin besar angkanya, semakin geser ke kiri.
-                                // Coba sesuaikan angkanya (misal 60%, 70%) jika kurang pas.
                                 className="absolute top-1/2 left-1/2 -translate-x-[65%] -translate-y-1/2 w-56 h-56 -z-10 opacity-100 group-hover:scale-110 transition-transform duration-500 pointer-events-none"
                             />
                             
-                            {/* 2. TEXT BUTTON */}
-                            <a href="#" className="relative z-10 text-2xl font-bold text-[#4F46E5] group-hover:text-[#4338ca] transition-colors whitespace-nowrap">
+                            {/* 2. TEXT BUTTON (Ganti <a> jadi <Link>) */}
+                            <Link to="/news" className="relative z-10 text-2xl font-bold text-[#4F46E5] group-hover:text-[#4338ca] transition-colors whitespace-nowrap">
                                 View All News
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
-                    {/* --- RIGHT COLUMN --- */}
+                    {/* --- RIGHT COLUMN (DYNAMIC DATA) --- */}
                     <div className="w-full lg:w-2/3 flex flex-col gap-6">
                         {newsUpdates.map((item) => (
-                            <div 
+                            <Link 
+                                to={`/news/${item.slug}`} // ✅ Link ke detail berita
                                 key={item.id} 
-                                className="bg-[#E5E5E5] rounded-[2.5rem] p-8 md:p-10 flex items-center justify-between gap-6 hover:shadow-lg transition-all duration-300 group cursor-pointer"
+                                className="bg-[#E5E5E5] rounded-[2.5rem] p-8 md:p-10 flex items-center justify-between gap-6 hover:shadow-lg transition-all duration-300 group cursor-pointer block"
                             >
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-3">
@@ -74,10 +81,18 @@ const NewsSection = () => {
                                             {item.category}
                                         </span>
                                         <span className="text-gray-900 font-bold text-sm tracking-wide">
-                                            {item.date}
+                                            {/* Gunakan helper date atau field date dari API */}
+                                            {formatDate(item.created_at || item.date)} 
                                         </span>
                                     </div>
-                                    <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
+                                    
+                                    {/* Judul Berita */}
+                                    <h4 className="text-[#1A237E] font-bold text-lg mb-2 line-clamp-1 group-hover:text-blue-600 transition-colors">
+                                        {item.title}
+                                    </h4>
+
+                                    {/* Excerpt */}
+                                    <p className="text-gray-600 text-sm leading-relaxed max-w-2xl line-clamp-2">
                                         {item.excerpt}
                                     </p>
                                 </div>
@@ -89,7 +104,7 @@ const NewsSection = () => {
                                         className="w-10 h-10"
                                     />
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 

@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 
-// Terima props searchQuery dan setSearchQuery dari Parent
 const NewsFilter = ({ activeCategory, setActiveCategory, categories, searchQuery, setSearchQuery }) => {
+    // State lokal untuk menampung ketikan sementara
+    const [localSearch, setLocalSearch] = useState(searchQuery);
+
+    // Sinkronisasi jika parent mereset search query
+    useEffect(() => {
+        setLocalSearch(searchQuery);
+    }, [searchQuery]);
+
+    // Fungsi saat user menekan Enter atau icon Search
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        setSearchQuery(localSearch); // Baru kirim ke Parent di sini
+    };
+
     return (
         <div className="container mx-auto px-4 mt-8 mb-12">
             <div className="text-center mb-8">
@@ -17,9 +30,13 @@ const NewsFilter = ({ activeCategory, setActiveCategory, categories, searchQuery
                     {categories.map((cat) => (
                         <button 
                             key={cat}
-                            onClick={() => setActiveCategory(cat)}
+                            onClick={() => {
+                                setActiveCategory(cat);
+                                setSearchQuery(''); // Reset search saat ganti kategori
+                                setLocalSearch('');
+                            }}
                             className={`text-sm md:text-base font-bold transition-colors duration-300 ${
-                                activeCategory === cat ? 'text-[#1A237E]' : 'text-gray-400 hover:text-[#1A237E]'
+                                activeCategory === cat ? 'text-[#1A237E] border-b-2 border-[#1A237E]' : 'text-gray-400 hover:text-[#1A237E]'
                             }`}
                         >
                             {cat}
@@ -27,17 +44,19 @@ const NewsFilter = ({ activeCategory, setActiveCategory, categories, searchQuery
                     ))}
                 </div>
 
-                {/* Search */}
-                <div className="relative w-full md:w-64">
+                {/* Search Form */}
+                <form onSubmit={handleSearchSubmit} className="relative w-full md:w-64">
                     <input 
                         type="text" 
                         placeholder="SEARCH" 
-                        value={searchQuery} // Controlled Input
-                        onChange={(e) => setSearchQuery(e.target.value)} // Update State
-                        className="w-full py-2 pl-2 pr-8 text-sm font-bold text-[#1A237E] placeholder-[#1A237E] bg-transparent border-b-2 border-blue-200 focus:border-[#1A237E] focus:outline-none transition-colors uppercase"
+                        value={localSearch} 
+                        onChange={(e) => setLocalSearch(e.target.value)} 
+                        className="w-full py-2 pl-2 pr-8 text-sm font-bold text-[#1A237E] placeholder-[#1A237E]/50 bg-transparent border-b-2 border-blue-200 focus:border-[#1A237E] focus:outline-none transition-colors uppercase"
                     />
-                    <Search className="absolute right-0 top-2 w-5 h-5 text-[#1A237E]" />
-                </div>
+                    <button type="submit" className="absolute right-0 top-2">
+                        <Search className="w-5 h-5 text-[#1A237E] hover:text-blue-600 transition-colors" />
+                    </button>
+                </form>
             </div>
         </div>
     );

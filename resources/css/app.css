@@ -252,3 +252,138 @@
 .animate-aurora-blue {
   animation: aurora-wave 10s infinite ease-in-out reverse;
 }
+
+
+/* =========================================
+   1. CONFIG LAYOUT (URUTAN ELEMEN)
+   ========================================= */
+
+/* Class untuk Container Utama di NewsDetail */
+.news-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mengatur Urutan Tampilan (Order) */
+.news-header-section {
+    order: 1; /* Judul Paling Atas */
+    margin-bottom: 2rem;
+}
+
+.news-hero-image {
+    order: 2; /* Gambar Kedua */
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.news-meta-bar {
+    order: 3; /* Meta Bar (Penulis/Like) Ketiga (DI BAWAH GAMBAR) */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-top: 1px solid #e5e7eb;    /* Garis tipis atas */
+    border-bottom: 1px solid #e5e7eb; /* Garis tipis bawah */
+    margin-bottom: 3rem;
+}
+
+/* Di layar besar (Desktop), meta bar berjejer ke samping */
+@media (min-width: 768px) {
+    .news-meta-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.news-content-wrapper {
+    order: 4; /* Isi Berita Paling Bawah */
+}
+
+
+/* =========================================
+   2. TYPOGRAPHY (GAYA HURUF BERITA)
+   ========================================= */
+
+.news-content {
+    /* Font Serif agar terlihat elegan & nyaman dibaca panjang */
+    font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+    color: #2d2d2d;
+    font-size: 1.125rem; /* Ukuran font 18px */
+    line-height: 1.8;      /* Jarak antar baris */
+}
+
+/* Style Judul (H2, H3) dalam artikel */
+.news-content h2, 
+.news-content h3,
+.news-content h4 {
+    font-family: 'Poppins', sans-serif; /* Heading tetap Sans-Serif */
+    color: #111827;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.news-content h2 { 
+    font-size: 1.875rem; 
+}
+
+.news-content h3 { 
+    font-size: 1.5rem; 
+}
+
+/* Style Paragraf */
+.news-content p {
+    margin-bottom: 1.5rem;
+}
+
+/* Style Link */
+.news-content a {
+    color: #2563eb;
+    text-decoration: underline;
+    font-weight: 600;
+    text-underline-offset: 2px;
+}
+
+/* Style List */
+.news-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.news-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.news-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Style Gambar dalam Artikel */
+.news-content img {
+    border-radius: 0.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Style Blockquote (Kutipan) */
+.news-content blockquote {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #4b5563;
+    border-left: 4px solid #1A237E; /* Garis biru vertikal */
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    background: transparent;
+}

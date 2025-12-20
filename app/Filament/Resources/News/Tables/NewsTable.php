@@ -2,13 +2,12 @@
 
 namespace App\Filament\Resources\News\Tables;
 
+use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Filters\SelectFilter;
+// ✅ Namespace yang benar sesuai file yang Anda temukan
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
+// ✅ Untuk Bulk Actions biasanya mengikuti pola yang sama
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 
@@ -18,46 +17,31 @@ class NewsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
-                    ->label('Image'),
-                
-                TextColumn::make('title')
-                    ->label('Judul')
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Image')
+                    ->circular(),
+
+                Tables\Columns\TextColumn::make('title')
                     ->searchable()
-                    ->limit(50)
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(50),
 
-                TextColumn::make('category')
-                    ->label('Kategori')
+                Tables\Columns\TextColumn::make('category')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'Teknologi' => 'info',
-                        'Bisnis' => 'success',
-                        'Layanan' => 'warning',
-                        'Regulasi & Kebijakan' => 'danger',
-                        default => 'gray',
-                    })
                     ->sortable(),
 
-                TextColumn::make('published_at')
-                    ->label('Tanggal')
-                    ->date('d F Y')
-                    ->sortable(),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->label('Active'),
 
-                IconColumn::make('is_active')
-                    ->label('Aktif')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('published_at')
+                    ->date('d M Y')
+                    ->sortable(),
             ])
             ->filters([
-                SelectFilter::make('category')
-                    ->options([
-                        'Teknologi' => 'Teknologi',
-                        'Bisnis' => 'Bisnis',
-                        'Layanan' => 'Layanan',
-                        'Regulasi & Kebijakan' => 'Regulasi & Kebijakan',
-                    ]),
+                //
             ])
             ->actions([
+                // ✅ Sekarang menggunakan EditAction & DeleteAction yang sudah di-import
                 EditAction::make(),
                 DeleteAction::make(),
             ])
@@ -65,6 +49,7 @@ class NewsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('published_at', 'desc');
     }
 }
