@@ -2,10 +2,16 @@
 
 namespace App\Filament\Resources\CoverageLocations\Tables;
 
-use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Actions\EditAction;
-use Filament\Actions\DeleteAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Filters\SelectFilter;
+
+// 👇 IMPORTS YANG BENAR UNTUK FILAMENT v4
+use Filament\Actions\EditAction;      // Pindah ke Filament\Actions
+use Filament\Actions\DeleteAction;    // Pindah ke Filament\Actions
+use Filament\Actions\BulkActionGroup; // Pindah ke Filament\Actions
+use Filament\Actions\DeleteBulkAction; // Pindah ke Filament\Actions
 
 class CoverageLocationsTable
 {
@@ -13,34 +19,38 @@ class CoverageLocationsTable
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                // ... columns Anda tetap sama
+                TextColumn::make('name')
+                    ->label('Nama Site')
                     ->searchable()
-                    ->sortable()
                     ->weight('bold'),
 
-                Tables\Columns\TextColumn::make('city')
-                    ->label('Kota')
+                TextColumn::make('district.name')
+                    ->label('Kecamatan')
+                    ->badge()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('district')
-                    ->label('Kecamatan')
-                    ->sortable()
-                    ->badge(),
-
-                Tables\Columns\TextColumn::make('latitude')
-                    ->label('Lat')
+                TextColumn::make('city')
+                    ->label('Kota')
                     ->toggleable(isToggledHiddenByDefault: true),
 
-                Tables\Columns\TextColumn::make('longitude')
-                    ->label('Lng')
-                    ->toggleable(isToggledHiddenByDefault: true),
-
-                Tables\Columns\ToggleColumn::make('is_active')
-                    ->label('Aktif'),
+                ToggleColumn::make('is_active')
+                    ->label('Status'),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->filters([
+                SelectFilter::make('district')
+                    ->relationship('district', 'name')
+                    ->label('Filter Kecamatan'),
+            ])
+            // 👇 GUNAKAN recordActions() UNTUK FILAMENT v4
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
+            ])
+            ->bulkActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
             ]);
     }
 }

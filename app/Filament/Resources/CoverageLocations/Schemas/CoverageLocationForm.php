@@ -2,60 +2,80 @@
 
 namespace App\Filament\Resources\CoverageLocations\Schemas;
 
+use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Section;
+// 👇 INI PERUBAHANNYA: Pakai namespace 'Schemas', bukan 'Forms'
+use Filament\Schemas\Components\Grid; 
+
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\ViewField; 
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 
 class CoverageLocationForm
 {
-    public static function schema(): array
+    public static function configure(Schema $schema): Schema
     {
-        return [
-            Section::make('Informasi Lokasi')
-                ->schema([
-                    TextInput::make('name')
-                        ->label('Nama Lokasi')
-                        ->placeholder('Contoh: Perumahan Grand Wisata')
-                        ->required()
-                        ->columnSpanFull(),
+        return $schema
+            ->components([
+                // BAGIAN 1: Informasi Site
+                Section::make('Informasi Site')
+                    ->schema([
+                        TextInput::make('name')
+                            ->required()
+                            ->label('Nama Site'),
+                            
+                        Select::make('district_id')
+                            ->relationship('district', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->required()
+                            ->label('Kecamatan'),
+                            
+                        TextInput::make('province')
+                            ->default('Jawa Barat')
+                            ->required()
+                            ->label('Provinsi'),
+                            
+                        TextInput::make('city')
+                            ->default('Kab. Bekasi')
+                            ->required()
+                            ->label('Kota/Kab'),
+                            
+                        Textarea::make('address')
+                            ->label('Alamat Lengkap')
+                            ->columnSpanFull(),
+                    ])->columns(2),
 
-                    TextInput::make('province')
-                        ->label('Provinsi')
-                        ->default('Jawa Barat')
-                        ->required(),
-
-                    TextInput::make('city')
-                        ->label('Kota/Kabupaten')
-                        ->required(),
-
-                    TextInput::make('district')
-                        ->label('Kecamatan')
-                        ->required(),
-                    
-                    Textarea::make('address')
-                        ->label('Alamat Detail / Deskripsi')
-                        ->rows(2)
-                        ->columnSpanFull(),
-                ])->columns(3),
-
-            Section::make('Titik Koordinat')
-                ->description('Ambil dari Google Maps (Klik Kanan > Ada angka decimal)')
-                ->schema([
-                    TextInput::make('latitude')
-                        ->label('Latitude')
-                        ->numeric()
-                        ->required(),
-
-                    TextInput::make('longitude')
-                        ->label('Longitude')
-                        ->numeric()
-                        ->required(),
+                // BAGIAN 2: Peta Manual (OSM)
+                Section::make('Titik Lokasi')
+                    ->schema([
                         
-                    Toggle::make('is_active')
-                        ->label('Status Aktif')
-                        ->default(true),
-                ])->columns(2),
-        ];
+                        ViewField::make('map_preview')
+                            ->view('filament.forms.components.osm-map-picker')
+                            ->columnSpanFull(),
+
+                        // 👇 SEKARANG KITA BISA PAKAI GRID (Namespace sudah benar)
+                        Grid::make(2) 
+                            ->schema([
+                                TextInput::make('latitude')
+                                    ->label('Latitude')
+                                    ->numeric()
+                                    ->required()
+                                    ->default(-6.26), 
+                                
+                                TextInput::make('longitude')
+                                    ->label('Longitude')
+                                    ->numeric()
+                                    ->required()
+                                    ->default(107.25),
+                            ]),
+
+                        Toggle::make('is_active')
+                            ->label('Status Aktif')
+                            ->default(true),
+                    ]),
+            ]);
     }
 }

@@ -41,7 +41,6 @@ class NewsTable
                 //
             ])
             ->actions([
-                // ✅ Sekarang menggunakan EditAction & DeleteAction yang sudah di-import
                 EditAction::make(),
                 DeleteAction::make(),
             ])

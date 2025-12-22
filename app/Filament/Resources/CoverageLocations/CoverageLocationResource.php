@@ -1,37 +1,36 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\CoverageLocations;
 
-// Import Pages dari folder CoverageLocations (jamak)
 use App\Filament\Resources\CoverageLocations\Pages;
-
-// Import Form & Table dari folder CoverageLocations (jamak)
 use App\Filament\Resources\CoverageLocations\Schemas\CoverageLocationForm;
 use App\Filament\Resources\CoverageLocations\Tables\CoverageLocationsTable;
-
 use App\Models\CoverageLocation;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 
+// 👇 IMPORT PENTING AGAR TIDAK ERROR TYPE MISMATCH
+use UnitEnum;   // Untuk navigationGroup
+use BackedEnum; // Untuk navigationIcon
+
 class CoverageLocationResource extends Resource
 {
     protected static ?string $model = CoverageLocation::class;
 
-    public static function getNavigationIcon(): string
-    {
-        return 'heroicon-o-map-pin';
-    }
-
-    public static function getNavigationLabel(): string
-    {
-        return 'Lokasi Coverage';
-    }
+    // 👇 PERBAIKAN 1: Tipe data Icon (String | BackedEnum | Null)
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-signal';
+    
+    // 👇 PERBAIKAN 2 (SUMBER ERROR): Tipe data Group harus lengkap
+    protected static string | UnitEnum | null $navigationGroup = 'Network'; 
+    
+    protected static ?string $navigationLabel = 'Data Site';
+    protected static ?string $modelLabel = 'Site';
+    protected static ?string $pluralModelLabel = 'Data Site';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->components(CoverageLocationForm::schema());
+        return CoverageLocationForm::configure($schema);
     }
 
     public static function table(Table $table): Table

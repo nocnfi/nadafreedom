@@ -10,25 +10,27 @@ class CoverageController extends Controller
 {
     public function index()
     {
-        // 1. Ambil semua lokasi yang statusnya 'Aktif'
-        $locations = CoverageLocation::where('is_active', true)->get();
+        // Ambil data site aktif + data kecamatan (untuk warnanya)
+        $locations = CoverageLocation::with('district')
+            ->where('is_active', true)
+            ->get();
 
-        // 2. Format datanya agar sesuai dengan kebutuhan React (Leaflet Map)
-        $formatted = $locations->map(function($item) {
+        // Format ulang data supaya mudah dibaca React
+        $data = $locations->map(function ($site) {
             return [
-                'id'    => $item->id,
-                'name'  => $item->name,
-                // Pastikan lat/lng dikirim sebagai angka (float), bukan string
-                'lat'   => (float) $item->latitude,  
-                'lng'   => (float) $item->longitude,
-                'kec'   => $item->district,
-                'city'  => $item->city,
-                'prov'  => $item->province,
-                'desc'  => $item->address
+                'name'  => $site->name,
+                'lat'   => (float) $site->latitude,
+                'lng'   => (float) $site->longitude,
+                'desc'  => $site->address,
+                'city'  => $site->city,
+                'prov'  => $site->province, // <-- Data Provinsi dari DB
+                
+                // Ambil dari relasi district, kalau kosong kasih default
+                'kec'   => $site->district ? $site->district->name : 'Unknown',
+                'color' => $site->district ? $site->district->color : '#6B7280',
             ];
         });
 
-        // 3. Kirim sebagai JSON
-        return response()->json($formatted);
+        return response()->json($data);
     }
 }
