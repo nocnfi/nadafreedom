@@ -1,69 +1,60 @@
-import React, { useState, useMemo, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 
-// 👇 GANTI BAGIAN INI: Gunakan 'lazy' bawaan React, bukan 'next/dynamic'
-// Ini fungsinya sama: meload file secara terpisah agar tidak memberatkan loading awal
+// 👇 MENGGUNAKAN LAZY LOAD (Sesuai Request Desain Anda)
 const CoverageMap = lazy(() => import('./CoverageMap'));
 
 const CoverageSection = () => {
-    // 1. DATA LOKASI (Sama seperti sebelumnya)
-    const rawLocations = [
-      { name: "Sukaraya Indah", lat: -6.219148, lng: 107.171218, kec: "Karangbahagia", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Perumahan Sukaraya Indah Blok E1 Nomor 2A" },
-      { name: "Mutiara Puri Harmoni 2", lat: -6.204106, lng: 107.186504, kec: "Karangbahagia", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Blok F8 Nomor 26 Karanganyar" },
-      { name: "Pondok Pesona Regensi 2", lat: -6.208168, lng: 107.180845, kec: "Karangbahagia", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Blok G Nomor 7 Karanganyar" },
-      { name: "Cabang Lio", lat: -6.248175, lng: 107.147281, kec: "Cikarang Utara", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Kp. Cabang Lio RT 003 RW 004 Karangasih" },
-      { name: "Graha Cikarang", lat: -6.267519, lng: 107.169376, kec: "Cikarang Utara", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Blok C-13 No. 13 Simpangan" },
-      { name: "Taman Permata Indah", lat: -6.254473, lng: 107.235863, kec: "Kedungwaringin", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Blok F3 No. 20 RT 004 RW 008 Waringin Jaya" },
-      { name: "Bumi Waringin Indah 2", lat: -6.261649, lng: 107.235219, kec: "Kedungwaringin", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Gg. Murai Blok A02 No. 35" },
-      { name: "Shamandra Gardenia", lat: -6.189818, lng: 107.180939, kec: "Karangbahagia", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Blok GC 23 No. 17 Karangsentosa" },
-      { name: "Karanganyar Residence", lat: -6.204767, lng: 107.182503, kec: "Karangbahagia", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Blok D10/5 Karangsentosa" },
-      { name: "Sukamantri", lat: -6.236098, lng: 107.163027, kec: "Karangbahagia", city: "Kab. Bekasi", prov: "Jawa Barat", desc: "Kp. Sukamantri RT 003 RW 004" },
-      
-      // Karawang Area
-      { name: "Karangsinom", lat: -6.321937, lng: 107.274937, kec: "Telukjambe Timur", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Kp. Karangsinom No. 54 RW 004 Wadas" },
-      { name: "Babakan Gede", lat: -6.337819, lng: 107.298204, kec: "Telukjambe Timur", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Kp. Babakan Gede No. 35 Puseurjaya" },
-      { name: "Citarum Adiarsa", lat: -6.320593, lng: 107.307401, kec: "Adiarsa Barat", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Jl. Citarum Adiarsa No. 19 RT 004" },
-      { name: "Bumi Karawang Permai", lat: -6.326268, lng: 107.323466, kec: "Karawang Timur", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Blok C4 No. 8 Warung Bambu" },
-      { name: "Palumbonsari Quro", lat: -6.293889, lng: 107.330694, kec: "Karawang Timur", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Jl. Syech Quro No. 9" },
-      { name: "Perum Buana Asri", lat: -6.288727, lng: 107.333614, kec: "Karawang Timur", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Blok A17 No. 19 Palumbonsari" },
-      { name: "Greenside Residence", lat: -6.277006, lng: 107.336168, kec: "Karawang Timur", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Blok G No. 28 Palumbonsari" },
-      { name: "Lengo Tanjung Pura", lat: -6.286993, lng: 107.286612, kec: "Karawang Barat", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Kp. Lengo RT 002 RW 014" },
-      { name: "Green Garden", lat: -6.297300, lng: 107.321194, kec: "Karawang", city: "Kab. Karawang", prov: "Jawa Barat", desc: "Blok J5 No. 7 Karawang" },
+    // 1. STATE: Menggunakan Data Dinamis dari Database (Bukan Statis)
+    const [locations, setLocations] = useState([]); 
+    const [loading, setLoading] = useState(true);
 
-      // Pemalang Area
-      { name: "Masjid Al Hidayah", lat: -6.838918, lng: 109.539031, kec: "Ulujami", city: "Kab. Pemalang", prov: "Jawa Tengah", desc: "Sebelah utara Masjid Al Hidayah" },
-    ];
+    // 2. FETCH DATA: Ambil dari API Laravel
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/coverage-locations');
+                const data = await response.json();
+                setLocations(data); // Simpan data DB ke State
+                setLoading(false);
+            } catch (error) {
+                console.error("Gagal mengambil data coverage:", error);
+                setLoading(false);
+            }
+        };
 
-    const kecamatanColors = {
-      "Karangbahagia": "#3B82F6", 
-      "Cikarang Utara": "#EF4444", 
-      "Kedungwaringin": "#10B981", 
-      "Telukjambe Timur": "#F97316", 
-      "Karawang Timur": "#8B5CF6", 
-      "Karawang Barat": "#06B6D4", 
-      "Adiarsa Barat": "#EC4899", 
-      "Ulujami": "#A0522D", 
-      "Karawang": "#6B7280" 
-    };
+        fetchData();
+    }, []);
+
+    // 3. LOGIKA FILTER & WARNA (Otomatis dari Data DB)
+    const kecamatanColors = useMemo(() => {
+        const colors = {};
+        locations.forEach(loc => {
+            // Ambil warna dari database (jika ada), kalau tidak default biru
+            if (loc.kec) colors[loc.kec] = loc.color || '#3B82F6';
+        });
+        return colors;
+    }, [locations]);
 
     const [selectedProv, setSelectedProv] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
     const [selectedKec, setSelectedKec] = useState('');
     const [mapView, setMapView] = useState({ center: [-6.26, 107.25], zoom: 11 });
 
-    // --- 3. LOGIKA FILTER DATA ---
-    const provinces = useMemo(() => [...new Set(rawLocations.map(i => i.prov))], []);
+    // Filter Options (Otomatis muncul berdasarkan data yang ada di DB)
+    const provinces = useMemo(() => [...new Set(locations.map(i => i.prov))], [locations]);
 
     const cities = useMemo(() => {
         if (!selectedProv) return [];
-        return [...new Set(rawLocations.filter(i => i.prov === selectedProv).map(i => i.city))];
-    }, [selectedProv]);
+        return [...new Set(locations.filter(i => i.prov === selectedProv).map(i => i.city))];
+    }, [selectedProv, locations]);
 
     const kecamatans = useMemo(() => {
         if (!selectedCity) return [];
-        return [...new Set(rawLocations.filter(i => i.city === selectedCity).map(i => i.kec))];
-    }, [selectedCity]);
+        return [...new Set(locations.filter(i => i.city === selectedCity).map(i => i.kec))];
+    }, [selectedCity, locations]);
 
-    const filteredLocations = rawLocations.filter(loc => {
+    // Filter Logic Utama
+    const filteredLocations = locations.filter(loc => {
         return (
             (selectedProv ? loc.prov === selectedProv : true) &&
             (selectedCity ? loc.city === selectedCity : true) &&
@@ -80,10 +71,15 @@ const CoverageSection = () => {
             
             setMapView({ center: [firstLoc.lat, firstLoc.lng], zoom: newZoom });
         } else {
-            alert("No locations found in this area.");
+            alert("Lokasi tidak ditemukan di area ini.");
         }
     };
 
+    if (loading) {
+        return <div className="text-center py-24 font-bold text-gray-400">Sedang Memuat Data...</div>;
+    }
+
+    // --- RENDER TAMPILAN (Sesuai Desain Baru Anda) ---
     return (
         <section 
             className="relative w-full py-24 font-['Poppins'] overflow-hidden bg-white"
@@ -100,7 +96,7 @@ const CoverageSection = () => {
             <div className="container mx-auto px-4 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     
-                    {/* --- LEFT COLUMN --- */}
+                    {/* --- KIRI: Form Pencarian --- */}
                     <div className="w-full lg:w-1/2">
                         <span className="text-[#6D28D9] font-bold tracking-widest uppercase text-sm mb-2 block">
                             Network Availability
@@ -111,17 +107,16 @@ const CoverageSection = () => {
                         </h2>
                         
                         <p className="text-gray-600 mb-8 text-base leading-relaxed max-w-lg">
-                            Select your province, city, and district to see available NFI Fiber Optic connection points.
+                            Pilih Provinsi, Kota, dan Kecamatan untuk melihat titik koneksi NFI Fiber Optic yang tersedia secara Real-time.
                         </p>
 
-                        {/* --- SEARCH BAR --- */}
                         <div className="bg-white border border-gray-200 rounded-[2rem] p-4 shadow-xl shadow-blue-900/5 max-w-lg w-full relative z-20">
                             <div className="flex flex-col gap-3">
                                 {/* 1. PROVINCE */}
                                 <div className="relative">
-                                    <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">Province</label>
+                                    <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">Provinsi</label>
                                     <select 
-                                        className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none"
+                                        className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer"
                                         value={selectedProv}
                                         onChange={(e) => {
                                             setSelectedProv(e.target.value);
@@ -129,7 +124,7 @@ const CoverageSection = () => {
                                             setSelectedKec('');
                                         }}
                                     >
-                                        <option value="">All Provinces</option>
+                                        <option value="">Semua Provinsi</option>
                                         {provinces.map(p => <option key={p} value={p}>{p}</option>)}
                                     </select>
                                 </div>
@@ -137,9 +132,9 @@ const CoverageSection = () => {
                                 <div className="flex gap-3">
                                     {/* 2. CITY */}
                                     <div className="relative flex-1">
-                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">City / Regency</label>
+                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">Kota / Kab</label>
                                         <select 
-                                            className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none disabled:opacity-50"
+                                            className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none disabled:opacity-50 cursor-pointer"
                                             value={selectedCity}
                                             disabled={!selectedProv}
                                             onChange={(e) => {
@@ -147,21 +142,21 @@ const CoverageSection = () => {
                                                 setSelectedKec('');
                                             }}
                                         >
-                                            <option value="">Select City</option>
+                                            <option value="">Pilih Kota</option>
                                             {cities.map(c => <option key={c} value={c}>{c}</option>)}
                                         </select>
                                     </div>
 
                                     {/* 3. KECAMATAN */}
                                     <div className="relative flex-1">
-                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">District</label>
+                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">Kecamatan</label>
                                         <select 
-                                            className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none disabled:opacity-50"
+                                            className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none disabled:opacity-50 cursor-pointer"
                                             value={selectedKec}
                                             disabled={!selectedCity}
                                             onChange={(e) => setSelectedKec(e.target.value)}
                                         >
-                                            <option value="">All Districts</option>
+                                            <option value="">Pilih Kecamatan</option>
                                             {kecamatans.map(k => <option key={k} value={k}>{k}</option>)}
                                         </select>
                                     </div>
@@ -171,13 +166,13 @@ const CoverageSection = () => {
                                     onClick={handleSearch}
                                     className="w-full bg-[#1A237E] hover:bg-blue-800 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-blue-900/30 transition-all duration-300 mt-2 flex items-center justify-center gap-2"
                                 >
-                                    Find Coverage
+                                    Cari Lokasi
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    {/* --- RIGHT COLUMN: MAP --- */}
+                    {/* --- KANAN: Peta (Dengan Suspense) --- */}
                     <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
                         <div className="relative w-full">
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50 blur-3xl rounded-full -z-10"></div>
@@ -185,7 +180,7 @@ const CoverageSection = () => {
                             <div className="relative p-3 bg-white/60 backdrop-blur-md rounded-[2.5rem] border border-white shadow-2xl shadow-blue-900/10 w-full h-[450px] md:h-[550px]">
                                 <div className="overflow-hidden rounded-[2rem] w-full h-full z-0 relative border border-gray-100 bg-gray-100">
                                     
-                                    {/* 👇 GANTI BAGIAN INI: Bungkus dengan Suspense */}
+                                    {/* Suspense untuk Loading State Map */}
                                     <Suspense fallback={<div className="flex h-full w-full items-center justify-center text-gray-400 animate-pulse">Loading Map...</div>}>
                                         <CoverageMap 
                                             center={mapView.center} 
@@ -197,10 +192,10 @@ const CoverageSection = () => {
                                     
                                 </div>
 
-                                {/* Floating Stats */}
+                                {/* Statistik Mengambang */}
                                 <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-5 py-3 rounded-2xl shadow-lg border border-white z-[1000] flex items-center gap-4">
                                     <div>
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Locations Found</p>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Titik Ditemukan</p>
                                         <p className="text-xl font-extrabold text-[#1A237E]">{filteredLocations.length}</p>
                                     </div>
                                 </div>

@@ -13,4 +13,4 @@ Route::get('/user', function (Request $request) {
 // 2. DAFTARKAN ROUTE BERITA DI SINI
 Route::get('/news', [NewsController::class, 'index']);       // Untuk list berita
 Route::get('/news/{slug}', [NewsController::class, 'show']); // Untuk detail berita
-Route::get('/coverage', [CoverageController::class, 'index']);
+Route::get('/coverage-locations', [CoverageController::class, 'index']);
