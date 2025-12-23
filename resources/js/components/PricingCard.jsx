@@ -26,17 +26,27 @@ const PricingCard = ({ plan }) => {
 
             {/* Features */}
             <ul className="space-y-3 mb-8 flex-grow">
-                {plan.features.map((featureObj, idx) => (
-                    <li key={idx} className="flex items-start text-xs text-gray-600">
-                        <span className="mr-2 mt-0.5 flex-shrink-0 text-gray-900">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="0.5" y="0.5" width="13" height="13" rx="3" stroke="currentColor" strokeWidth="1"/>
-                                <path d="M4 7L6 9L10 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </span>
-                        <span className="leading-tight">{typeof featureObj === 'string' ? featureObj : featureObj.item}</span>
-                    </li>
-                ))}
+                {/* 👇 UPDATE LOGIKA LOOPING FITUR AGAR LEBIH ROBUST */}
+                {plan.features && plan.features.map((feature, idx) => {
+                    // Filament Repeater Simple menyimpan data sbg: { feature_name: "Speed..." }
+                    // Kita handle berbagai kemungkinan format data
+                    let label = "";
+                    if (typeof feature === 'string') label = feature;
+                    else if (feature.feature_name) label = feature.feature_name; // Format Baru
+                    else if (feature.item) label = feature.item; // Format Lama
+
+                    return (
+                        <li key={idx} className="flex items-start text-xs text-gray-600">
+                            <span className="mr-2 mt-0.5 flex-shrink-0 text-gray-900">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.5" y="0.5" width="13" height="13" rx="3" stroke="currentColor" strokeWidth="1"/>
+                                    <path d="M4 7L6 9L10 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            </span>
+                            <span className="leading-tight">{label}</span>
+                        </li>
+                    );
+                })}
             </ul>
 
             {/* Button Action */}
