@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'; // 1. Import hook
 
 const PricingCard = ({ plan }) => {
+    const { t } = useTranslation(); // 2. Inisialisasi hook
+
     return (
         <div 
             className={`
@@ -20,20 +23,17 @@ const PricingCard = ({ plan }) => {
             {/* Price */}
             <div className="mb-6">
                 <p className="text-lg font-extrabold text-gray-900 italic">
-                    {plan.price} <span className="text-xs font-normal text-gray-500 not-italic">/ month</span>
+                    {plan.price} <span className="text-xs font-normal text-gray-500 not-italic">/ {t('pricing.per_month')}</span>
                 </p>
             </div>
 
             {/* Features */}
             <ul className="space-y-3 mb-8 flex-grow">
-                {/* 👇 UPDATE LOGIKA LOOPING FITUR AGAR LEBIH ROBUST */}
                 {plan.features && plan.features.map((feature, idx) => {
-                    // Filament Repeater Simple menyimpan data sbg: { feature_name: "Speed..." }
-                    // Kita handle berbagai kemungkinan format data
                     let label = "";
                     if (typeof feature === 'string') label = feature;
-                    else if (feature.feature_name) label = feature.feature_name; // Format Baru
-                    else if (feature.item) label = feature.item; // Format Lama
+                    else if (feature.feature_name) label = feature.feature_name;
+                    else if (feature.item) label = feature.item;
 
                     return (
                         <li key={idx} className="flex items-start text-xs text-gray-600">
@@ -62,7 +62,7 @@ const PricingCard = ({ plan }) => {
                         hover:shadow-blue-500/50 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-0.5
                         transition-all duration-500 ease-in-out
                     ">
-                        Get started
+                        {t('pricing.buy_now')} {/* 3. Gunakan Key JSON */}
                     </button>
                 ) : (
                     <div className="
@@ -79,7 +79,7 @@ const PricingCard = ({ plan }) => {
                             hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white
                             transition-all duration-300
                         ">
-                            Get started
+                            {t('pricing.buy_now')} {/* 3. Gunakan Key JSON */}
                         </button>
                     </div>
                 )}

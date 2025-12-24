@@ -1,21 +1,32 @@
 import React from 'react';
-import PricingGrid from '@/Components/PricingGrid'; // Import Grid yang sudah ada logika fetch-nya
+import { useTranslation } from 'react-i18next'; // Import hook translasi
+import PricingGrid from '@/Components/PricingGrid';
 
 const InternetSolutionsSection = () => {
-    
-    // Data statis untuk fitur buffering (tidak perlu fetch API)
+    const { t } = useTranslation(); // Inisialisasi hook
+
+    // Data fitur menggunakan fungsi t() agar teks berubah otomatis saat ganti bahasa
     const bufferingFeatures = [
         {
-            title: "RELIABLE & FAST INTERNET",
-            items: ["Watch your favorite 4K movies or series without any lag.", "Stable upload speeds for professional meetings and live streaming."]
+            title: t('internet_solutions.feature_1_title'),
+            items: [
+                t('internet_solutions.feature_1_item_1'),
+                t('internet_solutions.feature_1_item_2')
+            ]
         },
         {
-            title: "EXCEPTIONAL SUPPORT",
-            items: ["Guaranteed response to problem handling within the specified time.", "Free consultation to ensure the package fits the number of users and devices in your home."]
+            title: t('internet_solutions.feature_2_title'),
+            items: [
+                t('internet_solutions.feature_2_item_1'),
+                t('internet_solutions.feature_2_item_2')
+            ]
         },
         {
-            title: "ADVANCED FEATURES",
-            items: ["Automatically optimizes connections for each of your devices.", "Easily set access times and content restrictions through the app."]
+            title: t('internet_solutions.feature_3_title'),
+            items: [
+                t('internet_solutions.feature_3_item_1'),
+                t('internet_solutions.feature_3_item_2')
+            ]
         }
     ];
 
@@ -45,11 +56,10 @@ const InternetSolutionsSection = () => {
 
                     <div className="w-full lg:w-1/2 relative z-10">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-blue-600 italic leading-tight mb-6 tracking-tight">
-                            Tired of Buffering and <br className="hidden md:block"/> 
-                            Intermittent Connections?
+                            {t('internet_solutions.buffering_title')}
                         </h2>
                         <p className="text-gray-600 mb-10 text-sm md:text-base leading-relaxed max-w-lg">
-                            We provide stable and reliable high-speed internet solutions, supported by the latest fiber optic infrastructure for all your digital needs.
+                            {t('internet_solutions.buffering_desc')}
                         </p>
 
                         <div className="space-y-8">
@@ -75,7 +85,7 @@ const InternetSolutionsSection = () => {
                     </div>
                 </div>
 
-                {/* === 2. GAMBAR FAMILY (BRIDGE) === */}
+                {/* === 2. GAMBAR FAMILY === */}
                 <div className="w-full flex justify-end relative z-0 mt-8 mb-16 lg:-mr-64 xl:-mr-96 pointer-events-none">
                       <div className="w-48 md:w-64 lg:w-80">
                         <img src="/images/family-fill.svg" alt="Happy Family Decoration" className="w-full h-auto opacity-100" />
@@ -85,16 +95,16 @@ const InternetSolutionsSection = () => {
                 {/* === 3. PRICING SECTION === */}
                 <div className="relative z-10">
                     <div className="mb-12 max-w-4xl">
-                        <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2 tracking-tight uppercase">PRICING</h2>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2 tracking-tight uppercase">
+                            {t('internet_solutions.pricing_title')}
+                        </h2>
                         <p className="text-xl md:text-2xl text-gray-500 font-light">
-                            Find Your Ideal <span className="text-blue-600 font-semibold">Plan</span>. Stable for All Your Digital Needs.
+                            {t('internet_solutions.pricing_subtitle')} <span className="text-blue-600 font-semibold">{t('internet_solutions.pricing_plan')}</span>. {t('internet_solutions.pricing_desc')}
                         </p>
                     </div>
 
-                    {/* Kita panggil PricingGrid di sini. Dia akan handle fetch datanya sendiri. */}
                     <PricingGrid />
                 </div>
-
             </div>
         </section>
     );

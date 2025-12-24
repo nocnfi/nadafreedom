@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'; // 1. Import hook
 
 const PartnersSection = () => {
-    // DATA LOGO BARU (Sesuai list image_29acd4.png)
+    const { t } = useTranslation(); // 2. Inisialisasi hook
+
+    // DATA LOGO (Tetap sama karena logo tidak perlu diterjemahkan)
     const partners = [
         { name: "APJII", src: "/images/partners/logo_apjii.png" },
         { name: "Ciptara", src: "/images/partners/logo_ciptara.png" },
@@ -26,11 +29,10 @@ const PartnersSection = () => {
         { name: "Ruijie", src: "/images/partners/logo_ruiji.png" },
         { name: "Tarmoc", src: "/images/partners/logo_tarmoc.png" },
         { name: "TP-Link", src: "/images/partners/logo_tplink.png" },
-        { name: "Zimmlink", src: "/images/partners/Logo_Zimmlink.png" }, // Perhatikan huruf besar L dan Z
+        { name: "Zimmlink", src: "/images/partners/Logo_Zimmlink.png" },
         { name: "ZTE", src: "/images/partners/logo_zte.png" },
     ];
 
-    // Duplikasi array agar looping seamless (karena logonya banyak, duplikasi 1x sudah cukup panjang)
     const seamlessPartners = [...partners, ...partners];
 
     return (
@@ -38,24 +40,23 @@ const PartnersSection = () => {
             {/* --- JUDUL SECTION --- */}
             <div className="container mx-auto px-4 mb-10">
                 <h3 className="text-center text-gray-400 font-bold uppercase tracking-[0.2em] text-sm leading-relaxed">
-                    Trusted by Industry Leaders
+                    {t('partners.title')} {/* 3. Gunakan fungsi t() */}
                 </h3>
             </div>
 
             {/* --- MARQUEE CONTAINER --- */}
             <div className="relative w-full">
                 
-                {/* Gradient Masking (Kiri & Kanan) */}
+                {/* Gradient Masking */}
                 <div className="absolute top-0 left-0 w-20 md:w-40 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
                 <div className="absolute top-0 right-0 w-20 md:w-40 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-                {/* TRACK ANIMASI (Menggunakan class dari app.css) */}
+                {/* TRACK ANIMASI */}
                 <div className="marquee-track items-center">
                     
                     {seamlessPartners.map((partner, index) => (
                         <div 
                             key={index} 
-                            // mx dikurangi sedikit karena itemnya banyak, agar lebih padat
                             className="partner-item flex-shrink-0 mx-6 md:mx-10 h-10 md:h-14 flex items-center justify-center px-2"
                         >
                             <img

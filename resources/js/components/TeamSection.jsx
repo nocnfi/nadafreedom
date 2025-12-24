@@ -1,15 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'; // Import hook
 
 const TeamMemberCard = ({ member }) => {
+    const { t } = useTranslation();
     
-    // 1. CLASS KHUSUS PNG STATIC
-    // - object-contain: Ukuran asli/utuh.
-    // - group-hover:opacity-0: TAMBAHAN BARU. Saat hover, opacity jadi 0 (hilang).
     const staticClass = "absolute inset-0 w-full h-full object-contain object-center transition-all duration-300 group-hover:opacity-0";
-
-    // 2. CLASS KHUSUS GIF
-    // - object-cover + scale-125: Tampilan "besar" yang Anda suka.
-    // - opacity-0 -> group-hover:opacity-100: Muncul saat hover.
     const gifClass = "absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 transform scale-125 transition-all duration-300";
 
     return (
@@ -17,23 +12,16 @@ const TeamMemberCard = ({ member }) => {
             
             {/* CONTAINER LINGKARAN */}
             <div className="relative w-32 aspect-square mb-5 rounded-full overflow-hidden bg-blue-50 border-4 border-white shadow-lg">
-                
-                {/* 1. GAMBAR DIAM (STATIC) */}
-                {/* Akan fade-out saat hover karena ada 'group-hover:opacity-0' di staticClass */}
                 <img 
                     src={member.static} 
                     alt={member.name}
                     className={staticClass}
                 />
-
-                {/* 2. GAMBAR GERAK (GIF) */}
-                {/* Akan fade-in saat hover */}
                 <img 
                     src={member.gif} 
                     alt={`${member.name} gif`}
                     className={gifClass} 
                 />
-                
             </div>
             
             {/* INFO TEXT */}
@@ -42,27 +30,32 @@ const TeamMemberCard = ({ member }) => {
             </h4>
             <p className="text-xs text-gray-500 mb-2">{member.email}</p>
             <span className="px-3 py-1 rounded-full bg-gray-100 text-[10px] font-bold text-gray-500 uppercase tracking-wider group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
-                {member.role}
+                {/* Terjemahkan role berdasarkan id/kunci role */}
+                {t(`team.roles.${member.role.toLowerCase()}`)}
             </span>
         </div>
     );
 };
 
 const TeamSection = () => {
-    // DATA TEAM
+    const { t } = useTranslation(); // Inisialisasi hook
+
+    // DATA TEAM (Gunakan lowercase untuk role agar mudah dipetakan ke JSON)
     const teamMembers = [
-        { id: 1, name: "Jonathan", email: "jxxa@nfi.net.id", role: "NOC", static: "/images/team/j-static.png", gif: "/images/team/j.gif" },
-        { id: 2, name: "Ahmad", email: "kaisloth@nfi.net.id", role: "Engineer", static: "/images/team/a-static.png", gif: "/images/team/a.gif" },
-        { id: 3, name: "Rio", email: "asyuraa@nfi.net.id", role: "Support", static: "/images/team/r1-static.png", gif: "/images/team/r1.gif" },
-        { id: 4, name: "Resti", email: "Resti@nfi.net.id", role: "Developer", static: "/images/team/r-static.png", gif: "/images/team/r.gif" },
-        { id: 5, name: "Cinta", email: "cinta@nfi.net.id", role: "Marketing", static: "/images/team/c-static.png", gif: "/images/team/c.gif" },
+        { id: 1, name: "Jonathan", email: "jxxa@nfi.net.id", role: "noc", static: "/images/team/j-static.png", gif: "/images/team/j.gif" },
+        { id: 2, name: "Ahmad", email: "kaisloth@nfi.net.id", role: "engineer", static: "/images/team/a-static.png", gif: "/images/team/a.gif" },
+        { id: 3, name: "Rio", email: "asyuraa@nfi.net.id", role: "support", static: "/images/team/r1-static.png", gif: "/images/team/r1.gif" },
+        { id: 4, name: "Resti", email: "Resti@nfi.net.id", role: "developer", static: "/images/team/r-static.png", gif: "/images/team/r.gif" },
+        { id: 5, name: "Cinta", email: "cinta@nfi.net.id", role: "marketing", static: "/images/team/c-static.png", gif: "/images/team/c.gif" },
     ];
 
     return (
-        <div className="text-center mb-12 px-4">
-             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Meet Our Team</h3>
+        <div className="text-center mb-12 px-4 font-['Poppins']">
+             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                {t('team.title')}
+             </h3>
              <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto mb-12">
-                Orang-orang hebat di balik layanan internet cepat Anda.
+                {t('team.subtitle')}
              </p>
              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 {teamMembers.map((member) => (

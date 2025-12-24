@@ -1,0 +1,339 @@
+{
+  "nav": {
+    "home": "BERANDA",
+    "news": "BERITA",
+    "business": "BISNIS",
+    "plans": "PAKET",
+    "about": "TENTANG KAMI",
+    "contact": "KONTAK"
+  },
+  "hero": {
+    "title_1": "Kualitas Terbaik,",
+    "title_2": "Harga yang Tepat.",
+    "title_3": "Tidak Perlu Bayar Lebih.",
+    "partner": "MITRA TERPERCAYA SEJAK 2020",
+    "btn_connect": "Mari terhubung",
+    "btn_learn": "Pelajari selengkapnya",
+    "card_uptime_title": "99.5% Uptime",
+    "card_uptime_desc": "Garansi Koneksi Stabil.",
+    "card_response_title": "Respon 1x24 Jam",
+    "card_response_desc": "Garansi Dukungan Teknis.",
+    "card_fiber_title": "> 750 KM Kabel Fiber Optik",
+    "card_fiber_desc": "Infrastruktur Jaringan Murni."
+  },
+  "solutions": {
+    "header": "SOLUSI NFI UNTUK ANDA",
+    "subheader": "Solusi Konektivitas Terbaik. Hubungkan Rumah Anda ke Masa Depan.",
+    "feat_1_title": "Kecepatan Simetris",
+    "feat_1_desc": "Kecepatan Upload Sama Cepat dengan Download. Ideal untuk Content Creator dan Meeting Online.",
+    "feat_2_title": "Jaringan Fiber Murni",
+    "feat_2_desc": "Nikmati Kualitas Jaringan Fiber Optik Terbaik Langsung ke Rumah Anda. Anti Lag, Minim Noise.",
+    "feat_3_title": "Teknisi Responsif",
+    "feat_3_desc": "Dukungan Teknisi Profesional yang Siap Datang Setelah Laporan Anda Diterima.",
+    "feat_4_title": "Harga Transparan",
+    "feat_4_desc": "Tagihan Bulanan Tetap dan Jelas. Tanpa Biaya Tersembunyi, Tanpa Hidden Fee."
+  },
+  "internet_solutions": {
+    "buffering_title": "Bosan dengan Buffering dan Koneksi Putus-nyambung?",
+    "buffering_desc": "Kami menyediakan solusi internet kecepatan tinggi yang stabil dan andal, didukung oleh infrastruktur fiber optik terbaru untuk semua kebutuhan digital Anda.",
+    "feature_1_title": "INTERNET CEPAT & ANDAL",
+    "feature_1_item_1": "Tonton film atau serial 4K favorit Anda tanpa lag sedikit pun.",
+    "feature_1_item_2": "Kecepatan unggah stabil untuk rapat profesional dan live streaming.",
+    "feature_2_title": "DUKUNGAN LUAR BIASA",
+    "feature_2_item_1": "Jaminan respon penanganan masalah dalam waktu yang ditentukan.",
+    "feature_2_item_2": "Konsultasi gratis untuk memastikan paket sesuai dengan jumlah pengguna dan perangkat di rumah Anda.",
+    "feature_3_title": "FITUR LANJUTAN",
+    "feature_3_item_1": "Mengoptimalkan koneksi secara otomatis untuk setiap perangkat Anda.",
+    "feature_3_item_2": "Atur waktu akses dan pembatasan konten dengan mudah melalui aplikasi.",
+    "pricing_title": "HARGA",
+    "pricing_subtitle": "Temukan",
+    "pricing_plan": "Paket",
+    "pricing_desc": "Ideal Anda. Stabil untuk Semua Kebutuhan Digital Anda."
+  },
+  "pricing": {
+    "buy_now": "Berlangganan Sekarang",
+    "speed_unit": "Mbps",
+    "location_label": "Menampilkan paket untuk area:",
+    "search_placeholder": "Cari lokasi Anda...",
+    "not_found": "Maaf, paket untuk area ini belum tersedia.",
+    "popular_tag": "Paling Populer",
+    "unlimited": "Tanpa Batas Kuota",
+    "free_install": "Gratis Instalasi"
+  },
+  "coverage": {
+    "loading": "Sedang Memuat Data...",
+    "tagline": "KETERSEDIAAN JARINGAN",
+    "title_1": "Temukan Titik",
+    "title_2": "Cakupan Terdekat.",
+    "description": "Pilih Provinsi, Kota, dan Kecamatan untuk melihat titik koneksi NFI Fiber Optic yang tersedia secara Real-time.",
+    "label_prov": "Provinsi",
+    "label_city": "Kota / Kab",
+    "label_kec": "Kecamatan",
+    "opt_all_prov": "Semua Provinsi",
+    "opt_select_city": "Pilih Kota",
+    "opt_select_kec": "Pilih Kecamatan",
+    "btn_search": "Cari Lokasi",
+    "stats_found": "Titik Ditemukan",
+    "not_found": "Lokasi tidak ditemukan di area ini.",
+    "map_loading": "Memuat Peta..."
+  },
+  "news_section": {
+    "title": "Berita dan Update Terbaru.",
+    "description": "Tetap terhubung dengan informasi terbaru. Dapatkan pembaruan tentang perluasan jaringan kami, promosi eksklusif untuk pelanggan setia, serta tips dan trik untuk memaksimalkan koneksi fiber Anda di rumah.",
+    "view_all": "Lihat Semua Berita"
+  },
+  "partners": {
+    "title": "Dipercaya oleh Pemimpin Industri"
+  },
+  "about": {
+    "hero": {
+      "title_1": "TENTANG",
+      "title_2": "KAMI",
+      "tagline": "Kami Tumbuh Karena Anda Tumbuh.",
+      "description": "Melangkah ke Masa Depan dengan Koneksi Penuh dan Dukungan dari Nada Freedom Indonesia."
+    },
+    "gallery_labels": {
+      "technology": "Teknologi",
+      "server_room": "Ruang Server",
+      "router": "Router",
+      "hardware": "Perangkat Keras",
+      "server_rack": "Rak Server",
+      "fiber_optic": "Fiber Optik"
+    },
+    "milestones": {
+      "title": "bagaimana perusahaan ini dimulai,",
+      "subtitle": "perjalanannya, dan pencapaiannya"
+    },
+    "nav": {
+      "we": "Siapa Kami",
+      "vision": "Visi Kami",
+      "mission": "Misi Kami",
+      "values": "Nilai Kami"
+    }
+  },
+  "about_page": {
+    "tabs": {
+      "we": "Sejarah Kami",
+      "vision": "Visi Kami",
+      "mission": "Misi Kami",
+      "values": "Nilai Kami"
+    },
+    "history": {
+      "title": "PT NADA FREEDOM INDONESIA (NFI)",
+      "p1": "Didirikan pada 01 Juni 2020, dengan visi yang bersih dan jelas untuk menjawab permintaan yang terus berkembang akan layanan telekomunikasi yang andal dan inovatif di Indonesia.",
+      "p2": "Perjalanan kami berakar pada Akta Notaris 199 yang diterbitkan pada 30 Mei 2024. Dengan Kantor Pusat yang berfokus pada perluasan jangkauan, kami memulai dengan awal yang sederhana.",
+      "list_1_label": "Awal yang Sederhana",
+      "list_1_val": "Didirikan pada 01 Juni 2020.",
+      "list_2_label": "Landasan Hukum",
+      "list_2_val": "Akta Notaris No. 199 pada 30 Mei 2024.",
+      "list_3_label": "Fokus Infrastruktur",
+      "list_3_val": "Jaringan Fiber Optik & Nirkabel yang skalabel.",
+      "list_4_label": "Dukungan Sektor",
+      "list_4_val": "Pendidikan, Korporat & Pariwisata."
+    },
+    "vision": {
+      "title_1": "Mewujudkan Masa Depan",
+      "title_2": "Digital Indonesia",
+      "p1": "Dengan menyediakan Solusi Jaringan yang Cepat dan Efisien.",
+      "p2": "Diciptakan melalui Ide Kreatif dan Keunggulan Teknologi."
+    },
+    "mission": {
+      "intro": "\"Kami mendedikasikan upaya kami untuk keunggulan dalam empat bidang strategis untuk mencapai tujuan kami.\"",
+      "m1_title": "Konektivitas",
+      "m1_desc": "Memberikan solusi konektivitas unggul untuk semua orang.",
+      "m2_title": "Infrastruktur",
+      "m2_desc": "Mengembangkan dan memelihara infrastruktur jaringan yang tangguh.",
+      "m3_title": "Akselerasi",
+      "m3_desc": "Mendorong akselerasi digital di seluruh Indonesia.",
+      "m4_title": "Kemitraan",
+      "m4_desc": "Membangun sinergi dan kemitraan strategis."
+    },
+    "values": {
+      "p1": "Di PT Nada Freedom Indonesia, nilai-nilai kami adalah kompas yang memandu cara kami bekerja, berinovasi, dan melayani pelanggan setiap hari.",
+      "p2": "Kami memegang teguh Integritas & Kepercayaan dengan menjunjung kejujuran dan transparansi. Kami memiliki Fokus Pelanggan, menjadikan kepuasan Anda prioritas, didukung semangat Keunggulan & Inovasi.",
+      "p3": "Semua ini diwujudkan dengan Profesionalisme, bertindak kompeten dan efisien serta menjalin Kolaborasi yang kuat untuk mencapai hasil optimal.",
+      "tags": ["Integritas & Kepercayaan", "Fokus Pelanggan", "Keunggulan & Inovasi", "Profesionalisme", "Kolaborasi"]
+    }
+  },
+  "business": {
+    "contact": {
+      "headline_1": "Hubungi pakar penjualan bisnis",
+      "headline_2": "NFI",
+      "call_us": "Hubungi kami di",
+      "more_info": "untuk informasi lebih lanjut.",
+      "availability": "Pakar penjualan kami tersedia Senin - Sabtu, 09:00 - 21:00 WIB."
+    },
+    "header": {
+      "title": "Mengapa bekerja sama dengan bisnis",
+      "subtitle": "Temukan standar baru kami untuk keandalan jaringan perusahaan.",
+      "feat_1_title": "Perjanjian Tingkat Layanan",
+      "feat_1_desc": "Jaminan SLA yang kuat hingga 99,9%.",
+      "feat_2_title": "Infrastruktur Fiber Murni",
+      "feat_2_desc": "Jaringan serat optik ujung-ke-ujung.",
+      "feat_3_title": "Keamanan Terintegrasi",
+      "feat_3_desc": "Dilengkapi dengan perlindungan DDoS.",
+      "feat_4_title": "Dukungan Ahli 24/7",
+      "feat_4_desc": "Dukungan ahli 24/7 yang responsif."
+    },
+    "solutions": {
+      "title": "Solusi untuk setiap jenis bisnis",
+      "subtitle": "Pelajari lebih lanjut tentang bagaimana NFI membantu para pemimpin di sektor Anda.",
+      "item_1_title": "Bisnis Kecil",
+      "item_1_desc": "Maksimalkan potensi bisnis Anda dengan internet broadband yang terjangkau namun stabil.",
+      "item_2_title": "Solusi Korporat",
+      "item_2_desc": "Layanan Internet Dedicated (1:1) dengan jaminan SLA tinggi.",
+      "item_3_title": "Sektor Publik",
+      "item_3_desc": "Mendukung digitalisasi sekolah dan instansi pemerintah.",
+      "item_4_title": "Kemitraan Industri",
+      "item_4_desc": "Solusi jaringan khusus untuk perhotelan dan manufaktur."
+    }
+  },
+  "plans": {
+    "title_main": "Paket harga untuk",
+    "status_active": "Koneksi Aktif",
+    "status_inactive": "semua kebutuhan aktivitas Anda",
+    "dropdown_placeholder": "Loading lokasi...",
+    "search_aria": "Cari wilayah"
+  },
+  "pricing": {
+    "buy_now": "Berlangganan Sekarang",
+    "popular": "Paling Populer",
+    "per_month": "per bulan",
+    "features_label": "Fitur Unggulan",
+    "standard_quality": "Kualitas Standar",
+    "high_quality": "Kualitas Tinggi",
+    "ultra_hd": "Kualitas Ultra HD"
+  },
+  "news": {
+    "trending_label": "SEDANG TREN",
+    "read_more": "BACA SELENGKAPNYA",
+    "filter_title": "BERITA & ARTIKEL TERBARU",
+    "search_placeholder": "CARI BERITA...",
+    "cat_all": "Semua",
+    "no_news": "BERITA TIDAK DITEMUKAN.",
+    "loading": "Memuat berita...",
+    "prev": "Kembali",
+    "next": "Lanjut"
+  },
+  "contact": {
+    "hero_title_1": "Bicaralah dengan",
+    "hero_title_2": "ahli kami",
+    "hero_subtitle": "Punya pertanyaan tentang harga, paket, atau bagaimana kami bisa membantu? Kami senang mengobrol!",
+    "form_title": "Mari Bicara",
+    "label_name": "Nama",
+    "label_email": "Alamat Email",
+    "label_phone": "Nomor Telepon",
+    "label_subject": "Subjek",
+    "label_message": "pesan",
+    "placeholder_phone": "Masukkan nomor telepon",
+    "btn_submit": "kirim pesan anda",
+    "card_call_title": "hubungi kami",
+    "card_call_subtitle": "senin-sabtu dari jam 8 pagi sampai 5 sore",
+    "card_chat_title": "chat ke bantuan",
+    "card_chat_subtitle": "kami di sini untuk membantu",
+    "office_title": "kunjungi kantor kami",
+    "btn_directions": "Dapatkan arah"
+  },
+  "footer_content": {
+    "description": "Kualitas Terbaik, Harga Tepat. Kami berkomitmen menyediakan jaringan fiber murni yang stabil untuk setiap rumah dan bisnis.",
+    "newsletter_title": "Untuk berita kami",
+    "newsletter_placeholder": "masukkan alamat email anda",
+    "newsletter_btn": "berlangganan",
+    "services_title": "Layanan",
+    "service_1": "Cek Area Jaringan",
+    "service_2": "Paket Rumah",
+    "service_3": "Dukungan 24/7",
+    "service_4": "Gratis Instalasi",
+    "company_title": "Perusahaan",
+    "company_1": "Tentang Kami",
+    "company_2": "Karir",
+    "company_3": "Syarat & Ketentuan",
+    "company_4": "Kebijakan Privasi",
+    "resources_title": "Sumber Daya",
+    "res_1": "FAQ (Tanya Jawab)",
+    "res_2": "Berita & Update",
+    "res_3": "Tips Penggunaan Router",
+    "res_4": "Stabilisasi Jaringan",
+    "res_5": "Panduan Layanan",
+    "contact_title": "Hubungi Kami",
+    "follow_title": "Ikuti Kami",
+    "rights": "Hak Cipta Dilindungi."
+  },
+  "reviews": {
+    "text_1": "Layanan luar biasa! Sangat membantu skala bisnis kami.",
+    "text_2": "Waktu respon cepat dan sangat profesional.",
+    "text_3": "Solusi IT yang sangat direkomendasikan.",
+    "text_4": "Tim dukungan hebat, sangat membantu.",
+    "text_5": "Benar-benar ahli di bidangnya.",
+    "text_6": "Menyelesaikan masalah jaringan kami dengan cepat.",
+    "text_7": "Layanan yang handal dan harga terjangkau.",
+    "text_8": "Partner teknologi terbaik yang pernah kami miliki.",
+    "text_9": "Proses integrasi yang sangat lancar.",
+    "text_10": "Layanan pelanggan kelas atas."
+  },
+  "team": {
+    "title": "Kenali Tim Kami",
+    "subtitle": "Orang-orang hebat di balik layanan internet cepat Anda.",
+    "roles": {
+      "noc": "NOC",
+      "engineer": "Engineer",
+      "support": "Dukungan",
+      "developer": "Developer",
+      "marketing": "Pemasaran"
+    }
+},
+"terms": {
+    "title": "Syarat & Ketentuan Layanan",
+    "last_updated": "Terakhir diperbarui: 24 Desember 2025",
+    "intro": "Perjanjian ini mengatur hubungan antara PT Nada Freedom Indonesia (selanjutnya disebut 'NFI') sebagai penyedia layanan dan Anda sebagai Pelanggan. Dengan mendaftar atau menggunakan layanan kami, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh ketentuan yang tertulis di bawah ini.",
+    "section1_title": "Definisi dan Ruang Lingkup Layanan",
+    "section1_content": "NFI menyediakan akses internet berbasis infrastruktur Fiber Optik (FTTH/FTTB) dan Nirkabel (Wireless). Layanan mencakup instalasi perangkat hingga titik demarkasi (ONT/Router). Pelanggan memahami bahwa kecepatan internet bersifat 'Up To' (berbagi bandwidth) kecuali ditentukan lain dalam kontrak Dedicated Service.",
+    "section2_title": "Kewajiban dan Larangan Penggunaan",
+    "section2_content": "Pelanggan wajib menjaga kerahasiaan kata sandi jaringan dan bertanggung jawab atas semua aktivitas yang terjadi melalui akun tersebut. Dilarang keras menggunakan layanan NFI untuk: (a) Kegiatan hacking atau akses ilegal; (b) Distribusi konten yang melanggar hak cipta atau pornografi; (c) Menjual kembali bandwidth kepada pihak lain (Reselling) tanpa izin tertulis dari NFI.",
+    "section3_title": "Kebijakan Tagihan dan Pembayaran",
+    "section3_content": "Biaya berlangganan dibayarkan secara rutin setiap bulan. Tagihan akan diterbitkan 7 hari sebelum jatuh tempo (setiap tanggal 10). Apabila pembayaran belum diterima hingga tanggal jatuh tempo, NFI berhak melakukan isolasi layanan secara otomatis tanpa pemberitahuan lebih lanjut. Biaya pembukaan isolasi atau denda keterlambatan mungkin diberlakukan sesuai paket yang dipilih.",
+    "section4_title": "Jaminan Layanan (SLA) dan Pemeliharaan",
+    "section4_content": "NFI menargetkan tingkat ketersediaan layanan sebesar 99,9% setiap bulan. Gangguan akibat 'Force Majeure' (bencana alam, sabotase massal, putusnya kabel laut internasional) dikecualikan dari jaminan ini. NFI berhak melakukan pemeliharaan jaringan terjadwal pada waktu beban trafik rendah (00:00 - 05:00 WIB) untuk memastikan performa maksimal.",
+    "section5_title": "Hak Kekayaan Intelektual dan Privasi",
+    "section5_content": "Semua merek dagang, logo, dan teknologi jaringan adalah milik sah PT Nada Freedom Indonesia. NFI berkomitmen melindungi data pribadi Pelanggan dan tidak akan memberikannya kepada pihak ketiga mana pun, kecuali diwajibkan oleh hukum atau permintaan resmi dari aparat penegak hukum Indonesia.",
+    "section6_title": "Pengakhiran Layanan",
+    "section6_content": "Pelanggan yang ingin berhenti berlangganan wajib memberikan notifikasi minimal 14 hari sebelum siklus tagihan berikutnya berakhir. Perangkat ONT/Modem yang dipinjamkan oleh NFI wajib dikembalikan dalam kondisi baik. Kerusakan atau kehilangan perangkat tersebut akan dikenakan biaya penggantian sesuai tarif yang berlaku.",
+    "contact_text": "Untuk konsultasi hukum lebih lanjut atau bantuan teknis mengenai kebijakan ini, silakan hubungi tim kami di info@nfi.net.id atau kunjungi kantor pusat kami di Karawang."
+  },
+  "faq": {
+    "title": "Pertanyaan yang sering diajukan",
+    "subtitle": "Ini adalah pertanyaan yang paling sering diajukan tentang NFI. Tidak menemukan apa yang Anda cari?",
+    "chat_link": "Hubungi tim ramah kami!",
+    "no_data": "Tidak ada pertanyaan di kategori ini.",
+    "categories": {
+      "General": "Umum",
+      "Billing": "Tagihan",
+      "Technical": "Teknis",
+      "Support": "Bantuan"
+    },
+    "questions": {
+      "q1": "Apakah area saya sudah tercover jaringan?",
+      "a1": "Saat ini kami mencakup wilayah utama. Namun, jaringan terus bertambah. Silakan kirim share location via WhatsApp admin kami untuk pengecekan teknis yang akurat.",
+      "q2": "Apa saja syarat untuk mendaftar?",
+      "a2": "Cukup mudah! Lampirkan foto KTP, nomor HP aktif (WhatsApp), dan alamat lengkap pemasangan. Tim kami akan memproses data Anda dalam 1x24 jam.",
+      "q3": "Paket apa yang cocok untuk kebutuhan saya?",
+      "a3": "10-20 Mbps: 1-3 perangkat (Chat, Browsing).\n30-50 Mbps: 4-7 perangkat (Streaming HD, Zoom).\n100 Mbps+: Gamer & Kantor (4K Streaming).",
+      "q4": "Apakah ada biaya instalasi di awal?",
+      "a4": "Kami menawarkan Gratis Instalasi untuk promo tertentu (misal: bayar 3 bulan di muka). Untuk bulanan biasa, biaya instalasi standar berlaku sesuai ketentuan.",
+      "q5": "Kapan jatuh tempo pembayaran bulanan?",
+      "a5": "Jatuh tempo adalah tanggal 10 setiap bulannya. Invoice tagihan akan dikirimkan otomatis via WhatsApp atau Email 7 hari sebelum tanggal tersebut.",
+      "q6": "Metode pembayaran apa saja yang tersedia?",
+      "a6": "Kami menerima Transfer Bank (Virtual Account), E-Wallet (GoPay, OVO, Dana), dan pembayaran tunai melalui gerai Alfamart/Indomaret.",
+      "q7": "Bisakah saya upgrade kecepatan nanti?",
+      "a7": "Tentu saja. Anda bisa mengajukan upgrade layanan kapan saja melalui Customer Service. Perubahan kecepatan akan aktif segera setelah konfirmasi admin.",
+      "q8": "Apakah internet ini Unlimited atau ada FUP?",
+      "a8": "Layanan kami True Unlimited tanpa FUP (Fair Usage Policy). Anda bisa internetan sepuasnya tanpa takut kecepatan turun (throttling) di tengah bulan.",
+      "q9": "Kenapa internet saya terasa lambat?",
+      "a9": "Pastikan jumlah perangkat tidak melebihi kapasitas paket. Coba restart modem (matikan 5 menit, lalu nyalakan). Jika masih lambat, hubungi teknisi kami.",
+      "q10": "Bagaimana cara mengganti password WiFi?",
+      "a10": "Akses pengaturan router via browser (IP standar: 192.168.1.1). Jika kesulitan, tim support kami bisa memandu Anda atau merubahnya dari sistem pusat (remote).",
+      "q11": "Apa arti lampu merah (LOS) pada modem?",
+      "a11": "Lampu merah/LOS menandakan gangguan fisik pada kabel fiber (putus/tertekuk) atau gangguan pusat. Mohon segera lapor CS agar teknisi datang memperbaiki."
+    }
+  }
+}

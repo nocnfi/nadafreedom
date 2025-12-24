@@ -1,0 +1,330 @@
+{
+  "nav": {
+    "home": "HOME",
+    "news": "NEWS",
+    "business": "BUSINESS",
+    "plans": "PLANS",
+    "about": "ABOUT US",
+    "contact": "CONTACT"
+  },
+  "hero": {
+    "title_1": "Best Quality,",
+    "title_2": "The Right Price.",
+    "title_3": "No Need to Overpay.",
+    "partner": "A TRUSTED PARTNER SINCE 2020",
+    "btn_connect": "Let's connect",
+    "btn_learn": "Learn more",
+    "card_uptime_title": "99.5% Uptime",
+    "card_uptime_desc": "Stable Connection Guaranteed.",
+    "card_response_title": "1x24 Hour Response",
+    "card_response_desc": "Guaranteed Technical Support.",
+    "card_fiber_title": "> 750 KM Fiber Optic Cable",
+    "card_fiber_desc": "Pure Network Infrastructure."
+  },
+  "solutions": {
+    "header": "NFI SOLUTION'S FOR YOU",
+    "subheader": "The Ultimate Connectivity Solution. Connect Your Home to the Future.",
+    "feat_1_title": "Symmetrical Speed",
+    "feat_1_desc": "Upload speed as fast as download. Ideal for content creators and online meetings.",
+    "feat_2_title": "Pure Fiber Network",
+    "feat_2_desc": "Enjoy the best fiber optic network quality directly to your home. Anti-lag, minimum noise.",
+    "feat_3_title": "Responsive Technician",
+    "feat_3_desc": "Professional technician support ready to arrive after your report is received.",
+    "feat_4_title": "Transparent Pricing",
+    "feat_4_desc": "Fixed and clear monthly billing. No hidden charges, no hidden fees."
+  },
+  "internet_solutions": {
+    "buffering_title": "Tired of Buffering and Intermittent Connections?",
+    "buffering_desc": "We provide stable and reliable high-speed internet solutions, supported by the latest fiber optic infrastructure for all your digital needs.",
+    "feature_1_title": "RELIABLE & FAST INTERNET",
+    "feature_1_item_1": "Watch your favorite 4K movies or series without any lag.",
+    "feature_1_item_2": "Stable upload speeds for professional meetings and live streaming.",
+    "feature_2_title": "EXCEPTIONAL SUPPORT",
+    "feature_2_item_1": "Guaranteed response to problem handling within the specified time.",
+    "feature_2_item_2": "Free consultation to ensure the package fits the number of users and devices in your home.",
+    "feature_3_title": "ADVANCED FEATURES",
+    "feature_3_item_1": "Automatically optimizes connections for each of your devices.",
+    "feature_3_item_2": "Easily set access times and content restrictions through the app.",
+    "pricing_title": "PRICING",
+    "pricing_subtitle": "Find Your Ideal",
+    "pricing_plan": "Plan",
+    "pricing_desc": "Stable for All Your Digital Needs."
+  },
+  "pricing": {
+    "buy_now": "Subscribe Now",
+    "speed_unit": "Mbps",
+    "location_label": "Showing packages for area:",
+    "search_placeholder": "Search your location...",
+    "not_found": "Sorry, packages for this area are not available yet.",
+    "popular_tag": "Most Popular",
+    "unlimited": "Unlimited Quota",
+    "free_install": "Free Installation"
+  },
+  "coverage": {
+    "loading": "Loading Data...",
+    "tagline": "NETWORK AVAILABILITY",
+    "title_1": "Find Your Nearest",
+    "title_2": "Coverage Point.",
+    "description": "Select Province, City, and District to view NFI Fiber Optic connection points available in real-time.",
+    "label_prov": "Province",
+    "label_city": "City / Regency",
+    "label_kec": "District",
+    "opt_all_prov": "All Provinces",
+    "opt_select_city": "Select City",
+    "opt_select_kec": "Select District",
+    "btn_search": "Search Location",
+    "stats_found": "Points Found",
+    "not_found": "Location not found in this area.",
+    "map_loading": "Loading Map..."
+  },
+  "news_section": {
+    "title": "Latest News and Updates.",
+    "description": "Stay connected with the latest information. Get updates on our network expansion, exclusive promotions for loyal customers, tips and tricks for maximizing your fiber connection at home.",
+    "view_all": "View All News"
+  },
+  "partners": {
+    "title": "Trusted by Industry Leaders"
+  },
+  "about": {
+    "hero": {
+      "title_1": "ABOUT",
+      "title_2": "US",
+      "tagline": "We Grow Because You Grow.",
+      "description": "Step into the Future with the Full Connection and Support of Nada Freedom Indonesia."
+    },
+    "gallery_labels": {
+      "technology": "Technology",
+      "server_room": "Server Room",
+      "router": "Router",
+      "hardware": "Hardware",
+      "server_rack": "Server Rack",
+      "fiber_optic": "Fiber Optic"
+    },
+    "milestones": {
+      "title": "how this company started,",
+      "subtitle": "its journey, and its milestones"
+    },
+    "nav": {
+      "we": "Who We Are",
+      "vision": "Our Vision",
+      "mission": "Our Mission",
+      "values": "Our Values"
+    }
+  },
+  "about_page": {
+    "tabs": {
+      "we": "Our History",
+      "vision": "Our Vision",
+      "mission": "Our Mission",
+      "values": "Our Values"
+    },
+    "history": {
+      "title": "PT NADA FREEDOM INDONESIA (NFI)",
+      "p1": "Was founded on June 01, 2020, with a clean to clear vision to address a growing demand for reliable and innovative telecommunication services in Indonesia.",
+      "p2": "Our journey is rooted in Notarial Deed 199 issued on May 30, 2024. With our Head Office focusing on expanding reach, we started with humble beginnings.",
+      "list_1_label": "Humble Beginnings",
+      "list_1_val": "Founded on June 01, 2020.",
+      "list_2_label": "Legal Foundation",
+      "list_2_val": "Notarial Deed No. 199 on May 30, 2024.",
+      "list_3_label": "Infrastructure Focus",
+      "list_3_val": "Scalable Fiber Optic & Wireless Networks.",
+      "list_4_label": "Sector Support",
+      "list_4_val": "Education, Corporate & Tourism."
+    },
+    "vision": {
+      "title_1": "Realizing Indonesia's",
+      "title_2": "Digital Future",
+      "p1": "By providing Fast and Efficient Network Solutions.",
+      "p2": "Created through Creative Ideas and Technological Excellence."
+    },
+    "mission": {
+      "intro": "\"We dedicate our efforts to excellence in four strategic areas to achieve our goals.\"",
+      "m1_title": "Connectivity",
+      "m1_desc": "Delivering superior connectivity solutions for everyone.",
+      "m2_title": "Infrastructure",
+      "m2_desc": "Developing and maintaining a resilient network infrastructure.",
+      "m3_title": "Acceleration",
+      "m3_desc": "Driving digital acceleration across Indonesia.",
+      "m4_title": "Partnership",
+      "m4_desc": "Building synergies and strategic partnerships."
+    },
+    "values": {
+      "p1": "At PT Nada Freedom Indonesia, our values are the compass that guides how we work, innovate, and serve our customers every day.",
+      "p2": "We adhere to Integrity & Trust by upholding honesty and transparency in every service. We have a Customer Focus, making your satisfaction a priority, supported by the spirit of Excellence & Innovation.",
+      "p3": "All of this is realized with Professionalism, acting competently, responsibly, and efficiently and establishing strong Collaboration both internally and with strategic partners to achieve optimal results.",
+      "tags": ["Integrity & Trust", "Customer Focus", "Excellence & Innovation", "Professionalism", "Collaboration"]
+    }
+  },
+  "business": {
+    "contact": {
+      "headline_1": "Contact an",
+      "headline_2": "NFI",
+      "call_us": "Call us at",
+      "more_info": "for more information.",
+      "availability": "Our sales experts are available Monday - Saturday, 9:00 AM - 9:00 PM WIB."
+    },
+    "header": {
+      "title": "Why work with",
+      "subtitle": "Meet our new standard for corporate network reliability.",
+      "feat_1_title": "Service Level Agreement",
+      "feat_1_desc": "Robust SLA guarantee up to 99.9%.",
+      "feat_2_title": "Pure Fiber Infrastructure",
+      "feat_2_desc": "End-to-end fiber optic network.",
+      "feat_3_title": "Integrated Security",
+      "feat_3_desc": "Equipped with DDoS protection.",
+      "feat_4_title": "24/7 Expert Support",
+      "feat_4_desc": "Responsive 24/7 expert support."
+    },
+    "solutions": {
+      "title": "Solutions for every kind of business",
+      "subtitle": "Learn more about how NFI helps leaders in your sector.",
+      "item_1_title": "Small Business",
+      "item_1_desc": "Maximize your business potential with affordable yet stable broadband internet.",
+      "item_2_title": "Corporate Solutions",
+      "item_2_desc": "Dedicated Internet (1:1) service with guaranteed high SLA.",
+      "item_3_title": "Public Sector",
+      "item_3_desc": "Supporting digitalization of schools and government agencies.",
+      "item_4_title": "Industry Partnership",
+      "item_4_desc": "Custom network solutions for hospitality and manufacturing."
+    }
+  },
+  "plans": {
+    "title_main": "Price packages for",
+    "status_active": "Connection Active",
+    "status_inactive": "all your activity needs",
+    "dropdown_placeholder": "Loading location...",
+    "search_aria": "Search region"
+  },
+  "pricing": {
+    "buy_now": "Subscribe Now",
+    "popular": "Most Popular",
+    "per_month": "per month",
+    "features_label": "Key Features",
+    "standard_quality": "Standard Quality",
+    "high_quality": "High Quality",
+    "ultra_hd": "Ultra HD Quality"
+  },
+  "news": {
+    "trending_label": "TRENDING NOW",
+    "read_more": "READ MORE",
+    "filter_title": "LATEST NEWS & ARTICLES",
+    "search_placeholder": "SEARCH NEWS...",
+    "cat_all": "All",
+    "no_news": "NO NEWS FOUND.",
+    "loading": "Loading news...",
+    "prev": "Prev",
+    "next": "Next"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We are ready to help with your internet needs.",
+    "form_name": "Full Name",
+    "form_email": "Email Address",
+    "form_subject": "Subject",
+    "form_message": "Your Message",
+    "send_button": "Send Message",
+    "success_msg": "Message sent successfully!"
+  },
+  "reviews": {
+    "text_1": "Excellent service! Scaled our business.",
+    "text_2": "Fast response time and professional.",
+    "text_3": "Highly recommended IT solutions.",
+    "text_4": "Great support team, very helpful.",
+    "text_5": "Truly expert in their field.",
+    "text_6": "Solved our network issues quickly.",
+    "text_7": "Reliable and affordable services.",
+    "text_8": "Best tech partner we've had.",
+    "text_9": "Seamless integration process.",
+    "text_10": "Customer service is top notch."
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "subtitle": "The great people behind your high-speed internet service.",
+    "roles": {
+      "noc": "NOC",
+      "engineer": "Engineer",
+      "support": "Support",
+      "developer": "Developer",
+      "marketing": "Marketing"
+    }
+  },
+  "footer_content": {
+    "description": "Best Quality, Right Price. We are committed to providing a stable pure fiber network for every home and business.",
+    "newsletter_title": "For our news",
+    "newsletter_placeholder": "enter your email address",
+    "newsletter_btn": "subscribe",
+    "services_title": "Services",
+    "service_1": "Network Area Check",
+    "service_2": "Home Packages",
+    "service_3": "24/7 Support",
+    "service_4": "Free Installation",
+    "company_title": "Company",
+    "company_1": "About Us",
+    "company_2": "Careers",
+    "company_3": "Terms & Conditions",
+    "company_4": "Privacy Policy",
+    "resources_title": "Resources",
+    "res_1": "FAQ (Q&A)",
+    "res_2": "News & Updates",
+    "res_3": "Router Usage Tips",
+    "res_4": "Network Stabilization",
+    "res_5": "Service Guide",
+    "contact_title": "Contact Us",
+    "follow_title": "Follow Us",
+    "rights": "All Rights Reserved."
+  },
+  "terms": {
+    "title": "Service Terms & Conditions",
+    "last_updated": "Last updated: December 24, 2025",
+    "intro": "This agreement governs the relationship between PT Nada Freedom Indonesia (hereinafter referred to as 'NFI') as the service provider and you as the Customer. By registering for or using our services, you acknowledge that you have read, understood, and agreed to all the terms set forth below.",
+    "section1_title": "Definition and Scope of Service",
+    "section1_content": "NFI provides internet access based on Fiber Optic (FTTH/FTTB) and Wireless infrastructure. Services include device installation up to the demarcation point (ONT/Router). The Customer understands that internet speeds are 'Up To' (shared bandwidth) unless otherwise specified in a Dedicated Service contract.",
+    "section2_title": "Obligations and Usage Restrictions",
+    "section2_content": "Customers must maintain the confidentiality of network passwords and are responsible for all activities occurring through their account. It is strictly prohibited to use NFI services for: (a) Hacking or illegal access; (b) Distribution of copyright-infringing or pornographic content; (c) Reselling bandwidth to other parties without written permission from NFI.",
+    "section3_title": "Billing and Payment Policy",
+    "section3_content": "Subscription fees are paid regularly every month. Invoices will be issued 7 days before the due date (every 10th of the month). If payment is not received by the due date, NFI reserves the right to automatically isolate the service without further notice. Re-connection fees or late payment penalties may apply depending on the selected package.",
+    "section4_title": "Service Level Agreement (SLA) and Maintenance",
+    "section4_content": "NFI targets a service availability level of 99.9% per month. Disruptions due to 'Force Majeure' (natural disasters, mass sabotage, international undersea cable cuts) are excluded from this guarantee. NFI reserves the right to perform scheduled network maintenance during low traffic periods (00:00 - 05:00 WIB) to ensure maximum performance.",
+    "section5_title": "Intellectual Property and Privacy",
+    "section5_content": "All trademarks, logos, and network technologies are the legal property of PT Nada Freedom Indonesia. NFI is committed to protecting Customer personal data and will not provide it to any third party, unless required by law or official request from Indonesian law enforcement agencies.",
+    "section6_title": "Termination of Service",
+    "section6_content": "Customers wishing to unsubscribe must provide notification at least 14 days before the end of the next billing cycle. ONT/Modem devices provided by NFI must be returned in good condition. Damage to or loss of such devices will be subject to replacement costs according to the applicable rates.",
+    "contact_text": "For further legal consultation or technical assistance regarding these policies, please contact our team at info@nfi.net.id or visit our head office in Karawang."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "These are the most commonly asked questions about NFI. Can't find what you're looking for?",
+    "chat_link": "Chat to our friendly team!",
+    "no_data": "No questions found in this category.",
+    "categories": {
+      "General": "General",
+      "Billing": "Billing",
+      "Technical": "Technical",
+      "Support": "Support"
+    },
+    "questions": {
+      "q1": "Is my area covered by the network?",
+      "a1": "Currently, we cover major areas. However, our network is constantly expanding. Please send your location via our admin WhatsApp for an accurate technical check.",
+      "q2": "What are the requirements to register?",
+      "a2": "It's quite simple! Attach a photo of your ID card (KTP), an active mobile number (WhatsApp), and the full installation address. Our team will process your data within 24 hours.",
+      "q3": "Which package is suitable for my needs?",
+      "a3": "10-20 Mbps: 1-3 devices (Chat, Browsing).\n30-50 Mbps: 4-7 devices (HD Streaming, Zoom).\n100 Mbps+: Gamers & Offices (4K Streaming).",
+      "q4": "Is there an initial installation fee?",
+      "a4": "We offer Free Installation for certain promotions (e.g., 3 months payment in advance). For regular monthly plans, standard installation fees apply according to the terms.",
+      "q5": "When is the monthly payment due date?",
+      "a5": "The due date is the 10th of every month. Billing invoices will be sent automatically via WhatsApp or Email 7 days before that date.",
+      "q6": "What payment methods are available?",
+      "a6": "We accept Bank Transfers (Virtual Account), E-Wallets (GoPay, OVO, Dana), and cash payments through Alfamart/Indomaret outlets.",
+      "q7": "Can I upgrade my speed later?",
+      "a7": "Of course. You can request a service upgrade at any time through Customer Service. Speed changes will be active immediately after admin confirmation.",
+      "q8": "Is this internet Unlimited or is there an FUP?",
+      "a8": "Our service is True Unlimited with no FUP (Fair Usage Policy). You can surf as much as you want without worrying about speed reduction (throttling) in the middle of the month.",
+      "q9": "Why does my internet feel slow?",
+      "a9": "Ensure the number of devices does not exceed the package capacity. Try restarting the modem (turn off for 5 minutes, then turn on). If it's still slow, contact our technicians.",
+      "q10": "How do I change the WiFi password?",
+      "a10": "Access router settings via browser (Standard IP: 192.168.1.1). If you have difficulty, our support team can guide you or change it from the central system (remote).",
+      "q11": "What does the red light (LOS) on the modem mean?",
+      "a11": "A red/LOS light indicates a physical disturbance on the fiber cable (broken/bent) or a central outage. Please report to CS immediately so a technician can come to fix it."
+    }
+  }
+}

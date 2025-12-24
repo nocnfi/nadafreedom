@@ -1,35 +1,35 @@
 import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 
-// 👇 MENGGUNAKAN LAZY LOAD (Sesuai Request Desain Anda)
 const CoverageMap = lazy(() => import('./CoverageMap'));
 
 const CoverageSection = () => {
-    // 1. STATE: Menggunakan Data Dinamis dari Database (Bukan Statis)
+    const { t } = useTranslation(); // Inisialisasi hook
+
+    // 1. STATE
     const [locations, setLocations] = useState([]); 
     const [loading, setLoading] = useState(true);
 
-    // 2. FETCH DATA: Ambil dari API Laravel
+    // 2. FETCH DATA
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch('/api/coverage-locations');
                 const data = await response.json();
-                setLocations(data); // Simpan data DB ke State
+                setLocations(data);
                 setLoading(false);
             } catch (error) {
                 console.error("Gagal mengambil data coverage:", error);
                 setLoading(false);
             }
         };
-
         fetchData();
     }, []);
 
-    // 3. LOGIKA FILTER & WARNA (Otomatis dari Data DB)
+    // 3. LOGIKA FILTER & WARNA
     const kecamatanColors = useMemo(() => {
         const colors = {};
         locations.forEach(loc => {
-            // Ambil warna dari database (jika ada), kalau tidak default biru
             if (loc.kec) colors[loc.kec] = loc.color || '#3B82F6';
         });
         return colors;
@@ -40,7 +40,6 @@ const CoverageSection = () => {
     const [selectedKec, setSelectedKec] = useState('');
     const [mapView, setMapView] = useState({ center: [-6.26, 107.25], zoom: 11 });
 
-    // Filter Options (Otomatis muncul berdasarkan data yang ada di DB)
     const provinces = useMemo(() => [...new Set(locations.map(i => i.prov))], [locations]);
 
     const cities = useMemo(() => {
@@ -53,7 +52,6 @@ const CoverageSection = () => {
         return [...new Set(locations.filter(i => i.city === selectedCity).map(i => i.kec))];
     }, [selectedCity, locations]);
 
-    // Filter Logic Utama
     const filteredLocations = locations.filter(loc => {
         return (
             (selectedProv ? loc.prov === selectedProv : true) &&
@@ -71,15 +69,14 @@ const CoverageSection = () => {
             
             setMapView({ center: [firstLoc.lat, firstLoc.lng], zoom: newZoom });
         } else {
-            alert("Lokasi tidak ditemukan di area ini.");
+            alert(t('coverage.not_found')); // Gunakan i18n alert
         }
     };
 
     if (loading) {
-        return <div className="text-center py-24 font-bold text-gray-400">Sedang Memuat Data...</div>;
+        return <div className="text-center py-24 font-bold text-gray-400">{t('coverage.loading')}</div>;
     }
 
-    // --- RENDER TAMPILAN (Sesuai Desain Baru Anda) ---
     return (
         <section 
             className="relative w-full py-24 font-['Poppins'] overflow-hidden bg-white"
@@ -99,22 +96,22 @@ const CoverageSection = () => {
                     {/* --- KIRI: Form Pencarian --- */}
                     <div className="w-full lg:w-1/2">
                         <span className="text-[#6D28D9] font-bold tracking-widest uppercase text-sm mb-2 block">
-                            Network Availability
+                            {t('coverage.tagline')}
                         </span>
                         <h2 className="text-4xl md:text-5xl font-extrabold text-[#1A237E] mb-6 leading-tight">
-                            Find Your Nearest <br />
-                            <span className="text-[#4F26E9]">Coverage Point.</span>
+                            {t('coverage.title_1')} <br />
+                            <span className="text-[#4F26E9]">{t('coverage.title_2')}</span>
                         </h2>
                         
                         <p className="text-gray-600 mb-8 text-base leading-relaxed max-w-lg">
-                            Pilih Provinsi, Kota, dan Kecamatan untuk melihat titik koneksi NFI Fiber Optic yang tersedia secara Real-time.
+                            {t('coverage.description')}
                         </p>
 
                         <div className="bg-white border border-gray-200 rounded-[2rem] p-4 shadow-xl shadow-blue-900/5 max-w-lg w-full relative z-20">
                             <div className="flex flex-col gap-3">
                                 {/* 1. PROVINCE */}
                                 <div className="relative">
-                                    <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">Provinsi</label>
+                                    <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">{t('coverage.label_prov')}</label>
                                     <select 
                                         className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer"
                                         value={selectedProv}
@@ -124,7 +121,7 @@ const CoverageSection = () => {
                                             setSelectedKec('');
                                         }}
                                     >
-                                        <option value="">Semua Provinsi</option>
+                                        <option value="">{t('coverage.opt_all_prov')}</option>
                                         {provinces.map(p => <option key={p} value={p}>{p}</option>)}
                                     </select>
                                 </div>
@@ -132,7 +129,7 @@ const CoverageSection = () => {
                                 <div className="flex gap-3">
                                     {/* 2. CITY */}
                                     <div className="relative flex-1">
-                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">Kota / Kab</label>
+                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">{t('coverage.label_city')}</label>
                                         <select 
                                             className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none disabled:opacity-50 cursor-pointer"
                                             value={selectedCity}
@@ -142,21 +139,21 @@ const CoverageSection = () => {
                                                 setSelectedKec('');
                                             }}
                                         >
-                                            <option value="">Pilih Kota</option>
+                                            <option value="">{t('coverage.opt_select_city')}</option>
                                             {cities.map(c => <option key={c} value={c}>{c}</option>)}
                                         </select>
                                     </div>
 
                                     {/* 3. KECAMATAN */}
                                     <div className="relative flex-1">
-                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">Kecamatan</label>
+                                        <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-3 mb-1 block">{t('coverage.label_kec')}</label>
                                         <select 
                                             className="w-full bg-gray-50 border border-gray-200 text-[#1A237E] font-bold text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 appearance-none disabled:opacity-50 cursor-pointer"
                                             value={selectedKec}
                                             disabled={!selectedCity}
                                             onChange={(e) => setSelectedKec(e.target.value)}
                                         >
-                                            <option value="">Pilih Kecamatan</option>
+                                            <option value="">{t('coverage.opt_select_kec')}</option>
                                             {kecamatans.map(k => <option key={k} value={k}>{k}</option>)}
                                         </select>
                                     </div>
@@ -166,22 +163,20 @@ const CoverageSection = () => {
                                     onClick={handleSearch}
                                     className="w-full bg-[#1A237E] hover:bg-blue-800 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-blue-900/30 transition-all duration-300 mt-2 flex items-center justify-center gap-2"
                                 >
-                                    Cari Lokasi
+                                    {t('coverage.btn_search')}
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    {/* --- KANAN: Peta (Dengan Suspense) --- */}
+                    {/* --- KANAN: Peta --- */}
                     <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
                         <div className="relative w-full">
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50 blur-3xl rounded-full -z-10"></div>
 
                             <div className="relative p-3 bg-white/60 backdrop-blur-md rounded-[2.5rem] border border-white shadow-2xl shadow-blue-900/10 w-full h-[450px] md:h-[550px]">
                                 <div className="overflow-hidden rounded-[2rem] w-full h-full z-0 relative border border-gray-100 bg-gray-100">
-                                    
-                                    {/* Suspense untuk Loading State Map */}
-                                    <Suspense fallback={<div className="flex h-full w-full items-center justify-center text-gray-400 animate-pulse">Loading Map...</div>}>
+                                    <Suspense fallback={<div className="flex h-full w-full items-center justify-center text-gray-400 animate-pulse">{t('coverage.map_loading')}</div>}>
                                         <CoverageMap 
                                             center={mapView.center} 
                                             zoom={mapView.zoom} 
@@ -189,13 +184,12 @@ const CoverageSection = () => {
                                             colors={kecamatanColors}
                                         />
                                     </Suspense>
-                                    
                                 </div>
 
                                 {/* Statistik Mengambang */}
                                 <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-5 py-3 rounded-2xl shadow-lg border border-white z-[1000] flex items-center gap-4">
                                     <div>
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Titik Ditemukan</p>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{t('coverage.stats_found')}</p>
                                         <p className="text-xl font-extrabold text-[#1A237E]">{filteredLocations.length}</p>
                                     </div>
                                 </div>

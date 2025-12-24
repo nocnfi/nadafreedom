@@ -1,29 +1,32 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'; // 1. Import hook
 
 export default function HeroSection() {
+    const { t } = useTranslation(); // 2. Inisialisasi hook
+
+    // 3. Pindahkan data ke dalam komponen agar bisa menggunakan fungsi t()
     const cards = [
         {
-            title: "99.5% Uptime",
-            desc: "Stable Connection Guaranteed.",
+            title: t('hero.card_uptime_title'),
+            desc: t('hero.card_uptime_desc'),
             hasIndicator: false
         },
         {
-            title: "1x24 Hour Response",
-            desc: "Guaranteed Technical Support.",
+            title: t('hero.card_response_title'),
+            desc: t('hero.card_response_desc'),
             hasIndicator: false
         },
         {
-            title: "> 750 KM Fiber Optic Cable",
-            desc: "Pure Network Infrastructure.",
+            title: t('hero.card_fiber_title'),
+            desc: t('hero.card_fiber_desc'),
             hasIndicator: true 
         }
     ];
-    
 
     return (
         <section className="relative w-full min-h-screen bg-white overflow-hidden flex flex-col justify-center font-poppins">
             
-            {/* --- LAYER 1: Jaring-jaring (Background Mesh) --- */}
+            {/* --- LAYER 1: Background Mesh --- */}
             <div className="absolute top-0 right-0 w-full h-full pointer-events-none z-0">
                 <img 
                     src="/images/connect.png" 
@@ -32,7 +35,7 @@ export default function HeroSection() {
                 />
             </div>
 
-            {/* --- LAYER 2: Talent Wanita --- */}
+            {/* --- LAYER 2: Talent --- */}
             <img 
                 src="/images/talent.png" 
                 alt="Professional Talent" 
@@ -47,19 +50,19 @@ export default function HeroSection() {
                 {/* Bagian Teks */}
                 <div className="mt-20 lg:mt-0 mb-auto lg:mb-20 pt-10 max-w-2xl">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-semibold leading-[1.15] mb-6 custom-text-color">
-                        Best Quality,<br />
-                        The Right Price.<br />
-                        No Need to Overpay.
+                        {t('hero.title_1')}<br />
+                        {t('hero.title_2')}<br />
+                        {t('hero.title_3')}
                     </h1>
 
                     <div className="flex items-center space-x-2 text-sm font-semibold font-poppins text-gray-700 mb-10 tracking-wider uppercase">
                         <span>🔥</span>
-                        <span>A TRUSTED PARTNER SINCE 2020</span>
+                        <span>{t('hero.partner')}</span>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-6">
                         <button className="px-8 py-3.5 bg-blue-600 text-white font-semibold font-poppins shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:-translate-y-0.5 transition-all flex items-center gap-3 rounded-br-xl rounded-tl-xl rounded-tr-[3em] rounded-bl-[3em]">
-                            Let's connect 
+                            {t('hero.btn_connect')}
                             <span className="flex h-2 w-2 relative">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
@@ -67,12 +70,12 @@ export default function HeroSection() {
                         </button>
                         
                         <button className="text-gray-800 font-semibold font-poppins underline decoration-2 underline-offset-8 hover:text-blue-600 transition">
-                            Learn more
+                            {t('hero.btn_learn')}
                         </button>
                     </div>
                 </div>
 
-                {/* Bagian Kartu (Glassmorphism) */}
+                {/* Bagian Kartu */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
                     {cards.map((card, index) => (
                         <div 
@@ -83,7 +86,6 @@ export default function HeroSection() {
                                 {card.title}
                             </h3>
                             
-                            {/* Garis Gradient */}
                             <div className="w-12 h-1.5 bg-gradient-to-r from-[#6717cd] to-[#2871fa] rounded-full mt-3 mb-1"></div>
 
                             <p className="text-gray-800 text-sm lg:text-[15px] font-medium mt-2">
