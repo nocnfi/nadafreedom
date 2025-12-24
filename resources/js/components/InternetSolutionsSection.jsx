@@ -1,11 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next'; // Import hook translasi
+import { useTranslation } from 'react-i18next';
 import PricingGrid from '@/Components/PricingGrid';
 
 const InternetSolutionsSection = () => {
-    const { t } = useTranslation(); // Inisialisasi hook
+    const { t } = useTranslation(); 
 
-    // Data fitur menggunakan fungsi t() agar teks berubah otomatis saat ganti bahasa
     const bufferingFeatures = [
         {
             title: t('internet_solutions.feature_1_title'),
@@ -93,7 +92,8 @@ const InternetSolutionsSection = () => {
                 </div>
 
                 {/* === 3. PRICING SECTION === */}
-                <div className="relative z-10">
+                {/* ID dipindahkan ke sini agar scroll langsung fokus ke tabel harga */}
+                <div id="solutions-section" className="relative z-10 pt-10">
                     <div className="mb-12 max-w-4xl">
                         <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2 tracking-tight uppercase">
                             {t('internet_solutions.pricing_title')}

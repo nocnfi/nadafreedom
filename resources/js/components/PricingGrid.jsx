@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next'; // Hook untuk multi-bahasa
 import PricingCard from '@/Components/PricingCard';
 
-/**
- * PricingGrid Component
- * Menampilkan daftar paket berdasarkan wilayah (Geolocation atau Dropdown)
- */
+// Menerima props 'customRegion'. 
+// Jika ada isinya, kita pakai itu. Jika null/undefined, kita pakai logika otomatis.
 const PricingGrid = ({ customRegion = null }) => {
-    const { t } = useTranslation(); // Inisialisasi fungsi translasi
-    
-    // --- STATE ---
+    // 1. STATE
     const [regionsData, setRegionsData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [internalRegion, setInternalRegion] = useState('Kab. Bekasi'); // Default awal
+    const [internalRegion, setInternalRegion] = useState('Kab. Bekasi'); // Default internal
 
-    // --- DATA FALLBACK ---
-    // Digunakan jika API gagal dimuat agar UI tidak kosong
+    // Data Fallback (Simpanan jika API mati)
     const fallbackRegions = [
         {
             id: 1, region_name: 'Kab. Bekasi',
@@ -40,14 +34,14 @@ const PricingGrid = ({ customRegion = null }) => {
     ];
 
     useEffect(() => {
-        // 1. Fetch data paket dari backend
+        // A. FETCH DATA (Selalu jalan dimanapun komponen ini dipasang)
         axios.get('/api/pricing-regions')
             .then(response => {
                 const data = response.data;
                 if (Array.isArray(data) && data.length > 0) {
                     setRegionsData(data);
                 } else {
-                    throw new Error("Empty API Response");
+                    throw new Error("Empty API");
                 }
                 setLoading(false);
             })
@@ -56,14 +50,13 @@ const PricingGrid = ({ customRegion = null }) => {
                 setLoading(false);
             });
 
-        // 2. Logika Geolocation (Hanya jalan jika user tidak memilih manual via dropdown)
+        // B. GEOLOCATION (Hanya jalan jika TIDAK ADA customRegion dari Parent)
         if (!customRegion && "geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
                     
-                    // Deteksi wilayah berdasarkan koordinat (Contoh sederhana)
                     const isKarawang = (lat < -6.20 && lat > -6.45) && (lng > 107.20 && lng < 107.45);
                     const isPemalang = (lat < -6.80 && lat > -7.00) && (lng > 109.30 && lng < 109.60);
 
@@ -71,24 +64,21 @@ const PricingGrid = ({ customRegion = null }) => {
                     else if (isPemalang) setInternalRegion('Kab. Pemalang');
                     else setInternalRegion('Kab. Bekasi');
                 },
-                () => setInternalRegion('Kab. Bekasi') // Fallback jika GPS ditolak
+                () => setInternalRegion('Kab. Bekasi')
             );
         }
-    }, [customRegion]);
+    }, [customRegion]); // Re-run effect jika customRegion berubah (tapi geolocation diblock logic if)
 
-    // --- LOGIKA FILTERING ---
-    // Prioritas: Pilihan manual (customRegion) > Hasil GPS (internalRegion)
+    // 2. LOGIKA PENENTUAN WILAYAH AKTIF
+    // Prioritas: customRegion (dari Dropdown) > internalRegion (dari Geolocation)
     const activeRegionName = customRegion || internalRegion;
+
+    // 3. FILTER DATA
     const activeRegionData = regionsData.find(r => r.region_name === activeRegionName);
     const activePlans = activeRegionData ? activeRegionData.plans : [];
 
-    // --- RENDER LOADING ---
     if (loading) {
-        return (
-            <div className="text-center py-10 animate-pulse text-blue-600 font-semibold">
-                {t('plans.loading_location')}
-            </div>
-        );
+        return <div className="text-center py-10 animate-pulse text-blue-600 font-semibold">Memuat paket...</div>;
     }
 
     return (
@@ -100,23 +90,20 @@ const PricingGrid = ({ customRegion = null }) => {
                         <PricingCard key={index} plan={plan} />
                     ))
                 ) : (
-                    // PESAN JIKA PAKET TIDAK ADA
                     <div className="col-span-full text-center py-10">
                         <p className="text-gray-400 text-lg">
-                            {t('plans.not_found')} <span className="font-bold">{activeRegionName}</span>.
+                            Paket untuk area <span className="font-bold">{activeRegionName}</span> belum tersedia.
                         </p>
                     </div>
                 )}
             </div>
 
-            {/* INFO LOKASI (Hanya muncul jika menggunakan Geolocation/Default) */}
+            {/* INFO LOKASI (Opsional, matikan jika tidak ingin double info dengan Dropdown) */}
             {!customRegion && (
                 <div className="text-center mt-4">
                     <p className="text-gray-500 italic text-sm">
-                        {t('plans.default_view')}{' '}
-                        <span className="font-bold text-blue-600 not-italic uppercase">
-                            {activeRegionName}
-                        </span>
+                        {/* 👇 TAMBAHKAN text-blue-600 atau text-[#1A237E] DISINI */}
+                        Menampilkan paket default: <span className="font-bold text-blue-600 not-italic uppercase">{activeRegionName}</span>
                     </p>
                 </div>
             )}
