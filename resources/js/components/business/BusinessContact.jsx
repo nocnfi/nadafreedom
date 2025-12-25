@@ -4,6 +4,16 @@ import { useTranslation } from 'react-i18next';
 const BusinessContact = () => {
     const { t } = useTranslation();
 
+    // Data Kontak Terpusat
+    const contactInfo = {
+        phone: "085692173125",
+        email: "info@nfi.net.id",
+        whatsapp: "6285692173125",
+        instagram: "https://www.instagram.com/nadafreedomindonesia?utm_source=qr&igsh=Zmg1YjVja3lxZWhy",
+        facebook: "https://www.facebook.com/share/17wuieuQyv/",
+        linkedIn: "https://www.linkedin.com/in/nada-freedom-indonesia-4109573a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    };
+
     return (
         <section className="pt-20 pb-0 bg-white overflow-hidden">
             <div className="container mx-auto px-4 flex justify-center">
@@ -24,29 +34,43 @@ const BusinessContact = () => {
                                 </h2>
                                 
                                 <p className="text-[7px] md:text-[9px] lg:text-lg text-gray-500 max-w-3xl mx-auto leading-tight">
-                                    {t('business.contact.call_us')} <span className="font-bold text-blue-600">0856-9217-3125</span> {t('business.contact.more_info')}
+                                    {t('business.contact.call_us')}{' '}
+                                    {/* Direct Call pada teks nomor */}
+                                    <a href={`tel:${contactInfo.phone}`} className="font-bold text-blue-600 hover:underline">
+                                        {contactInfo.phone}
+                                    </a> 
+                                    {' '}{t('business.contact.more_info')}
                                 </p>
                                 <p className="text-[6px] md:text-[8px] lg:text-sm text-gray-400 mt-0.5 md:mt-0.5 lg:mt-1">
                                     {t('business.contact.availability')}
                                 </p>
                             </div>
 
-                            {/* ICONS */}
+                            {/* ICONS - SEMUA LINK SUDAH AKTIF */}
                             <div className="flex gap-2 md:gap-3 lg:gap-8 items-center justify-center w-full relative z-30 mt-1 md:mt-1 lg:mt-4">
-                                <a href="tel:085692173125" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
-                                    <img src="/images/call-center/call.svg" alt="Call" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
+                                {/* 1. Direct Call Button */}
+                                <a href={`tel:${contactInfo.phone}`} className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
+                                    <img src="/images/call-center/call.svg" alt="Call NFI" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
                                 </a>
-                                <a href="#" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
-                                    <img src="/images/call-center/whatsapp.svg" alt="WhatsApp" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
+
+                                {/* 2. WhatsApp Button */}
+                                <a href={`https://wa.me/${contactInfo.whatsapp}`} target="_blank" rel="noopener noreferrer" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
+                                    <img src="/images/call-center/whatsapp.svg" alt="WhatsApp NFI" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
                                 </a>
-                                <a href="#" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
-                                    <img src="/images/call-center/gmail.svg" alt="Gmail" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
+
+                                {/* 3. Email Button */}
+                                <a href={`mailto:${contactInfo.email}`} className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
+                                    <img src="/images/call-center/gmail.svg" alt="Email NFI" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
                                 </a>
-                                <a href="#" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
-                                    <img src="/images/call-center/instagram.svg" alt="Instagram" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
+
+                                {/* 4. Instagram Button */}
+                                <a href={contactInfo.instagram} target="_blank" rel="noopener noreferrer" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
+                                    <img src="/images/call-center/instagram.svg" alt="Instagram NFI" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
                                 </a>
-                                <a href="#" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
-                                    <img src="/images/call-center/linked.svg" alt="LinkedIn" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
+
+                                {/* 5. LinkedIn Button (Update Baru) */}
+                                <a href={contactInfo.linkedIn} target="_blank" rel="noopener noreferrer" className="group w-6 h-6 md:w-6 md:h-6 lg:w-20 lg:h-20 transition-transform hover:scale-110">
+                                    <img src="/images/call-center/linked.svg" alt="LinkedIn NFI" className="w-full h-full drop-shadow-md group-hover:drop-shadow-xl" />
                                 </a>
                             </div>
                         </div>

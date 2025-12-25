@@ -15,13 +15,43 @@ const AboutUs = () => {
     };
 
     const galleryItems = [
-        { src: "https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?q=80&w=600", height: "h-64 md:h-96", width: "w-[45%] md:w-48", alt: t('about.gallery_labels.technology') },
-        { src: "https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=600", height: "h-56 md:h-80", width: "w-[45%] md:w-56", alt: t('about.gallery_labels.server_room') },
-        { src: "https://images.unsplash.com/photo-1544197150-b99a580bbc7c?q=80&w=600", height: "h-32 md:h-48", width: "w-[45%] md:w-64", alt: t('about.gallery_labels.router') },
-        { src: "https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=600", height: "h-32 md:h-48", width: "w-[45%] md:w-40", alt: t('about.gallery_labels.hardware') },
-        { src: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600", height: "h-48 md:h-72", width: "w-[45%] md:w-52", alt: t('about.gallery_labels.server_rack') },
-        { src: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=600", height: "h-64 md:h-96", width: "w-[45%] md:w-48", alt: t('about.gallery_labels.fiber_optic') },
-    ];
+    { 
+        src: "/images/about/tech.jpg", 
+        height: "h-64 md:h-96", 
+        width: "w-[45%] md:w-48", 
+        alt: t('about.gallery_labels.technology') 
+    },
+    { 
+        src: "/images/about/server-room.jpg", 
+        height: "h-56 md:h-80", 
+        width: "w-[45%] md:w-56", 
+        alt: t('about.gallery_labels.server_room') 
+    },
+    { 
+        src: "/images/about/router.jpg", 
+        height: "h-32 md:h-48", 
+        width: "w-[45%] md:w-64", 
+        alt: t('about.gallery_labels.router') 
+    },
+    { 
+        src: "/images/about/hardware.jpg", 
+        height: "h-32 md:h-48", 
+        width: "w-[45%] md:w-40", 
+        alt: t('about.gallery_labels.hardware') 
+    },
+    { 
+        src: "/images/about/server-rack.jpg", 
+        height: "h-48 md:h-72", 
+        width: "w-[45%] md:w-52", 
+        alt: t('about.gallery_labels.server_rack') 
+    },
+    { 
+        src: "/images/about/fiber.jpg", 
+        height: "h-64 md:h-96", 
+        width: "w-[45%] md:w-48", 
+        alt: t('about.gallery_labels.fiber_optic') 
+    },
+];
 
     const values = [
         { id: 'we', title: t('about.nav.we'), icon: "/images/we-contact.svg" },      
