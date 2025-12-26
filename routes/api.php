@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CoverageController;
 use App\Http\Controllers\Api\PricingController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\SubscriberController;  
+use App\Http\Controllers\Api\PopupController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -22,3 +23,4 @@ Route::get('/coverage-locations', [CoverageController::class, 'index']);
 Route::get('/pricing-regions', [PricingController::class, 'index']);
 Route::post('/contact', [ContactController::class, 'store']);
 Route::post('/subscribe', [SubscriberController::class, 'store']);
+Route::get('/popup/random', [PopupController::class, 'getRandom']);

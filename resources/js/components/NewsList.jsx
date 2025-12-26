@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Swal from 'sweetalert2';
 
 const NewsList = ({ activeCategory, searchQuery }) => {
     const { t, i18n } = useTranslation();
@@ -9,6 +10,73 @@ const NewsList = ({ activeCategory, searchQuery }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
 
+    // --- 1. FITUR IKLAN POPUP ---
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/api/popup/random')
+            .then(res => res.json())
+            .then(result => {
+                if (result.data && result.data.image_url) {
+                    
+                    Swal.fire({
+                        imageUrl: result.data.image_url,
+                        imageAlt: result.data.title,
+                        
+                        width: 500,
+                        padding: 0,
+                        background: 'transparent',
+                        
+                        backdrop: `
+                            rgba(0,0,0,0.8)
+                            backdrop-filter: blur(5px)
+                        `,
+                        
+                        showConfirmButton: false, 
+                        showCloseButton: true,
+                        
+                        customClass: {
+                            // Gambar bersih tanpa shadow
+                            image: 'rounded-2xl max-h-[70vh] object-contain w-full',
+                            
+                            // --- PERBAIKAN TOMBOL SILANG (HAPUS BORDER BIRU) ---
+                            // !outline-none & !shadow-none : Menghilangkan garis biru saat diklik
+                            // !border-0 : Menghilangkan border fisik
+                            closeButton: `
+                                !text-white 
+                                !bg-transparent 
+                                !border-0 
+                                !shadow-none 
+                                !outline-none 
+                                focus:!outline-none 
+                                focus:!shadow-none 
+                                active:!outline-none
+                                hover:!text-gray-300 
+                                !text-3xl 
+                                !font-thin 
+                                absolute 
+                                !top-2 
+                                !right-3 
+                                transition-all
+                            `,
+                            
+                            popup: 'overflow-visible rounded-2xl bg-transparent'
+                        },
+
+                        // Z-index agar di atas Navbar
+                        didOpen: (popup) => {
+                            popup.style.zIndex = '99999';
+                            if (popup.parentElement) {
+                                popup.parentElement.style.zIndex = '99999';
+                            }
+                        }
+                    });
+                }
+            })
+            .catch(err => console.error("Gagal memuat iklan:", err));
+
+    }, []);
+
+
+    // --- 2. LOGIKA LIST BERITA ---
     useEffect(() => {
         setCurrentPage(1);
     }, [activeCategory, searchQuery]);
@@ -54,8 +122,8 @@ const NewsList = ({ activeCategory, searchQuery }) => {
             <div className="flex flex-col gap-8">
                 {news.map((item) => {
                     const imageUrl = item.image 
-                        ? (item.image.startsWith('http') ? item.image : `http://127.0.0.1:8000/storage/${item.image}`)
-                        : 'https://via.placeholder.com/400x300?text=No+Image';
+                    ? (item.image.startsWith('http') ? item.image : `http://127.0.0.1:8000/storage/${item.image}`)
+                    : 'https://via.placeholder.com/400x300?text=No+Image';
 
                     const displayTitle = i18n.language === 'EN' && item.title_en ? item.title_en : item.title;
                     const displayExcerpt = i18n.language === 'EN' && item.excerpt_en ? item.excerpt_en : item.excerpt;

@@ -34,7 +34,16 @@ class NewsController extends Controller
         }
 
         // 4. Eksekusi Pagination
+        // Kita manipulasi URL gambar di sini juga agar konsisten
         $news = $query->paginate(6);
+        
+        $news->getCollection()->transform(function ($item) {
+            // Paksa path ke folder 'news-images'
+            $item->image_url = $item->image 
+                ? asset('storage/news-images/' . basename($item->image)) 
+                : null;
+            return $item;
+        });
         
         return response()->json($news);
     }
@@ -59,10 +68,14 @@ class NewsController extends Controller
             'slug'     => $news->slug,
             'category' => $news->category ?? 'General',
             'content'  => $news->content,
-            'image'    => $news->image ? asset('storage/' . $news->image) : null,
+            
+            // PERBAIKAN UTAMA DI SINI:
+            // Kita ambil nama filenya saja pakai basename(), lalu paksa gabung dengan folder 'news-images'
+            'image'    => $news->image ? asset('storage/news-images/' . basename($news->image)) : null,
+            
             'date'     => Carbon::parse($news->published_at)->format('d F Y'),
             'author'   => 'Admin NFI',
-            'likes_count' => $news->likes_count ?? 0, // Pastikan field ini ada di tabel atau di-handle
+            'likes_count' => $news->likes_count ?? 0, 
         ]);
     }
 
@@ -91,7 +104,9 @@ class NewsController extends Controller
                     'title' => $item->title,
                     'slug'  => $item->slug,
                     'date'  => Carbon::parse($item->published_at)->format('d M Y'),
-                    'image' => $item->image ? asset('storage/' . $item->image) : null,
+                    
+                    // PERBAIKAN DI SINI JUGA:
+                    'image' => $item->image ? asset('storage/news-images/' . basename($item->image)) : null,
                 ];
             });
 
