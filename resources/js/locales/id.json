@@ -344,5 +344,171 @@
       "q11": "Apa arti lampu merah (LOS) pada modem?",
       "a11": "Lampu merah/LOS menandakan gangguan fisik pada kabel fiber (putus/tertekuk) atau gangguan pusat. Mohon segera lapor CS agar teknisi datang memperbaiki."
     }
+  },
+  "support": {
+    "hero": {
+      "status": "Sistem Support Online",
+      "title": "Pusat Bantuan",
+      "subtitle": "NFI Support",
+      "desc": "Mengalami kendala koneksi? Tim teknis kami siap membantu Anda 24 jam sehari, 7 hari seminggu."
+    },
+    "contact": {
+      "whatsapp": {
+        "title": "Chat WhatsApp",
+        "desc": "Respon tercepat. Kirim foto kendala modem Anda langsung ke teknis.",
+        "button": "Chat Sekarang"
+      },
+      "phone": {
+        "title": "Call Center",
+        "desc": "Bicara langsung dengan Customer Service kami untuk kendala urgent."
+      },
+      "email": {
+        "title": "Email Support",
+        "desc": "Untuk keperluan administrasi, penawaran bisnis, atau keluhan resmi.",
+        "button": "Kirim Email"
+      }
+    },
+    "troubleshoot": {
+      "title": "Pertolongan Pertama",
+      "subtitle": "Troubleshooting",
+      "desc": "Sebelum menghubungi teknisi, cobalah langkah **Power Cycle** berikut. Cara ini ampuh mengatasi 90% masalah koneksi lambat atau tidak stabil.",
+      "step1": {
+        "title": "1. Matikan Modem",
+        "desc": "Cabut adaptor listrik modem atau tekan tombol power. Tunggu 10 detik."
+      },
+      "step2": {
+        "title": "2. Tunggu 1 Menit",
+        "desc": "Biarkan perangkat dingin sejenak untuk mereset cache internal sistem."
+      },
+      "step3": {
+        "title": "3. Nyalakan Kembali",
+        "desc": "Colok kembali listrik. Tunggu 2-3 menit sampai semua lampu indikator hijau stabil."
+      }
+    },
+    "banner": {
+      "title": "Masih Berkendala?",
+      "desc": "Jangan ragu untuk menghubungi kami. Kepuasan Anda prioritas kami.",
+      "button": "Hubungi Teknisi"
+    }
+  },
+  "promo": {
+    "hero": {
+      "badge": "PROMO TERBATAS!",
+      "title_start": "Pasang Internet",
+      "title_highlight": "Tanpa Biaya Awal",
+      "desc": "Nikmati koneksi internet super cepat langsung di rumah Anda tanpa pusing memikirkan biaya pemasangan. Cukup bayar paket bulanan saja!",
+      "cta_primary": "Klaim Promo",
+      "cta_secondary": "Lihat Syarat"
+    },
+    "comparison": {
+      "normal_title": "Provider Lain / Normal",
+      "promo_title": "Promo Spesial NFI",
+      "you_pay": "Anda Cukup Bayar"
+    },
+    "items": {
+      "registration": "Biaya Registrasi",
+      "installation": "Penarikan Kabel",
+      "setting": "Setting Modem"
+    },
+    "terms": {
+      "title": "Syarat & Ketentuan Promo",
+      "point1": "Berlaku untuk pelanggan baru di area yang tercover jaringan Fiber Optic NFI.",
+      "point2": "Wajib berlangganan minimal 12 bulan (kontrak).",
+      "point3": "Gratis kabel fiber optic standar hingga 150 meter. Kelebihan kabel akan dikenakan biaya Rp 1.500/meter.",
+      "point4": "Perangkat modem dipinjamkan selama masa berlangganan (status sewa)."
+    },
+    "checker": {
+      "title": "Pastikan Lokasi Anda Tercover",
+      "button": "Cek Lokasi via WhatsApp"
+    }
+  },
+  "notFound": {
+    "title": "Halaman Tidak Ditemukan",
+    "message": "Sepertinya Anda kurang beruntung kali ini. Halaman yang Anda cari tidak ada di sini.",
+    "button": "Kembali ke Home"
+  },
+  "privacy": {
+    "badge": "Dokumen Legal",
+    "title": "Kebijakan Privasi",
+    "last_updated": "Terakhir Diperbarui: 1 Januari 2026",
+    "intro": "Di PT Nada Freedom Indonesia (NFI), kami berkomitmen untuk melindungi privasi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan menjaga informasi Anda saat Anda menggunakan layanan jaringan fiber dan situs web kami.",
+    "contact_intro": "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami:",
+    "contact_btn": "Hubungi Tim Privasi",
+    "sections": [
+      {
+        "title": "1. Informasi yang Kami Kumpulkan",
+        "content": "Kami mengumpulkan informasi yang Anda berikan secara langsung, seperti saat membuat akun, berlangganan paket rumah, atau menghubungi dukungan pelanggan. Ini dapat mencakup nama, alamat email, nomor telepon, alamat fisik, dan informasi pembayaran. Kami juga secara otomatis mengumpulkan data teknis terkait penggunaan jaringan Anda untuk memastikan stabilitas dan kualitas layanan."
+      },
+      {
+        "title": "2. Cara Kami Menggunakan Informasi Anda",
+        "content": "Kami menggunakan informasi yang dikumpulkan untuk menyediakan, memelihara, dan meningkatkan layanan jaringan fiber kami. Ini termasuk memproses transaksi, mengidentifikasi masalah jaringan, mengirimkan pemberitahuan teknis atau pembaruan, serta menanggapi komentar dan pertanyaan Anda. Kami tidak menjual data pribadi Anda kepada pihak ketiga."
+      },
+      {
+        "title": "3. Keamanan Jaringan & Perlindungan Data",
+        "content": "Kami menerapkan langkah-langkah keamanan standar industri untuk melindungi informasi pribadi Anda dari akses yang tidak sah, pengubahan, pengungkapan, atau penghancuran. Namun, tidak ada metode transmisi melalui Internet atau penyimpanan elektronik yang 100% aman, dan kami tidak dapat menjamin keamanan mutlak."
+      },
+      {
+        "title": "4. Cookie dan Teknologi Pelacakan",
+        "content": "Kami menggunakan cookie dan teknologi pelacakan serupa untuk melacak aktivitas pada layanan web kami dan menyimpan informasi tertentu. Anda dapat menginstruksikan browser Anda untuk menolak semua cookie atau menunjukkan kapan cookie dikirim. Namun, jika Anda tidak menerima cookie, Anda mungkin tidak dapat menggunakan beberapa bagian dari layanan kami."
+      },
+      {
+        "title": "5. Penyedia Layanan Pihak Ketiga",
+        "content": "Kami dapat mempekerjakan perusahaan dan individu pihak ketiga untuk memfasilitasi Layanan kami (misalnya, pemroses pembayaran, layanan pemeliharaan). Pihak ketiga ini memiliki akses ke Data Pribadi Anda hanya untuk melakukan tugas-tugas ini atas nama kami dan berkewajiban untuk tidak mengungkapkan atau menggunakannya untuk tujuan lain apa pun."
+      },
+      {
+        "title": "6. Hak Data Anda",
+        "content": "Anda memiliki hak untuk mengakses, memperbarui, atau menghapus informasi yang kami miliki tentang Anda. Kapan pun dimungkinkan, Anda dapat mengakses, memperbarui, atau meminta penghapusan Data Pribadi Anda langsung di bagian pengaturan akun Anda atau dengan menghubungi kami."
+      }
+    ]
+  },
+  "footer": {
+    "description": "Kualitas Terbaik, Harga Tepat. Kami berkomitmen untuk menyediakan jaringan fiber murni yang stabil untuk setiap rumah dan bisnis.",
+    "newsletter": {
+      "label": "Untuk berita kami",
+      "placeholder": "masukkan alamat email anda",
+      "button": "berlangganan",
+      "loading": "...",
+      "messages": {
+        "invalid_email": "Mohon masukkan alamat email yang valid.",
+        "success": "Terima kasih telah berlangganan!",
+        "failed": "Gagal berlangganan. Silakan coba lagi.",
+        "network_error": "Kesalahan jaringan. Periksa koneksi Anda."
+      }
+    },
+    "titles": {
+      "services": "Layanan",
+      "company": "Perusahaan",
+      "resources": "Sumber Daya",
+      "contact": "Hubungi Kami"
+    },
+    "links": {
+      "network_check": "Cek Area Jangkauan",
+      "home_packages": "Paket Rumah",
+      "support": "Dukungan 24/7",
+      "free_install": "Gratis Instalasi",
+      "about": "Tentang Kami",
+      "careers": "Karir",
+      "terms": "Syarat & Ketentuan",
+      "privacy": "Kebijakan Privasi",
+      "faq": "FAQ (Tanya Jawab)",
+      "news": "Berita & Pembaruan",
+      "router_tips": "Tips Penggunaan Router",
+      "network_stabil": "Stabilisasi Jaringan",
+      "service_guide": "Panduan Layanan"
+    },
+    "copyright": "© 2026 NOC NFI (^-^*) . Hak Cipta Dilindungi."
+  },
+  "privacy": {
+    "badge": "Dokumen Legal",
+    "title": "Kebijakan Privasi",
+    "last_updated": "Terakhir Diperbarui: 1 Januari 2026",
+    "intro": "Di PT Nada Freedom Indonesia (NFI), kami berkomitmen untuk melindungi privasi Anda...",
+    "contact_intro": "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami:",
+    "contact_btn": "Hubungi Tim Privasi"
+  },
+  "notFound": {
+    "title": "Halaman Tidak Ditemukan",
+    "message": "Sepertinya Anda kurang beruntung kali ini. Halaman yang Anda cari tidak ada di sini.",
+    "button": "Kembali ke Home"
   }
 }

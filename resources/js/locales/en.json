@@ -344,5 +344,171 @@
       "q11": "What does the red light (LOS) on the modem mean?",
       "a11": "A red/LOS light indicates a physical disturbance on the fiber cable (broken/bent) or a central outage. Please report to CS immediately so a technician can come to fix it."
     }
+  },
+  "support": {
+    "hero": {
+      "status": "Support System Online",
+      "title": "Help Center",
+      "subtitle": "NFI Support",
+      "desc": "Experiencing connection issues? Our technical team is ready to help you 24 hours a day, 7 days a week."
+    },
+    "contact": {
+      "whatsapp": {
+        "title": "WhatsApp Chat",
+        "desc": "Fastest response. Send photos of your modem issues directly to tech support.",
+        "button": "Chat Now"
+      },
+      "phone": {
+        "title": "Call Center",
+        "desc": "Speak directly with our Customer Service for urgent issues."
+      },
+      "email": {
+        "title": "Email Support",
+        "desc": "For administrative purposes, business inquiries, or formal complaints.",
+        "button": "Send Email"
+      }
+    },
+    "troubleshoot": {
+      "title": "First Aid",
+      "subtitle": "Troubleshooting",
+      "desc": "Before contacting a technician, try the following **Power Cycle** steps. This method effectively resolves 90% of slow or unstable connection issues.",
+      "step1": {
+        "title": "1. Turn Off Modem",
+        "desc": "Unplug the modem's power adapter or press the power button. Wait 10 seconds."
+      },
+      "step2": {
+        "title": "2. Wait 1 Minute",
+        "desc": "Let the device cool down for a moment to reset the internal system cache."
+      },
+      "step3": {
+        "title": "3. Turn On Again",
+        "desc": "Plug the power back in. Wait 2-3 minutes until all indicator lights are stable green."
+      }
+    },
+    "banner": {
+      "title": "Still Having Issues?",
+      "desc": "Don't hesitate to contact us. Your satisfaction is our priority.",
+      "button": "Contact Technician"
+    }
+  },
+  "promo": {
+    "hero": {
+      "badge": "LIMITED TIME OFFER!",
+      "title_start": "Install Internet",
+      "title_highlight": "Zero Upfront Cost",
+      "desc": "Enjoy super fast internet connection at home without worrying about installation fees. Just pay the monthly package!",
+      "cta_primary": "Claim Offer",
+      "cta_secondary": "See Terms"
+    },
+    "comparison": {
+      "normal_title": "Others / Normal Price",
+      "promo_title": "NFI Special Promo",
+      "you_pay": "You Only Pay"
+    },
+    "items": {
+      "registration": "Registration Fee",
+      "installation": "Cable Installation",
+      "setting": "Modem Setup"
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "point1": "Valid for new customers in NFI Fiber Optic coverage areas.",
+      "point2": "Minimum subscription contract of 12 months required.",
+      "point3": "Free standard fiber optic cable up to 150 meters. Excess cable charged at Rp 1,500/meter.",
+      "point4": "Modem device is loaned during the subscription period."
+    },
+    "checker": {
+      "title": "Ensure Your Location is Covered",
+      "button": "Check Location via WhatsApp"
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "Looks like you're out of luck this time. The page you are looking for is not here.",
+    "button": "Go Home"
+  },
+  "privacy": {
+    "badge": "Legal Document",
+    "title": "Privacy Policy",
+    "last_updated": "Last Updated: January 1, 2026",
+    "intro": "At PT Nada Freedom Indonesia (NFI), we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our fiber network services and website.",
+    "contact_intro": "If you have any questions about this Privacy Policy, please contact us:",
+    "contact_btn": "Contact Privacy Team",
+    "sections": [
+      {
+        "title": "1. Information We Collect",
+        "content": "We collect information you provide directly to us, such as when you create an account, subscribe to our home packages, or contact customer support. This may include your name, email address, phone number, physical address, and payment information. We also automatically collect technical data regarding your network usage to ensure stability and quality of service."
+      },
+      {
+        "title": "2. How We Use Your Information",
+        "content": "We use the information we collect to provide, maintain, and improve our fiber network services. This includes processing transactions, identifying network issues, sending you technical notices or updates, and responding to your comments and questions. We do not sell your personal data to third parties."
+      },
+      {
+        "title": "3. Network Security & Data Protection",
+        "content": "We implement industry-standard security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security."
+      },
+      {
+        "title": "4. Cookies and Tracking Technologies",
+        "content": "We use cookies and similar tracking technologies to track the activity on our web service and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service."
+      },
+      {
+        "title": "5. Third-Party Service Providers",
+        "content": "We may employ third-party companies and individuals to facilitate our Service (e.g., payment processors, maintenance services). These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose."
+      },
+      {
+        "title": "6. Your Data Rights",
+        "content": "You have the right to access, update, or delete the information we have on you. Whenever made possible, you can access, update, or request deletion of your Personal Data directly within your account settings section or by contacting us."
+      }
+    ]
+  },
+  "footer": {
+    "description": "Best Quality, Right Price. We are committed to providing a stable pure fiber network for every home and business.",
+    "newsletter": {
+      "label": "For our news",
+      "placeholder": "enter your email address",
+      "button": "subscribe",
+      "loading": "...",
+      "messages": {
+        "invalid_email": "Please enter a valid email address.",
+        "success": "Thank you for subscribing!",
+        "failed": "Subscription failed. Please try again.",
+        "network_error": "Network error. Check your connection."
+      }
+    },
+    "titles": {
+      "services": "Services",
+      "company": "Company",
+      "resources": "Resources",
+      "contact": "Contact Us"
+    },
+    "links": {
+      "network_check": "Network Area Check",
+      "home_packages": "Home Packages",
+      "support": "24/7 Support",
+      "free_install": "Free Installation",
+      "about": "About Us",
+      "careers": "Careers",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy",
+      "faq": "FAQ (Q&A)",
+      "news": "News & Updates",
+      "router_tips": "Router Usage Tips",
+      "network_stabil": "Network Stabilization",
+      "service_guide": "Service Guide"
+    },
+    "copyright": "© 2026 NOC NFI (^-^*) . All Rights Reserved."
+  },
+  "privacy": {
+    "badge": "Legal Document",
+    "title": "Privacy Policy",
+    "last_updated": "Last Updated: January 1, 2026",
+    "intro": "At PT Nada Freedom Indonesia (NFI), we are committed to protecting your privacy...",
+    "contact_intro": "If you have any questions about this Privacy Policy, please contact us:",
+    "contact_btn": "Contact Privacy Team"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "Looks like you're out of luck this time. The page you are looking for is not here.",
+    "button": "Go Home"
   }
 }

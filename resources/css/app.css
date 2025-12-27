@@ -387,3 +387,103 @@
     margin: 2.5rem 0;
     background: transparent;
 }
+
+/* --- APP.CSS --- */
+
+/* 1. Latar Belakang Utama */
+.hero-bg {
+  background-color: #1A237E; /* NFI Blue */
+  position: relative;
+  overflow: hidden;
+}
+
+/* 2. Efek Grid (Garis-garis tipis ala teknologi) */
+.hero-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px; /* Ukuran kotak grid */
+  z-index: 1;
+}
+
+/* 3. Animasi Floating (Naik Turun) */
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  50% { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+}
+
+@keyframes floatDown {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  50% { transform: translateY(20px) rotate(-10deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+}
+
+/* 4. Objek Glowing (Lingkaran Cahaya) */
+.glow-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px); /* Efek Blur agar seperti cahaya */
+  z-index: 0;
+}
+
+.glow-1 {
+  width: 300px;
+  height: 300px;
+  background: #FFC107; /* NFI Yellow */
+  top: -50px;
+  right: -50px;
+  opacity: 0.4;
+  animation: floatDown 6s ease-in-out infinite;
+}
+
+.glow-2 {
+  width: 400px;
+  height: 400px;
+  background: #2196F3; /* Light Blue */
+  bottom: -100px;
+  left: -100px;
+  opacity: 0.3;
+  animation: floatUp 8s ease-in-out infinite;
+}
+
+/* 5. Partikel Kotak Kecil (Data Packets) */
+.data-packet {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.packet-1 { width: 40px; height: 40px; top: 20%; left: 10%; animation: floatUp 5s infinite; }
+.packet-2 { width: 60px; height: 60px; top: 60%; right: 15%; animation: floatDown 7s infinite; }
+.packet-3 { width: 20px; height: 20px; top: 30%; right: 30%; animation: floatUp 4s infinite; }
+
+/* --- ANIMASI HALAMAN 404 (SLOT MACHINE) --- */
+
+/* Animasi Putaran Lambat (Bintang Biru) */
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+}
+
+/* Animasi Bouncing Pendek (Saat Angka Berhenti) */
+@keyframes bounce-short {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-short {
+    animation: bounce-short 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}

@@ -53,7 +53,7 @@ export default function Navbar() {
                 {/* LOGO */}
                 <Link to="/" className="flex items-center gap-1 group">
                     <img 
-                        src="/images/logo.png" 
+                        src="/images/logo.svg" 
                         alt="NFI Logo"
                         className={`transition-all duration-300 ${isScrolled ? 'h-8' : 'h-10'} w-auto`}
                         onError={(e) => {

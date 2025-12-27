@@ -15,9 +15,10 @@ const FAQSection = () => {
         setOpenFaqIndex(openFaqIndex === index ? null : index);
     };
 
+    // Sesuaikan keys kategori dengan file JSON
     const categories = ["General", "Billing", "Technical", "Support"];
 
-    // Data FAQ menggunakan kunci dari JSON
+    // Data FAQ (ID harus sesuai dengan key di translation.json)
     const faqData = [
         { category: "General", id: "1", icon: <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg> },
         { category: "General", id: "2", icon: <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg> },
@@ -35,11 +36,12 @@ const FAQSection = () => {
     const filteredFaqs = faqData.filter(item => item.category === activeCategory);
 
     return (
-        <div className="max-w-4xl mx-auto mb-32 px-4 font-['Poppins']">
+        // PERBAIKAN: Menambahkan 'mt-24 pt-10' agar tidak nabrak dengan konten di atasnya
+        <div className="max-w-4xl mx-auto mt-24 pt-10 mb-32 px-4 font-['Poppins']">
             
             {/* Header */}
             <div className="text-center mb-10">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight custom-text-color">
                     {t('faq.title')}
                 </h3>
                 <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
@@ -83,6 +85,7 @@ const FAQSection = () => {
 
                             <div className="flex-grow pr-4">
                                 <span className="font-bold text-gray-900 text-base md:text-lg block mb-1">
+                                    {/* Memanggil translasi berdasarkan ID */}
                                     {t(`faq.questions.q${faq.id}`)}
                                 </span>
                                 

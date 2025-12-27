@@ -1,5 +1,3 @@
-// resources/js/pages/home.jsx
-
 import React from 'react';
 
 import Navbar from '@/components/navbar';
@@ -21,7 +19,13 @@ export default function Home() {
                 <HeroSection />
                 <SolutionsSection />
                 <IntersectionSolutionsSection />
-                <CoverageSection />
+                
+                {/* --- TAMBAHKAN ID DI SINI AGAR SCROLL FOOTER BERFUNGSI --- */}
+                <div id="coverage-section">
+                    <CoverageSection />
+                </div>
+                {/* --------------------------------------------------------- */}
+
                 <NewsSection />
                 <PartnersSection />
             </main>

@@ -16,6 +16,12 @@ import TermsConditions from './pages/TermsConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy'; 
 import ScrollToTop from './components/ScrollToTop';
 import NewsDetail from './components/NewsDetail'; 
+import ServiceGuide from './pages/ServiceGuide';
+import Support from './pages/Support';
+import FreeInstallation from './pages/FreeInstallation';
+import NotFound from "./pages/NotFound";
+    
+
 
 // Matikan restorasi scroll browser agar ScrollToTop bekerja maksimal saat refresh
 if ('scrollRestoration' in history) {
@@ -36,7 +42,11 @@ const App = () => {
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/terms-and-conditions" element={<TermsConditions />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="*" element={<div className="p-20 text-center text-red-500 font-bold">404 - Page Not Found</div>} />
+                <Route path="/service-guide" element={<ServiceGuide />} />
+                <Route path="/support" element={<Support />} />
+                <Route path="/free-installation" element={<FreeInstallation />} />
+
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );

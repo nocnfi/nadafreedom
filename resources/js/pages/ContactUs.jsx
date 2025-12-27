@@ -167,7 +167,7 @@ const ContactUs = () => {
                     {/* Header Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-center mb-12 lg:mb-24 gap-8 lg:gap-8">
                         <div className="max-w-md text-center lg:text-left z-20 w-full">
-                            <h1 className="text-3xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+                            <h1 className="text-3xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight custom-text-color">
                                 {t('contact.hero_title_1')} <br className="hidden md:block"/> {t('contact.hero_title_2')}
                             </h1>
                             <p className="text-gray-500 text-sm md:text-lg mb-6 lg:mb-0">
