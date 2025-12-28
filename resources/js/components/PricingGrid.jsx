@@ -2,15 +2,29 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PricingCard from '@/Components/PricingCard';
 
-// Menerima props 'customRegion'. 
-// Jika ada isinya, kita pakai itu. Jika null/undefined, kita pakai logika otomatis.
 const PricingGrid = ({ customRegion = null }) => {
-    // 1. STATE
     const [regionsData, setRegionsData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [internalRegion, setInternalRegion] = useState('Kab. Bekasi'); // Default internal
+    const [internalRegion, setInternalRegion] = useState('Kab. Bekasi');
 
-    // Data Fallback (Simpanan jika API mati)
+    // --- FUNGSI WHATSAPP ACTION ---
+    const handleWhatsAppSubscribe = (plan) => {
+        // Ganti dengan nomor WhatsApp perusahaan Anda (Gunakan kode negara 62)
+        const phoneNumber = "6285692173125"; 
+        const activeRegionName = customRegion || internalRegion;
+
+        // Menyusun teks pesan otomatis
+        const message = `Halo NFI, saya tertarik untuk berlangganan paket internet berikut:%0A%0A` +
+                        `*Area Pemasangan:* ${activeRegionName.toUpperCase()}%0A` +
+                        `*Nama Paket:* ${plan.name}%0A` +
+                        `*Harga:* ${plan.price}%0A%0A` +
+                        `Mohon dibantu untuk proses pendaftaran dan cek ketersediaan jaringan di alamat saya. Terima kasih.`;
+
+        // Membuka WhatsApp di tab baru
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    };
+
+    // Data Fallback (Digunakan jika API Offline)
     const fallbackRegions = [
         {
             id: 1, region_name: 'Kab. Bekasi',
@@ -34,8 +48,11 @@ const PricingGrid = ({ customRegion = null }) => {
     ];
 
     useEffect(() => {
-        // A. FETCH DATA (Selalu jalan dimanapun komponen ini dipasang)
-        axios.get('/api/pricing-regions')
+        // Ambil URL API dari Environment (Vite)
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
+
+        // Fetch Data Paket dari Backend Laravel
+        axios.get(`${apiBaseUrl}/api/pricing-regions`)
             .then(response => {
                 const data = response.data;
                 if (Array.isArray(data) && data.length > 0) {
@@ -46,17 +63,19 @@ const PricingGrid = ({ customRegion = null }) => {
                 setLoading(false);
             })
             .catch(() => {
+                console.warn("Using fallback data for pricing.");
                 setRegionsData(fallbackRegions);
                 setLoading(false);
             });
 
-        // B. GEOLOCATION (Hanya jalan jika TIDAK ADA customRegion dari Parent)
+        // Deteksi Lokasi Otomatis (Jika tidak ada pilihan manual)
         if (!customRegion && "geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
                     
+                    // Logika area berdasarkan koordinat sederhana
                     const isKarawang = (lat < -6.20 && lat > -6.45) && (lng > 107.20 && lng < 107.45);
                     const isPemalang = (lat < -6.80 && lat > -7.00) && (lng > 109.30 && lng < 109.60);
 
@@ -67,13 +86,9 @@ const PricingGrid = ({ customRegion = null }) => {
                 () => setInternalRegion('Kab. Bekasi')
             );
         }
-    }, [customRegion]); // Re-run effect jika customRegion berubah (tapi geolocation diblock logic if)
+    }, [customRegion]);
 
-    // 2. LOGIKA PENENTUAN WILAYAH AKTIF
-    // Prioritas: customRegion (dari Dropdown) > internalRegion (dari Geolocation)
     const activeRegionName = customRegion || internalRegion;
-
-    // 3. FILTER DATA
     const activeRegionData = regionsData.find(r => r.region_name === activeRegionName);
     const activePlans = activeRegionData ? activeRegionData.plans : [];
 
@@ -87,7 +102,11 @@ const PricingGrid = ({ customRegion = null }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-start justify-center">
                 {activePlans.length > 0 ? (
                     activePlans.map((plan, index) => (
-                        <PricingCard key={index} plan={plan} />
+                        <PricingCard 
+                            key={index} 
+                            plan={plan} 
+                            onSubscribe={handleWhatsAppSubscribe} 
+                        />
                     ))
                 ) : (
                     <div className="col-span-full text-center py-10">
@@ -98,11 +117,10 @@ const PricingGrid = ({ customRegion = null }) => {
                 )}
             </div>
 
-            {/* INFO LOKASI (Opsional, matikan jika tidak ingin double info dengan Dropdown) */}
+            {/* INFO LOKASI SAAT INI */}
             {!customRegion && (
                 <div className="text-center mt-4">
                     <p className="text-gray-500 italic text-sm">
-                        {/* 👇 TAMBAHKAN text-blue-600 atau text-[#1A237E] DISINI */}
                         Menampilkan paket default: <span className="font-bold text-blue-600 not-italic uppercase">{activeRegionName}</span>
                     </p>
                 </div>

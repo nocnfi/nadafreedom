@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const PricingCard = ({ plan }) => {
+const PricingCard = ({ plan, onSubscribe }) => {
     const { t } = useTranslation();
 
     return (
@@ -20,11 +20,9 @@ const PricingCard = ({ plan }) => {
         >
             {/* Header */}
             <div className="mb-3 md:mb-4">
-                {/* Judul: Mobile text-lg, Desktop text-xl */}
                 <h3 className="text-lg md:text-xl font-extrabold text-gray-900 italic uppercase">
                     {plan.name}
                 </h3>
-                {/* Deskripsi */}
                 <p className="text-xs text-gray-500 mt-1 md:mt-2 h-8 md:h-10 leading-snug">
                     {plan.description}
                 </p>
@@ -32,7 +30,6 @@ const PricingCard = ({ plan }) => {
 
             {/* Price */}
             <div className="mb-4 md:mb-6">
-                {/* Harga: Mobile text-base, Desktop text-lg */}
                 <p className="text-base md:text-lg font-extrabold text-gray-900 italic">
                     {plan.price} 
                     <span className="text-[10px] md:text-xs font-normal text-gray-500 not-italic">
@@ -50,7 +47,6 @@ const PricingCard = ({ plan }) => {
                     else if (feature.item) label = feature.item;
 
                     return (
-                        /* Font list: text-[11px] di mobile agar pas, tidak kekecilan */
                         <li key={idx} className="flex items-start text-[11px] md:text-xs text-gray-600">
                             <span className="mr-2 mt-0.5 flex-shrink-0 text-gray-900">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,17 +63,20 @@ const PricingCard = ({ plan }) => {
             {/* Button Action */}
             <div className="mt-auto w-full">
                 {plan.is_popular ? (
-                    <button className="
-                        w-full py-2 md:py-3 
-                        rounded-tl-lg rounded-br-lg rounded-tr-[2em] rounded-bl-[2em]
-                        md:rounded-tl-xl md:rounded-br-xl md:rounded-tr-[3em] md:rounded-bl-[3em]
-                        bg-gradient-to-r from-blue-600 to-purple-600 
-                        text-white text-xs md:text-sm font-bold tracking-wide
-                        shadow-lg shadow-blue-500/30 
-                        hover:from-purple-600 hover:to-blue-600
-                        hover:shadow-blue-500/50 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-0.5
-                        transition-all duration-500 ease-in-out
-                    ">
+                    <button 
+                        onClick={() => onSubscribe(plan)}
+                        className="
+                            w-full py-2 md:py-3 
+                            rounded-tl-lg rounded-br-lg rounded-tr-[2em] rounded-bl-[2em]
+                            md:rounded-tl-xl md:rounded-br-xl md:rounded-tr-[3em] md:rounded-bl-[3em]
+                            bg-gradient-to-r from-blue-600 to-purple-600 
+                            text-white text-xs md:text-sm font-bold tracking-wide
+                            shadow-lg shadow-blue-500/30 
+                            hover:from-purple-600 hover:to-blue-600
+                            hover:shadow-blue-500/50 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-0.5
+                            transition-all duration-500 ease-in-out
+                        "
+                    >
                         {t('pricing.buy_now')}
                     </button>
                 ) : (
@@ -88,15 +87,18 @@ const PricingCard = ({ plan }) => {
                         bg-gradient-to-r from-blue-600 to-purple-600
                         hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300
                     ">
-                        <button className="
-                            w-full py-[6px] md:py-[10px]
-                            rounded-tl-lg rounded-br-lg rounded-tr-[2em] rounded-bl-[2em]
-                            md:rounded-tl-xl md:rounded-br-xl md:rounded-tr-[3em] md:rounded-bl-[3em]
-                            bg-white 
-                            text-gray-900 text-xs md:text-sm font-bold tracking-wide
-                            hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white
-                            transition-all duration-300
-                        ">
+                        <button 
+                            onClick={() => onSubscribe(plan)}
+                            className="
+                                w-full py-[6px] md:py-[10px]
+                                rounded-tl-lg rounded-br-lg rounded-tr-[2em] rounded-bl-[2em]
+                                md:rounded-tl-xl md:rounded-br-xl md:rounded-tr-[3em] md:rounded-bl-[3em]
+                                bg-white 
+                                text-gray-900 text-xs md:text-sm font-bold tracking-wide
+                                hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white
+                                transition-all duration-300
+                            "
+                        >
                             {t('pricing.buy_now')}
                         </button>
                     </div>
