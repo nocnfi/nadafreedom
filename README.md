@@ -1,108 +1,128 @@
-Nada Freedom Portal & Management System
-Nada Freedom adalah platform solusi internet terpadu yang menggabungkan portal informasi publik (frontend) dengan sistem manajemen konten operasional (backend). Dibangun dengan teknologi modern untuk memberikan performa tinggi, skalabilitas, dan pengalaman pengguna yang intuitif.
+Tentu, mari kita buat `README.md` yang jauh lebih bersih, terstruktur secara profesional, dan menggunakan format Markdown yang standar industri.
 
-🛠 Tech Stack
-Core Framework: Laravel 11
+Berikut adalah draf `README.md` yang telah dioptimalkan untuk repositori **Nada Freedom**:
 
-Frontend Engine: Inertia.js dengan React
+---
 
-Administrative Interface: Filament PHP v3 (TALL Stack power)
+# Nada Freedom Portal & Management System
 
-Styling: Tailwind CSS & Shadcn UI
+**Nada Freedom** adalah platform solusi infrastruktur internet yang mengintegrasikan portal informasi publik yang dinamis dengan sistem manajemen operasional internal yang canggih. Proyek ini dirancang untuk memberikan visibilitas layanan internet sekaligus efisiensi manajemen data cakupan wilayah.
 
-Geospatial: Leaflet JS & OpenStreetMap integration
+---
 
-State Management: TanStack Query / React Hooks
+## 🛠 Tech Stack
 
-🌟 Fitur Utama
-1. Panel Administrasi Enterprise
-Menggunakan Filament v3 untuk memberikan kontrol penuh atas data operasional:
+Sistem ini dibangun dengan arsitektur modern untuk memastikan performa dan keamanan:
 
-Dashboard Statistik: Visualisasi data cakupan wilayah, statistik berita, dan pertumbuhan pelanggan secara real-time.
+* **Backend:** [Laravel 11](https://laravel.com) (PHP 8.2+)
+* **Frontend:** [React.js](https://reactjs.org) dengan [Inertia.js](https://inertiajs.com) (Single Page Application experience)
+* **Admin Panel:** [Filament PHP v3](https://filamentphp.com) (TALL Stack-based Admin Center)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com) & Headless UI
+* **Maps Integration:** [Leaflet JS](https://leafletjs.com/) & OpenStreetMap (OSM)
+* **Tools:** Vite, Composer, NPM
 
-Manajemen Paket (Plans): Sistem pengaturan paket layanan internet yang dinamis berdasarkan region harga.
+---
 
-Pusat Kendali Konten: Editor berita (News) tingkat lanjut dengan dukungan kategori dan media.
+## 🌟 Fitur Unggulan
 
-2. Geolocation & Coverage Area
-Sistem pemetaan interaktif yang memungkinkan admin menentukan titik layanan:
+### 📡 Geolocation & Coverage Management
 
-OSM Integration: Integrasi peta kustom untuk akurasi lokasi cakupan.
+* **Interactive Map:** Pemetaan titik layanan secara visual menggunakan integrasi OpenStreetMap.
+* **District Level Pricing:** Pengaturan paket internet yang harganya menyesuaikan dengan wilayah geografis tertentu.
 
-District Management: Pengelompokan layanan berdasarkan wilayah administratif Indonesia.
+### 🏢 Content Management System (CMS)
 
-3. Ekosistem Pelanggan
-Subscriber Tracking: Manajemen data prospek dan pelanggan aktif.
+* **News Engine:** Manajemen berita lengkap dengan kategori, media, dan status publikasi.
+* **Marketing Popups:** Sistem manajemen jendela promo/pengumuman yang dapat diatur jadwal tayangnya.
 
-Contact & Inquiry System: Jalur komunikasi terintegrasi untuk permintaan layanan baru.
+### 👥 Customer Inquiries & Leads
 
-Marketing Popup: Sistem manajemen modal/popup untuk promosi dan pengumuman mendesak.
+* **Subscriber Tracking:** Manajemen data prospek dan pendaftaran pelanggan baru.
+* **Inquiry System:** Form kontak terintegrasi untuk menangani permintaan informasi dari pengunjung.
 
-⚙️ Persyaratan Sistem
-PHP >= 8.2
+### 📊 Admin Intelligence
 
-Node.js >= 18.x
+* **Statistical Widgets:** Dashboard utama dengan ringkasan pertumbuhan data pelanggan dan jangkauan wilayah dalam bentuk grafik interaktif.
 
-Composer >= 2.x
+---
 
-Database: MySQL 8.0+, PostgreSQL, atau SQLite.
+## 🚀 Panduan Instalasi Cepat
 
-🚀 Panduan Instalasi
-Langkah 1: Kloning Repositori
-Bash
+Ikuti langkah-langkah berikut untuk menyiapkan lingkungan pengembangan lokal:
 
+### 1. Persiapan Repositori
+
+```bash
 git clone https://github.com/nocnfi/nadafreedom.git
 cd nadafreedom
-Langkah 2: Konfigurasi Lingkungan
-Instal dependensi backend dan siapkan environment file:
 
-Bash
+```
 
+### 2. Instalasi Dependensi
+
+```bash
+# Instal dependensi Backend (PHP)
 composer install
+
+# Instal dependensi Frontend (JavaScript)
+npm install
+
+```
+
+### 3. Konfigurasi Lingkungan
+
+```bash
 cp .env.example .env
 php artisan key:generate
-Sesuaikan konfigurasi database di dalam file .env.
 
-Langkah 3: Setup Database
-Jalankan migrasi untuk membangun skema database dan data awal:
+```
 
-Bash
+> **Catatan:** Jangan lupa mengatur konfigurasi database Anda di file `.env`.
 
+### 4. Setup Database
+
+```bash
 php artisan migrate --seed
-Langkah 4: Kompilasi Frontend
-Instal dependensi Node dan jalankan build development:
 
-Bash
+```
 
-npm install
-npm run dev
-Langkah 5: Menjalankan Aplikasi
-Jalankan server lokal Laravel:
+### 5. Jalankan Aplikasi
 
-Bash
+Gunakan dua terminal terpisah:
 
+```bash
+# Terminal 1: Backend
 php artisan serve
-Akses aplikasi di http://localhost:8000. Panel admin dapat diakses melalui /admin.
 
-🏗 Arsitektur Proyek
-app/Filament/Resources: Definisi antarmuka dan logika panel admin.
+# Terminal 2: Frontend
+npm run dev
 
-app/Models: Representasi entitas bisnis (News, Plans, Coverage, dll).
+```
 
-resources/js/pages: Halaman utama aplikasi berbasis React.
+Akses portal di `http://localhost:8000` dan panel admin di `http://localhost:8000/admin`.
 
-resources/js/components: Komponen UI modular yang dapat digunakan kembali.
+---
 
-routes/api.php: Endpoint untuk integrasi pihak ketiga atau layanan eksternal.
+## 📂 Struktur Arsitektur
 
-🔐 Keamanan & Standar Kode
-Menggunakan Laravel Sanctum untuk proteksi API.
+* **`app/Filament/`**: Semua Resource admin (Berita, Paket, Wilayah, dll).
+* **`app/Models/`**: Definisi skema data dan relasi antar entitas bisnis.
+* **`resources/js/pages/`**: Halaman-halaman frontend utama berbasis React.
+* **`resources/js/components/`**: Pustaka komponen UI yang *reusable*.
+* **`routes/`**: Manajemen routing API dan Web.
 
-Penerapan ESLint dan Prettier untuk konsistensi kode frontend.
+---
 
-Validasi data ketat pada setiap layer (Request Validation & Database Constraint).
+## 🔐 Standar Kode & Kualitas
 
-📄 Lisensi
-Proyek ini dilisensikan di bawah MIT License.
+* **Linting:** Menggunakan ESLint dan Prettier untuk konsistensi kode frontend.
+* **Security:** Proteksi CSRF, validasi request yang ketat, dan manajemen akses berbasis peran (RBAC).
 
-Dikembangkan oleh [Nocnfi Team] - Connecting You to Freedom.
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](https://www.google.com/search?q=LICENSE).
+
+---
+
+**Developed with ❤️ by [Nocnfi Team]**
+*Connecting communities with freedom of access.*
