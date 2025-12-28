@@ -14,9 +14,9 @@ Berikut adalah draf `README.md` yang telah dioptimalkan untuk repositori **Nada 
 
 Sistem ini dibangun dengan arsitektur modern untuk memastikan performa dan keamanan:
 
-* **Backend:** [Laravel 11](https://laravel.com) (PHP 8.2+)
+* **Backend:** [Laravel 12](https://laravel.com) (PHP 8.2+)
 * **Frontend:** [React.js](https://reactjs.org) dengan [Inertia.js](https://inertiajs.com) (Single Page Application experience)
-* **Admin Panel:** [Filament PHP v3](https://filamentphp.com) (TALL Stack-based Admin Center)
+* **Admin Panel:** [Filament PHP v4](https://filamentphp.com) (TALL Stack-based Admin Center)
 * **Styling:** [Tailwind CSS](https://tailwindcss.com) & Headless UI
 * **Maps Integration:** [Leaflet JS](https://leafletjs.com/) & OpenStreetMap (OSM)
 * **Tools:** Vite, Composer, NPM
@@ -126,3 +126,4 @@ Proyek ini dilisensikan di bawah [MIT License](https://www.google.com/search?q=L
 
 **Developed with ❤️ by [Nocnfi Team]**
 *Connecting communities with freedom of access.*
+
